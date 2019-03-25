@@ -39,8 +39,10 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^0.20.3",
     "@storybook/addon-centered": "^5.0.5",
     "@storybook/react": "^5.0.5",
+    "@zeit/next-mdx": "^1.2.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.0",
     "jest": "^24.5.0",
