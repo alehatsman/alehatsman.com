@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import './fontawersome'
 
 export const GlobalStyle = createGlobalStyle`
   html, body {
