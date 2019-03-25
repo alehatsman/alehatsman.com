@@ -20,14 +20,15 @@ const img = styled.img`
 
 const pre = styled.pre`
   overflow: scroll;
-`
-
-const code = styled.code`
-  display: block;
+  max-height: 300px;
   padding: 10px;
   font-size: 1.6rem;
   border: 1px solid #ddd;
   border-radius: 3px;
+`
+
+const code = styled.code`
+  display: block;
 `
 
 const h = css`

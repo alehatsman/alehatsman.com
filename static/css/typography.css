@@ -53,3 +53,10 @@
   font-weight: 900;
   src: url('/static/fonts/roboto/Roboto-Black.ttf');
 }
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/static/fonts/lato/Lato-Bold.ttf');
+}

@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'Lato', sans-serif;
     font-size: 1.6rem;
     margin: 0;
     padding: 0;

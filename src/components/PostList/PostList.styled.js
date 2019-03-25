@@ -12,8 +12,9 @@ export const PostWrapper = styled.a`
 `
 
 export const PostTitle = styled.h1`
+  font-family: Lato;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
   font-style: normal;
   margin: 0;
 `
@@ -22,6 +23,8 @@ export const PostDescription = styled.div`
   margin-top: 10px;
   font-size: 16px;
   font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: calc(16px * 0.01);
   color: #6C6C6C;
 `
 

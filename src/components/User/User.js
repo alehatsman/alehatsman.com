@@ -17,6 +17,16 @@ const User = () => (
 
     <PointsWrapper>
       <Point>
+        <FaIcon icon={['fab', 'telegram']} />
+        <PointText>
+          <a href='https://t.me/alehatsman'
+            target='_blank'>
+          @alehatsman
+          </a>
+        </PointText>
+      </Point>
+
+      <Point>
         <FaIcon icon={['fab', 'github-alt']} />
         <PointText>
           <a href='https://github.com/atsman'

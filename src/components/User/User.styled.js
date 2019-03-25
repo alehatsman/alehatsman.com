@@ -8,8 +8,9 @@ export const Photo = styled.img`
 
 export const Fullname = styled.div`
   margin-top: 30px;
+  font-family: Lato;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   color: #24292E;
 `
@@ -41,9 +42,9 @@ export const Point = styled.div`
   &:not(:first-child) {
     margin-top: 5px;
   }
+
   ${FaIcon} {
-    height: 16px;
-  }
+      }
 `
 
 export const PointText = styled.span`
