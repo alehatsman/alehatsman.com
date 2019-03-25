@@ -1,10 +1,17 @@
 const path = require('path')
-const fs = require('fs').promises
+const fs = require('fs')
 
 const contentDir = path.join(__dirname, 'content')
 
 function getContentFiles () {
-  return fs.readdir(contentDir)
+  return new Promise((resolve, reject) => {
+    fs.readdir(contentDir, (err, res) => {
+      if (err) {
+        return reject(err)
+      }
+      return resolve(res)
+    })
+  })
 }
 
 function parseFileNames (files) {
