@@ -1,0 +1,33 @@
+{
+  "name": "alehatsman.com",
+  "version": "0.0.1",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsman/alehatsman.com.git"
+  },
+  "keywords": [
+    "Next.js",
+    "Blog",
+    "Styled",
+    "Components",
+    "Mdx"
+  ],
+  "author": "Aleh Atsman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atsman/alehatsman.com/issues"
+  },
+  "homepage": "https://github.com/atsman/alehatsman.com#readme",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  }
+}
