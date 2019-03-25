@@ -28,6 +28,11 @@
   "dependencies": {
     "next": "^8.0.3",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.0"
   }
 }
