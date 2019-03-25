@@ -1,6 +1,8 @@
 import App, { Container } from 'next/app'
 import React from 'react'
 import { GlobalStyle } from 'styles/global'
+import Router from 'next/router'
+import withGA from 'next-ga'
 
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
@@ -24,4 +26,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp
+export default withGA('UA-99002751-2', Router)(MyApp)
