@@ -10,9 +10,11 @@ const Wrapper = styled.main`
   line-height: 1.5;
 `
 
-const a = styled.a`
+const AWrapper = styled.a`
   color: #0094FF !important; 
 `
+
+const a = (props) => <AWrapper {...props} target='_blank' />
 
 const img = styled.img`
   max-width: 100%;
