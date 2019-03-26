@@ -7,7 +7,6 @@ export const SidebarWrapper = styled.section`
 export const MainWrapper = styled.section`
   display: flex;
   margin-left: 50px;
-  overflow: scroll;
 `
 
 export const HomeWrapper = styled.div`
@@ -15,5 +14,5 @@ export const HomeWrapper = styled.div`
   flex-direction: row;
   max-width: 960px;
   margin: 0 auto;
-  padding-top: 50px;
+  padding: 50px 20px;
 `
