@@ -1,0 +1,796 @@
+export const meta = { 
+  id: 'static_blog_generator_using_nextjs_styledcomponents_mdx', 
+  title: 'Static blog generator using Next.js, Styled Components, Mdx.', 
+  description: 'In the era of modern frontend you can build almost any tool and service by hands in hours. In this article, instead of using complex static site generators, I want to show how to build your own using only JavaScript tools.', 
+  createdAt: '2019-03-04',
+  public: true
+};
+
+# How to create a static blog generator using Next.js?
+
+## Rationale
+
+Developers love to write technical blogs. That's a nice way to share your ideas and experiences. There are tons of tools and websites that provide services for creating and hosting blogs. But technical people prefer to fully control their website HTML generation, deployment and hosting.
+
+One of the options that I was considering for myself is to use a static site generator like Hugo or Jekyll. But then I realized that it will be much easier and fun for me to use web technologies that I already know. Like React, Styled Components, etc.
+
+## Why?
+
+Why create a custom static blog generator? Because you can:
+
+* Use technologies you like and know
+* Control everything from HTML generation to deployment
+* It is fun
+
+## Tech Stack
+
+The choice was made in favour of *Next.js* for such benefits as:
+
+* Webpack, Babel, SSR, Code splitting are included
+* Extendable, works well with most tools
+* Static export out of the box
+
+A prefered way of styling React apps for me is StyledComponents because it provides:
+
+* Composability
+* Isolation 
+
+Content rendering is done by MDX.
+
+* Component approach
+* Customizable
+* Markdown-based
+
+## Plan
+
+1. Create design in [Figma](https://www.figma.com)
+2. Create an empty project with Next.js
+3. Configure styled components
+4. Configure storybook
+5. Create UI components
+6. Load and parse md files
+7. Static export
+8. Deploy to Now
+
+## 1. Design in figma
+
+Figma is a browser-based design tool. It is simple and easy to use. Quite quickly I come up with the following design:
+
+![][design_screenshot]
+
+[design_screenshot]: /static/images/how_to_create_your_personal_blog_using_nextjs/design_screenshot.png "Design Screenshot"
+
+
+## 2. Create Next.js project
+
+Let's set up our project. In my case I have created directory alehatsman.com and installed next.js:
+
+```sh
+mkdir alehatsman.com
+npm init
+npm install --save next react react-dom
+```
+
+Add basic scripts to your *package.json* file:
+
+```json
+{
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
+```
+
+Create *.babelrc* file:
+
+```json
+{
+  "presets": ["next/babel"]
+}
+```
+
+Create index page *pages/index.ts*
+
+```js
+export default function() {
+  return <div>Hello blog</div>
+}
+```
+
+In order to verify that everything is alright run dev script and you should see *Hello blog* text on the page.
+
+Let's add also babel module resolver, which help to avoid relative paths with ../.. hell.
+
+```sh
+npm i --save-dev babel-plugin-module-resolver
+```
+
+And update the *.babelrc* file 
+
+```json
+{
+  "presets": [
+    "next/babel",
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"]
+    }],
+  ]
+}
+```
+
+Now you can import components with full path, such as:
+
+```js
+import Cmp from 'components/MyComponent'
+```
+
+## 3. Styled components
+
+Prefered styling arpoach for me is [styled-components](https://www.styled-components.com).
+
+Let's add a dependency:
+
+```sh
+npm i --save styled-components
+npm i --save-dev babel-plugin-styled-components
+```
+
+First update *.babelrc* to configure babel styled components plugin. It is needed for proper SSR:
+
+```json
+{
+  "presets": [
+    "next/babel",
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+      }
+    }],
+    ["babel-plugin-styled-components", {
+      "ssr": true, 
+      "displayName": true, 
+      "preprocess": false 
+    }]
+  ]
+}
+```
+
+Create custom document component to inject generated styled from server side *src/components/Document.js*
+
+```js
+// src/components/Document.js
+
+import React from 'react'
+import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+
+export default class MyDocument extends Document {
+  static async getInitialProps (ctx) {
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
+      }
+    } finally {
+      sheet.seal()
+    }
+  }
+
+  render () {
+    return (
+      <html>
+        <Head>
+          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+          {this.props.styleTags}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
+    )
+  }
+}
+```
+
+To have some common global styles on all pages, override src/components/App.js too:
+
+```js
+// src/components/App.js
+
+import App, { Container } from 'next/app'
+import React from 'react'
+import { GlobalStyle } from 'styles/global'
+
+class MyApp extends App {
+  static async getInitialProps ({ Component, ctx }) {
+    return {
+      pageProps: {
+        ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {})
+      }
+    }
+  }
+
+  render () {
+    const { Component, pageProps } = this.props
+    return (
+      <Container>
+        <React.Fragment>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </React.Fragment>
+      </Container>
+    )
+  }
+}
+
+export default MyApp
+```
+
+And styles/global looks like this:
+
+```js
+// styles/global.js
+
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyle = createGlobalStyle`
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  #__next {
+    min-height: 100%;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+`
+```
+
+Next.js has to find those components some how. The convention is to have those files under pages directory. But to be consistent I decided to put all my components under src/components folder and just re-export them in pages directory. 
+
+Create files pages/_app.js and pages/_document.js just to rexport our components for Next.js
+
+```js
+// pages/_app.js
+
+export { default } from 'components/App'
+```
+
+```js
+// pages/_document.js
+
+export { default } from 'components/Document'
+```
+
+To check that it works, let's update *pages/index.js*
+
+```js
+import styled from 'styled-components'
+
+const WelcomeText = styled.span`
+  color: red;
+`
+
+export default function() {
+  return <WelcomeText>Hello blog</WelcomeText>
+}
+```
+
+## 4. Configure storybook
+
+Storybook is a nice to have for development. Let's add it
+
+```sh
+npm i --save-dev @storybook/react @storybook/addon-centered
+```
+
+Add storybook script to package.json
+
+```json
+{
+  scripts: {
+    "storybook": "start-storybook -c ./.storybook/ -s ./"
+  }
+}
+```
+
+Create configuration in ./.storybook
+
+```js
+// .storybook/config.js
+
+import { configure, addDecorator } from '@storybook/react'
+import { GlobalStyleDecorator } from './decorators'
+import Centered from '@storybook/addon-centered/react'
+
+// automatically import all files ending in *.stories.js
+const req = require.context('../src', true, /.stories.js$/)
+function loadStories () {
+  req.keys().forEach(filename => req(filename))
+}
+
+addDecorator(GlobalStyleDecorator)
+addDecorator(Centered)
+configure(loadStories, module)
+```
+
+```js
+// .storybook/decorators.js
+
+import * as React from 'react'
+
+import { GlobalStyle } from 'styles/global'
+
+export const GlobalStyleDecorator = (storyFn) => (
+  <React.Fragment>
+    <GlobalStyle />
+    { storyFn() }
+  </React.Fragment>
+)
+```
+
+Run *npm run storybook* and you should see empty storybook pages
+
+## 5. Create basic components
+
+The application will consist of two pages:
+
+1. HomePage
+2. ContentPage
+
+HomePage - page with info about me and with the list of recent posts.
+
+* User - information about me, links to Github, email, and current company.
+* PostList - list of posts, each post consists of the title, short description and date.
+
+ContentPage - rendered markdown content.
+
+Url structure:
+
+```sh
+/ - HomePage
+/post/{name}.html  - ContentPage
+```
+
+Code of HomePage:
+
+```js
+// components/HomePage
+
+import React from 'react'
+import {
+  SidebarWrapper, MainWrapper, HomeWrapper
+} from './HomePage.styled'
+import User from 'components/User'
+import PostList from 'components/PostList'
+
+export default ({ posts }) => (
+  <HomeWrapper>
+    <SidebarWrapper>
+      <User />
+    </SidebarWrapper>
+    <MainWrapper>
+      <PostList posts={posts} />
+    </MainWrapper>
+  </HomeWrapper>
+)
+```
+
+And HomePageContainer:
+
+```js
+// src/containers/HomePageContainer
+
+import HomePage from 'components/HomePage'
+
+export default () => (
+  <HomePage posts={[]} /> // Will pass real posts here later
+)
+```
+
+At this moment I have next structure:
+
+```
+├── jest.config.js
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── _app.js
+│   ├── _document.js
+│   └── index.js
+├── src
+│   ├── components
+│   │   ├── App.js
+│   │   ├── Document.js
+│   │   ├── FaIcon.js
+│   │   ├── HomePage
+│   │   │   ├── HomePage.js
+│   │   │   ├── HomePage.styled.js
+│   │   │   └── index.js
+│   │   ├── PostList
+│   │   │   ├── PostList.js
+│   │   │   ├── PostList.styled.js
+│   │   │   └── index.js
+│   │   └── User
+│   │       ├── User.js
+│   │       ├── User.styled.js
+│   │       └── index.js
+│   ├── containers
+│   │   └── HomePageContainer.js
+│   └── styles
+│       ├── fontawesome.js
+│       └── global.js
+└── static
+    ├── css
+    ├── fonts
+    └── images
+```
+
+## 6. Load and parse markdown files
+
+### Configure MDX
+
+Next step is to load and parse content files. We need to be able to get a list of all files and their metadata. To do so, we are going to use the feature provided by Mdx Next.js plugin.
+
+Let's install and configure next-mdx:
+
+```sh
+npm i --save-dev @mdx-js/loader @zeit/next-mdx
+```
+
+After that update next.config.js as following
+
+```js
+const withMDX = require('@zeit/next-mdx')({
+  extension: /.mdx?$/
+})
+
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'mdx']
+})
+```
+
+And here we have a few options, we can place MDX files under the pages directory and those files will be accessible via HTTP with help of Next.js. But I also want to store some meta with each page and want to be able to get a list of all posts to show them on the home page.
+
+So because Mdx plugin gives us the ability to load pages as normal react components, we can use require and load all files from directory parsed by MDX loader. Objects in that array will contain JSX representation of each post plus metadata.
+
+```js
+// src/content.js
+
+import moment from 'moment'
+
+const posts = processPosts(requirePosts())
+
+export function getPosts () {
+  return posts
+}
+
+export function findDoc (id) {
+  return posts.find(p => p.id === id).Doc
+}
+
+function requirePosts () {
+  function requireAll (r) { return r.keys().map(r) }
+  return requireAll(require.context('../content', true, /\.mdx$/))
+}
+
+function processPosts (posts) {
+  const parsedPosts = parsePosts(posts)
+  const filterPosts = filterPublic(parsedPosts)
+  const sortedPosts = sortPosts(filterPosts)
+  return sortedPosts
+}
+
+function parsePosts (posts) {
+  return posts
+    .map(p => ({
+      ...p.meta,
+      createdAt: moment(p.meta.createdAt),
+      Doc: p.default
+    }))
+}
+
+function filterPublic (posts) {
+  return posts
+    .filter(p => p.public)
+}
+
+function sortPosts (posts) {
+  posts.sort((a, b) => a.createdAt.isBefore(b.createdAt) ? 1 : -1)
+  return posts
+}
+```
+
+So let's update HomePageContainer to use real posts:
+
+```js
+// src/containers/HomePageContainer.js
+
+import HomePage from 'components/HomePage'
+import { getPosts } from 'content'
+
+export default () => (
+  <HomePage posts={getPosts()} />
+)
+```
+
+### Style rendered markdown
+
+```js
+import styled, { css } from 'styled-components'
+
+const Wrapper = styled.main`
+  margin: 0 auto;
+  padding: 30px 0;
+  max-width: 700px;
+
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.5;
+`
+
+const a = styled.a`
+  color: #0094FF !important; 
+`
+
+const img = styled.img`
+  max-width: 100%;
+`
+
+const pre = styled.pre`
+  overflow: scroll;
+`
+
+const code = styled.code`
+  display: block;
+  padding: 10px;
+  font-size: 1.6rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+`
+
+const h = css`
+  font-weight: 500;
+  letter-spacing: -0.0125rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`
+
+const h1 = styled.h1`
+  ${h}
+  font-size: 3rem;
+`
+
+const h2 = styled.h2`
+  ${h}
+  font-size: 2.6rem;
+`
+
+const p = styled.p`
+  margin: 10px 0;
+`
+
+const list = css`
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+`
+
+const ul = styled.ul`
+  ${list}
+`
+
+const ol = styled.ol`
+  ${list}
+`
+
+export default {
+  wrapper: Wrapper,
+  a,
+  img,
+  pre,
+  code,
+  h1,
+  h2,
+  p,
+  ul,
+  ol
+}
+```
+
+And component wrapper to render each document
+
+```js
+import components from './Content.styled'
+import { MDXProvider } from '@mdx-js/tag'
+
+export default ({ Doc }) => (
+  <MDXProvider components={components}>
+    <Doc />
+  </MDXProvider>
+)
+```
+
+### Create Content Page as following
+
+```js
+import * as React from 'react'
+import { findDoc } from 'content'
+import Content from 'components/Content'
+
+class ContentContainer extends React.Component {
+  static async getInitialProps (props) {
+    return {
+      id: props.query.id
+    }
+  }
+
+  render () {
+    const Doc = findDoc(this.props.id)
+    return <Content Doc={Doc} />
+  }
+}
+
+export default PostPage
+```
+
+## 7. Static export
+
+In order to have static HTML export, we need to implement the exportPathMap function. So that Next.js knows what paths we want to have in static website version.
+
+Basically, function scans a content directory for all MDX files and generates a route map.
+
+```js
+// exportPathMap.js
+
+const path = require('path')
+const fs = require('fs').promises
+
+const contentDir = path.join(__dirname, 'content')
+
+function getContentFiles () {
+  return fs.readdir(contentDir)
+}
+
+function parseFileNames (files) {
+  return files.map(f => {
+    const parsedFilename = path.parse(f)
+    return {
+      name: parsedFilename.name,
+      ext: parsedFilename.ext
+    }
+  })
+}
+
+function filterFiles (files) {
+  return files.filter(f => f.ext === '.mdx')
+}
+
+function generatePathMap (files) {
+  return files.reduce((acc, f) => {
+    acc[`/post/${f.name}.html`] = {
+      page: '/post',
+      query: { id: f.name }
+    }
+
+    return acc
+  }, {})
+}
+
+async function generatePostsPathMap () {
+  const files = await getContentFiles()
+  const parsedFiles = parseFileNames(files)
+  const filteredFiles = filterFiles(parsedFiles)
+  return generatePathMap(filteredFiles)
+}
+
+async function exportPathMap () {
+  const postsPathMap = await generatePostsPathMap()
+  return {
+    '/': {
+      page: '/'
+    },
+    ...postsPathMap
+  }
+}
+
+module.exports = exportPathMap
+```
+
+Update of next.config.js
+
+```js
+const exportPathMap = require('./exportPathMap')
+
+const withMDX = require('@zeit/next-mdx')({
+  extension: /.mdx?$/
+})
+
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'mdx'],
+  exportPathMap
+})
+```
+
+And add an export script to package.json
+
+```json
+{
+  "scripts": {
+    "export": "npm run build && next export -o dist"
+  }
+}
+```
+
+If you run `npm run export` next.js will create out a directory with static files for all posts
+
+## 8. Deploy to now
+
+Install now 
+
+```
+npm i -g now
+```
+
+Create now.json
+
+```json
+{
+  "version": 2,
+  "name": "alehatsman.com",
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ]
+}
+```
+
+Add now-build script to package.json
+
+```json
+{
+  "scripts": {
+    "now-build": "npm run export"
+  }
+}
+```
+
+Run *now* command from your terminal and your site is online.
+
+# Links
+
+* [Next.js](https://nextjs.org)
+* [Styled Components](https://www.styled-components.com)
+* [MDX](https://mdxjs.com)
+* [Storybook](https://storybook.js.org)
+* [Now](https://zeit.co/now)
