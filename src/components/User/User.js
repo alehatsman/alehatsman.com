@@ -12,7 +12,7 @@ const User = () => (
     <Fullname>Aleh Atsman</Fullname>
 
     <Description>
-      Passioned Software Engineer at <Highligh><a href='https://www.findhotel.net/' target='_blank'>@FindHotel</a></Highligh>
+      Passionate Software Engineer at <Highligh><a href='https://www.findhotel.net/' target='_blank'>@FindHotel</a></Highligh>
     </Description>
 
     <PointsWrapper>
