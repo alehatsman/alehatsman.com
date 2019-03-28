@@ -8,6 +8,8 @@ const Wrapper = styled.main`
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.5;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
 
 const AWrapper = styled.a`
