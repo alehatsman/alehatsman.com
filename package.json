@@ -9,7 +9,8 @@
     "start": "next start",
     "storybook": "start-storybook -c ./.storybook/ -s ./",
     "export": "npm run build && next export -o dist",
-    "now-build": "npm run export"
+    "now-build": "npm run export",
+    "production": "now --target production"
   },
   "repository": {
     "type": "git",
