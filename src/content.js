@@ -6,8 +6,8 @@ export function getPosts () {
   return posts
 }
 
-export function findDoc (id) {
-  return posts.find(p => p.id === id).Doc
+export function findPost (id) {
+  return posts.find(p => p.id === id)
 }
 
 function requirePosts () {
