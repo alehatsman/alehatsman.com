@@ -1,6 +1,7 @@
 import React from 'react'
+import Head from 'next/head'
 import Content from 'components/Content'
-import { findDoc } from 'content'
+import { findPost } from 'content'
 
 class ContentContainer extends React.Component {
   static async getInitialProps (props) {
@@ -10,8 +11,15 @@ class ContentContainer extends React.Component {
   }
 
   render () {
-    const Doc = findDoc(this.props.id)
-    return <Content Doc={Doc} />
+    const { Doc, title } = findPost(this.props.id)
+    return (
+      <React.Fragment>
+        <Head>
+          <title>{title || ''}</title>
+        </Head>
+        <Content Doc={Doc} />
+      </React.Fragment>
+    )
   }
 }
 

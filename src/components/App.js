@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import React from 'react'
 import { GlobalStyle } from 'styles/global'
 import Router from 'next/router'
@@ -19,6 +20,9 @@ class MyApp extends App {
       <Container>
         <React.Fragment>
           <GlobalStyle />
+          <Head>
+            <title>Aleh Atsman Personal Blog</title>
+          </Head>
           <Component {...pageProps} />
         </React.Fragment>
       </Container>
