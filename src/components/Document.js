@@ -1,6 +1,6 @@
-import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import Document, { Head, Main, NextScript } from 'next/document'
+import React from 'react'
 
 export default class MyDocument extends Document {
   static async getInitialProps (ctx) {
@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
+          <link rel='icon' href='/static/images/logo.png' />
           {this.props.styleTags}
         </Head>
         <body>
