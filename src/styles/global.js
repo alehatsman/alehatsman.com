@@ -1,5 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
 import './fontawersome'
+
+import { createGlobalStyle } from 'styled-components'
+
+import colors from 'styles/colors'
 
 export const GlobalStyle = createGlobalStyle`
   html, body {
@@ -13,7 +16,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Roboto', 'Lato', sans-serif;
+    text-rendering: optimizeLegibility;
     font-size: 1.6rem;
+    color: ${colors.font};
     margin: 0;
     padding: 0;
   }

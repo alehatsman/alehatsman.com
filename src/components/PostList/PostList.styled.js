@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import colors from 'styles/colors'
+
 export const PostListWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,6 +14,7 @@ export const PostWrapper = styled.a`
 `
 
 export const PostTitle = styled.h1`
+  color: ${colors.header};
   font-family: Lato;
   font-size: 24px;
   font-weight: 700;
@@ -25,12 +28,10 @@ export const PostDescription = styled.div`
   font-weight: 300;
   line-height: 1.2;
   letter-spacing: calc(16px * 0.01);
-  color: #6C6C6C;
 `
 
 export const PostDate = styled.div`
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
-  color: #6C6C6C;
 `

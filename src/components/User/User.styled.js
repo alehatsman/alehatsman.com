@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import FaIcon from '../FaIcon'
+
+import colors from 'styles/colors'
 
 export const Photo = styled.img`
   width: 100%;
@@ -12,7 +13,7 @@ export const Fullname = styled.div`
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
-  color: #24292E;
+  color: ${colors.header};
 `
 
 export const Highligh = styled.span`
@@ -23,7 +24,6 @@ export const Description = styled.div`
   margin-top: 10px;
   font-size: 16px;
   font-weight: 300;
-  color: #6A6A6A;
 `
 
 export const UserWrapper = styled.div`
@@ -42,9 +42,6 @@ export const Point = styled.div`
   &:not(:first-child) {
     margin-top: 5px;
   }
-
-  ${FaIcon} {
-      }
 `
 
 export const PointText = styled.span`

@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components'
 
+import colors from 'styles/colors'
+
 const Wrapper = styled.main`
   margin: 0 auto;
   padding: 20px 20px;
-  max-width: 700px;
+  max-width: 800px;
 
   font-size: 1.8rem;
   font-weight: 300;
@@ -36,6 +38,7 @@ const code = styled.code`
 `
 
 const h = css`
+  color: #333;
   font-weight: 500;
   letter-spacing: -0.0125rem;
   margin-top: 20px;
@@ -44,7 +47,8 @@ const h = css`
 
 const h1 = styled.h1`
   ${h}
-  font-size: 3rem;
+  color: ${colors.header};
+  font-size: 4rem;
 `
 
 const h2 = styled.h2`

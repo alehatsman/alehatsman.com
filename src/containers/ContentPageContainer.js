@@ -1,7 +1,8 @@
-import React from 'react'
 import Head from 'next/head'
-import Content from 'components/Content'
+import React from 'react'
+
 import { findPost } from 'content'
+import Content from 'components/Content'
 
 class ContentContainer extends React.Component {
   static async getInitialProps (props) {
