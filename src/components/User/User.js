@@ -1,9 +1,12 @@
 import {
-  UserWrapper, Photo, Fullname,
-  Description, Highligh, PointsWrapper,
-  Point, PointText
+  UserWrapper,
+  Photo,
+  Fullname,
+  Description,
+  PointsWrapper,
+  Point,
+  PointText
 } from './User.styled'
-
 import FaIcon from '../FaIcon'
 
 const User = () => (
@@ -12,7 +15,7 @@ const User = () => (
     <Fullname>Aleh Atsman</Fullname>
 
     <Description>
-      Passionate Software Engineer at <Highligh><a href='https://www.findhotel.net/' target='_blank'>@FindHotel</a></Highligh>
+      Passionate Software Engineer
     </Description>
 
     <PointsWrapper>

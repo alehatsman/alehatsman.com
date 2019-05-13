@@ -16,10 +16,6 @@ export const Fullname = styled.div`
   color: ${colors.header};
 `
 
-export const Highligh = styled.span`
-  color: #0094FF;
-`
-
 export const Description = styled.div`
   margin-top: 10px;
   font-size: 16px;
