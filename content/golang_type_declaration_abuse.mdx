@@ -137,12 +137,13 @@ In rare cases when you want to add behaviour to basic types, you can create a ne
 type Person string
 
 func (p Person) Hello(anotherPerson Person) {
-    fmt.Printf(" %s, Hello from %s", anotherPerson, p)
+    fmt.Printf("%s, Hello from %s", anotherPerson, p)
 }
 
-aleh := Person("Elon Musk")
+elon := Person("Elon Musk")
+aleh := Person("Aleh")
 
-elon.Hello(aleh) // Aleh Hello from Elon Musk
+elon.Hello(aleh) // Aleh, Hello from Elon Musk
 ```
 
 ## How to abuse type declaration?
