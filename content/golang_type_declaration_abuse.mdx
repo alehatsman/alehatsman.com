@@ -1,14 +1,14 @@
 export const meta = { 
   id: 'golang_type_declaration_abuse', 
-  title: 'Golang type alias / declaration abuse', 
+  title: 'Type alias / declaration abuse using Golang', 
   description: 'Developers tend to bring ideas and approaches from other languages, to the projects they currently work in. Sometimes it perfectly make sence, but sometimes makes code only harder to read and maintain.', 
   createdAt: '2019-05-09',
   public: true
 };
 
-# Golang type alias and type definition abuse. 
+# Type alias / declaration abuse in Go
 
-## The power of habbits
+## The power of habits
 
 Most of us while switching to a new programming language try to bring habits and ideas from technologies we used before. There are applicable ideas and ideas that conflict with how the new language is designed and supposed to be used. 
 
@@ -177,15 +177,69 @@ type Email string
 type DOB time.Time
 ```
 
+Sometimes you can also find code with type aliases instead of type declarations:
+
+```go
+type Firstname = string
+type Lastname = string
+type Username = string
+type Password = string
+type Email = string
+type DOB = time.Time
+```
+
 ### Why?
 
-So what drives people to do that. They believe that it will prevent errors when you have for example complex function:
+What drives people to do that? 
+
+* Some believe that it makes the code more readable.
+* Some believe that it will prevent human mistakes.
+
+Let's suppose we have the function doMagic:
 
 ```go
 func doMagic(firstname Firstname, lastname Lastname, username Username, email Email) MagicResult {}
 ```
 
+You use it like that:
+
+```go
+doMagic(user.Firstname, user.Lastname, user.Username, user.Email) // cool
+doMagic(user.Lastname, user.Firstname, user.Username, user.Email) // type error
+
+// Now suppose that you don't have user struct, but have string values:
+doMagic(app.Firstname("Ilon"), app.Lastname("Musk"), app.Username("spacemusk"))
+```
+
+What prevents you from passing any random string with those type casts? Nothing.
+
+```go
+// no errors, but logic error present
+doMagic(app.Firstname("Musk"), app.Lastname("Ilon"), app.Username("spacemusk")) 
+```
+
+Want to have additional documentation, create additional struct like:
+
+```go
+type MagicArgs struct {
+  Firstname string
+  Lastname string
+  Username string
+}
+```
+
+And use it passing to function doMagic.
+
+```go
+doMagic(MagicArgs{
+    Firstname: "Ilon",
+    Lastname: "Musk",
+    Username: "spacemusk",
+})
+```
+
 It will prevent you from passing the wrong attribute to the function parameter. How often do you make such mistakes?
+
 
 ### Problems
 
@@ -217,7 +271,7 @@ dobTime := time.Time(dob)
 dobTime.Format(time.UnixDate)
 ```
 
-Cool right? To use time.Time you have to cast it first to time.Time.
+Cool right? To use time. The time you have to cast it first to time.Time.
 
 The funny story happens when developers create two different types for the same thing in the same project but in different packages. Let's imagine that we have functionality in another package where someone defined the function:
 
@@ -241,6 +295,7 @@ report.getUserReport(report.Username(user.Useranme)) // and you have to use it l
 
 How helpful that we have types? In my opinion not very helpful.
 
+
 In some projects you can find also such types:
 
 ```golang
@@ -251,9 +306,9 @@ type ArrayOfArrayOfEntities []ArrayOfEntities
 type ArrayOfArrayOfArrayOfEntities []ArrayOfArrayOfEntities
 ```
 
-I would prefer [][][][]string instead of ArrayOfArrayOfArrayOfEntities.
+What would you prefer [][][][]string or ArrayOfArrayOfArrayOfEntities?
 
-## Conclusion
+### Joke
 
 ```go
 type Aleh string
@@ -265,6 +320,11 @@ var aleh Aleh
 aleh = "Aleh"
 aleh.Goodbye() // Goodbye from Aleh
 ```
+
+## Conclusion
+
+Create good software by using essential ideas, principles, best practices. Write code which is well designed, pleasant to read,  tests and documentation. Then you will fill confident with types or without. You don't need to invent any super duper type-safety to create resilient software. Good luck!
+
 # Links
 
 * [Go 1.9 Release Notes](https://golang.org/doc/go1.9)
