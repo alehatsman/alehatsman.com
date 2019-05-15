@@ -25,7 +25,6 @@ export const Description = styled.div`
 export const UserWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 218px;
 `
 
 export const PointsWrapper = styled.div`
