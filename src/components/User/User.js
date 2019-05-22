@@ -49,6 +49,16 @@ const User = () => (
       </Point>
 
       <Point>
+        <FaIcon icon={['fab', 'linkedin']} />
+        <PointText>
+          <a href='https://www.linkedin.com/in/alehatsman'
+            target='_blank'>
+          linkedin.com/in/alehatsman
+          </a>
+        </PointText>
+      </Point>
+
+      <Point>
         <FaIcon icon='location-arrow' />
         <PointText>Amsterdam</PointText>
       </Point>
