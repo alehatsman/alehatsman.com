@@ -1,8 +1,7 @@
-import Head from 'next/head'
 import React from 'react'
 
 import { findPost } from 'content'
-import Content from 'components/Content'
+import PostPage from 'components/PostPage'
 
 class ContentContainer extends React.Component {
   static async getInitialProps (props) {
@@ -13,14 +12,7 @@ class ContentContainer extends React.Component {
 
   render () {
     const { Doc, title } = findPost(this.props.id)
-    return (
-      <React.Fragment>
-        <Head>
-          <title>{title || ''}</title>
-        </Head>
-        <Content Doc={Doc} />
-      </React.Fragment>
-    )
+    return <PostPage title={title} doc={Doc} />
   }
 }
 

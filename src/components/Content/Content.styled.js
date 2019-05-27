@@ -3,10 +3,6 @@ import styled, { css } from 'styled-components'
 import colors from 'styles/colors'
 
 const Wrapper = styled.main`
-  margin: 0 auto;
-  padding: 20px 20px;
-  max-width: 800px;
-
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.5;
