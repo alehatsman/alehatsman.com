@@ -53,7 +53,7 @@ const h2 = styled.h2`
 `
 
 const p = styled.p`
-  margin: 10px 0;
+  margin: 25px 0;
 `
 
 const list = css`
