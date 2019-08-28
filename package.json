@@ -4,7 +4,7 @@
   "description": "Personal website",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 3333",
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -c ./.storybook/ -s ./",
