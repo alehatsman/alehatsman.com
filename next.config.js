@@ -6,5 +6,8 @@ const withMDX = require('@zeit/next-mdx')({
 
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  exportPathMap
+  exportPathMap,
+  env: {
+    GA_ID: 'UA-99002751-2'
+  }
 })

@@ -7,6 +7,7 @@
     "dev": "next -p 3333",
     "build": "next build",
     "start": "next start",
+    "lint:fix": "eslint ./src/**/*.ts* --fix",
     "storybook": "start-storybook -c ./.storybook/ -s ./",
     "export": "yarn run build && next export -o dist",
     "now-build": "yarn run export",

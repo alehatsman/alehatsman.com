@@ -31,9 +31,9 @@ export default class MyDocument extends Document<Props> {
     return (
       <html>
         <Head>
-          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
+          <title>Aleh Atsman - Personal Blog</title>
           {this.props.styleTags}
         </Head>
         <body>

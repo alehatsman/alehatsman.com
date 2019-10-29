@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import styled, { css } from 'styled-components'
 
 import colors from '@/styles/colors'
@@ -14,7 +16,11 @@ const AWrapper = styled.a`
   color: #0094FF !important; 
 `
 
-const a = (props) => <AWrapper {...props} target='_blank' />
+const a = (props) => (
+  <Link href={props.href}>
+    <AWrapper {...props} target='_blank' />
+  </Link>
+)
 
 const img = styled.img`
   max-width: 100%;
