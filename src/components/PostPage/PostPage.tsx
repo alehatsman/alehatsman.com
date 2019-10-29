@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import Content from 'components/Content'
+import Content from '@/components/Content'
 
 import { PostPageContainer, HomeLink } from './PostPage.styled'
 

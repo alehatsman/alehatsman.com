@@ -1,8 +1,11 @@
 import { css } from 'styled-components'
 
 function mediaQuery (...queryFeatures) {
+  // @ts-ignore
   return (...rules) => css`
-    @media ${css(...queryFeatures)} {
+    // @ts-ignore
+    @media ${css(...queryFeatures)} { 
+      // @ts-ignore
       ${css(...rules)}
     }
   `

@@ -2,8 +2,8 @@ import React from 'react'
 import {
   SidebarWrapper, MainWrapper, HomeWrapper
 } from './HomePage.styled'
-import User from 'components/User'
-import PostList from 'components/PostList'
+import User from '@/components/User'
+import PostList from '@/components/PostList'
 
 export default ({ posts }) => (
   <HomeWrapper>

@@ -4,7 +4,7 @@ import React from 'react'
 import Router from 'next/router'
 import withGA from 'next-ga'
 
-import { GlobalStyle } from 'styles/global'
+import { GlobalStyle } from '@/styles/global'
 
 const GA_ID = 'UA-99002751-2'
 

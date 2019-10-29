@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import colors from 'styles/colors'
+import colors from '@/styles/colors'
 
 const Wrapper = styled.main`
   font-size: 1.8rem;

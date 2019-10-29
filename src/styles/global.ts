@@ -2,7 +2,7 @@ import './fontawersome'
 
 import { createGlobalStyle } from 'styled-components'
 
-import colors from 'styles/colors'
+import colors from '@/styles/colors'
 
 export const GlobalStyle = createGlobalStyle`
   html, body {
