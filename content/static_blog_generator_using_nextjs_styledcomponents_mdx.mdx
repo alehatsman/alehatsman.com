@@ -6,17 +6,15 @@ export const meta = {
   public: true
 };
 
-# How to create a static blog generator using Next.js, Styled Components, MDX?
+# Static blog generator based on Next.js, Styled Components, MDX
 
 ## Rationale
 
-Developers love to write technical blogs. That's a nice way to share your ideas and experiences. There are tons of tools and websites that provide services for creating and hosting blogs. But technical people prefer to fully control their website HTML generation, deployment and hosting.
+Developers love to write technical blogs. That's a nice way to share your ideas and experiences. There are tons of tools and websites that provide services for creating and hosting blogs. But you do not control how do they work. I prefer to fully control HTML generation, deployment and hosting.
 
-One of the options that I was considering for myself is to use a static site generator like Hugo or Jekyll. But then I realized that it will be much easier and fun for me to use web technologies that I already know. Like React, Styled Components, etc.
+Initially, I considered using a static site generator like Hugo or Jekyll. Golang based generator, or Ruby-based famous tool. After a few hours of writing Go and Ruby-based templates, I realized that it will be much easier and fun to use web technologies. Which are much more advanced and powerful for Web. Tools like Node, React, Styled Components, etc.
 
 ## Why?
-
-Why create a custom static blog generator? Because you can:
 
 * Use technologies you like and know
 * Control everything from HTML generation to deployment
@@ -26,8 +24,8 @@ Why create a custom static blog generator? Because you can:
 
 The choice was made in favour of *Next.js* for such benefits as:
 
-* Webpack, Babel, SSR, Code splitting are included
-* Extendable, works well with most tools
+* Webpack, TypeScript, Babel, SSR, Code splitting are included
+* Extendable, easy to extend, should work with most tools
 * Static export out of the box
 
 A prefered way of styling React apps for me is StyledComponents because it provides:
@@ -40,6 +38,7 @@ Content rendering is done by MDX.
 * Component approach
 * Customizable
 * Markdown-based
+
 
 ## Plan
 
