@@ -33,7 +33,6 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
-          <title>Aleh Atsman - Personal Blog</title>
           {this.props.styleTags}
         </Head>
         <body>

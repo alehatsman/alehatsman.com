@@ -1,6 +1,7 @@
 import App from 'next/app'
 import React from 'react'
 import Router from 'next/router'
+import Head from 'next/head'
 import withGA from 'next-ga'
 
 import { GlobalStyle } from '@/styles/global'
@@ -20,6 +21,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <>
+        <Head>
+          <title>Aleh Atsman - Personal Blog</title>
+        </Head>
         <GlobalStyle />
         <Component {...pageProps} />
       </>

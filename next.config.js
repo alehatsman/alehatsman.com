@@ -8,6 +8,6 @@ module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   exportPathMap,
   env: {
-    GA_ID: 'UA-99002751-2'
+    GA_ID: 'UA-99002751-2',
   }
 })

@@ -27,7 +27,8 @@ function parsePosts (posts) {
     .map(p => ({
       ...p.meta,
       createdAt: moment(p.meta.createdAt),
-      Doc: p.default
+      tags: p.meta.tags || [],
+      doc: p.default
     }))
 }
 
