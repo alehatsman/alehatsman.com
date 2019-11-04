@@ -81,3 +81,5 @@ typings/
 out/
 
 dist/
+
+**/*.DS_Store

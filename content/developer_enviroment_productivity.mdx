@@ -1,0 +1,156 @@
+export const meta = { 
+  id: 'developer_enviroment_productivity', 
+  title: 'Developer Enviroment and Productivity', 
+  description: 'How to build enviroment which will force you to have right habbits and will make you super productive? What way to compose operation system, apps, terminals, shells, editors, command line tools, compilers, scripts in a way that makes most productive?', 
+  tags: ['dotfiles', 'ansible', 'iaac', 'infrastructure', 'provisioning', 'automation', 'brew', 'vim',  'nvim', 'alacritty', 'git', 'enviroment', 'developer', 'productivity', 'terminal', 'grep', 'rust', 'python', 'javascript', ''],
+  createdAt: '2019-11-01',
+  public: true
+};
+
+# Developer Enviroment and Productivity
+
+<img src={'https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} altText />
+
+## Outline
+
+1. Intro
+2. Editor - NVIM
+3. Terminal - Alacritty
+4. Shell - ZSH
+5. Automation - Ansible, Brew
+
+## Intro
+
+Last 7 years I was working as Software Engineer. All this time I was trying to improve my productivity by using right techniques and leveraging right tools in my Developer Enviroment.
+
+Most of the time I spend in **command line**, writing code in **Vim**, executing commands in **Zsh** shell, which is opened in **Tmux** tab, which is rendered in **Alacritty** terminal emulator and all this is run by **macOS** on my Mac.
+
+> Developer enviroment - enviroment used to develop or modificate software. It is composition of operation system, apps, terminals, shells, editors, command line tools, compilersand scripts.
+
+> Developer productivity - amount of useful work performed over time. Daily habits like prefering typing over mousing, ways of thinking, awareness of existing tools and their capabilities.
+
+> Installation and configuration of software is done automatically via Ansible provisioning scripts that you can find here. [osx-automation](https://github.com/atsman/osx-automation)
+
+## Editor - VIM (NVIM)
+
+<img src="/static/images/developer_enviroment_productivity/neovim-logo.svg" style={{width: "500px"}} />
+
+> [Neovim][Neovim Github] - community driven, refactored version of vim.
+
+Vim is my main text editor. Vim allows me to edit text faster than any other tool. As soon as I learned how to use it on basic level I never wanted to return back to other editors.
+
+Editors with Vim emulation can't provide complete expirience of Vim. Some features are missing, or it works slightly differently. I tryed vscode and idea with vim plugins. Only Vim I got full power of mappings, custom functions, buffers, tabs, multiple cliboards, etc.
+
+Vim teched me to learn right habbits. Hands never take off the keys. Keeping them in an optimum position to input text, to scroll, to navigate or to apply some commands.
+
+<img src="/static/images/developer_enviroment_productivity/nvim-screen.png" style={{width: "500px"}} />
+
+Don't start by copying someones config. Try to go step by step, building your understanding of editor granually. Use articles like this to learn how others use it or search for .dotfiles on github.
+
+* Plugin management - [**Vim-Plug**][VimPlug Github]
+* File explorer - [**Nerdtree**][Nerdtree Github]
+* Navigation / Search - [**FZF**][FZF Github], [**FZF plugin**][FZF Vim Github], [**RipGrep**][RipGrep Github]
+* Autocomplete - [**YCM**][YCM Github]
+* Linting - [**Ale**][Ale Github]
+* Git - [**Fugitive**][Vim Fugitive Github], [**Gitgutter**][Vim GitGutter Github]
+* Language integration - LSP
+
+### Plugin management 
+
+[**Vim-plug**][VimPlug Github] minimalist vim plugin.
+
+<img src="https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif" />
+
+Features:
+
+* **On demand plugin loading** - for fast startup. When you open Vim, it loads only needed plugins for particular file type.
+* **Fast installation / update** - uses shadow clones, parallel installation.
+
+Example of configuration file:
+
+```viml
+Plug 'w0rp/ale' " Load on start
+Plug 'fatih/vim-go', { 'for': 'go' } " Load only for Go files 
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+```
+
+### File tree 
+
+The NERDTree is a tree explorer plugin. It allows you to browse directory hierarchies and manipulate filesystem operations. It presents the filesystem in form of tree, which you navigate in Vim style.
+
+<img src="/static/images/developer_enviroment_productivity/nvim-nerdtree-screen.png" style={{width: "500px"}} />
+
+*Mappings*:
+```
+<space>n - open nerdtree 
+<space>f - find current file in nerdtree
+t - open file in new tab
+i - open file in a hsplit
+s - open file in a vsplit
+o / enter - open file in main buffer
+```
+
+For more info run `:help NERDTree` in your vim editor or check docs on [Github](https://github.com/scrooloose/nerdtree/blob/master/doc/NERDTree.txt).
+
+
+### Search - fzf, ripgrep
+
+One of the best command line tools I have ever used is FZF. It is a command-line fuzzy finder. It is generic and can be used with any list: files, command history, processes, hostnames, bookmarks, git commits. So you can use it to search files, to search commits, to search processes and so on.
+
+<img src="/static/images/developer_enviroment_productivity/nvim-screen-fzf.png" style={{width: "500px"}} />
+
+Search by content
+Go to file by filename 
+Go to buffer by buffer name
+
+*Mappings*:
+```
+<ctrl>f - open fzf ripgrep search by content in all files
+<ctrl>p - open fzf search by filename for all files
+<ctrl>b - open fzf search by filename for buffers
+```
+
+### Autocomplete - Ycm
+
+### Linting - Ale
+
+Ale - asynchronous lint engine. Plugin that provides linting to Nvim. It is asynchronous and it just works. Most of linters and fixers work out of the box. 
+
+Eslint, standard, prettier, Flake8, rustfmt. List of linters I tryed with it.
+
+## Terminal - Alacritty
+
+When you use Vim, you automatically use command line more and more. Most of the time I spent in terminal. I love to use super focused tools, which solve specific problem. At some moment I found Alacritty terminal emulator. It's written in Rust and uses OpenGL for rendering. Which is super minimalistic and fast. GPU accelerated rendering makes my Vim literally fly.
+
+<img src="https://raw.githubusercontent.com/jwilm/alacritty/master/extra/logo/alacritty-term%2Bscanlines.svg?sanitize=true" style={{width: '200px'}} />
+
+[Alacritty][Alacritty Github] is really fast, open source, *GPU accelerated* terminal emulator. Alacritty is the result of frustration with existing terminal emulators. Espessially usage of Vim with Tmux in many other terminal emulators.
+
+Alacritty, GPU accelerated, minimal.o
+
+* Tabs - tmux
+* Shell - zsh
+
+Thanks to [Joe Wilm](https://github.com/jwilm)
+
+## Terminal Multiplexer - Tmux
+
+Alacritty is nice and very minimal. I use it in conjunction with with Tmux terminal multiplexer, which provides me with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
+
+## Shell - Zsh
+
+
+[Neovim Github]: https://github.com/neovim/neovim
+[VimPlug Github]: https://github.com/junegunn/vim-plug
+[Nerdtree Github]: https://github.com/scrooloose/nerdtree
+[FZF Github]: https://github.com/junegunn/fzf
+[FZF Vim Github]: https://github.com/junegunn/fzf.vim
+[Ripgrep Github]: https://github.com/BurntSushi/ripgrep
+[YCM Github]: https://github.com/ycm-core/YouCompleteMe
+[Ale Github]: https://github.com/dense-analysis/ale
+[Vim Fugitive Github]:https://github.com/tpope/vim-fugitive
+[Vim GitGutter Github]: https://github.com/airblade/vim-gitgutter
+
+[Alacritty Github]: https://github.com/jwilm/alacritty

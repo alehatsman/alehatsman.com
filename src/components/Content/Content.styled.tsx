@@ -31,9 +31,20 @@ const a = (props) => (
   <AWrapper {...props} target='_blank' />
 )
 
-const img = styled.img`
+const Img = styled.img`
   max-width: 100%;
 `
+
+const ImgWrapper = styled.p`
+  display: flex;
+  justify-content: center;
+`
+
+const img = (props) => (
+  <ImgWrapper>
+    <Img {...props} />
+  </ImgWrapper>
+)
 
 const pre = styled.pre`
   margin-bottom: 1.75rem;
@@ -74,7 +85,7 @@ const p = styled.p`
 `
 
 const list = css`
-  margin: 0 10px;
+  margin: 0 10px 10px;
   padding: 0 10px;
   list-style-position: inside;
 `
@@ -92,6 +103,12 @@ const inlineCode = styled.code`
   padding: 5px;
   color: rgb(57, 58, 52);
   background-color: rgb(246, 248, 250);
+`
+const blockquote = styled.blockquote`
+  margin: 0;
+  padding: 0 15px;
+  border-left: 4px solid #DDD;
+  color: #777;
 `
 
 const strong = styled.strong`
@@ -111,5 +128,6 @@ export default {
   p,
   ul,
   ol,
+  blockquote,
   strong,
 }
