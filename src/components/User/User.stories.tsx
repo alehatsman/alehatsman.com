@@ -6,5 +6,7 @@ import User from './User'
 
 storiesOf('User', module)
   .add('default', () => (
-    <User />
+    <div style={{width: '200px'}}>
+      <User  />
+    </div>
   ))

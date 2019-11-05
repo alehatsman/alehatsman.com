@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint:fix": "eslint ./src/**/*.ts* --fix",
-    "storybook": "start-storybook -c ./.storybook/ -s ./",
+    "storybook": "start-storybook -c ./.storybook/ -s ./public",
     "export": "yarn run build && next export -o dist",
     "now-build": "yarn run export",
     "production": "now --target production"
@@ -55,7 +55,7 @@
     "@types/styled-components": "^4.1.20",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@zeit/next-mdx": "^1.2.0",
-    "@zeit/next-typescript": "^1.1.1",
+    "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^6.6.0",
