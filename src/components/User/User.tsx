@@ -1,3 +1,6 @@
+import FaIcon from '@/components/FaIcon'
+import config from '@/config'
+
 import {
   UserWrapper,
   Photo,
@@ -7,7 +10,6 @@ import {
   Point,
   PointText
 } from './User.styled'
-import FaIcon from '../FaIcon'
 
 const User = () => (
   <UserWrapper>
@@ -22,7 +24,7 @@ const User = () => (
       <Point>
         <FaIcon icon={['fab', 'telegram']} />
         <PointText>
-          <a href='https://t.me/alehatsman'
+          <a href={config.telegram}
             target='_blank'>
           @alehatsman
           </a>
@@ -32,7 +34,7 @@ const User = () => (
       <Point>
         <FaIcon icon={['fab', 'github-alt']} />
         <PointText>
-          <a href='https://github.com/atsman'
+          <a href={config.github}
             target='_blank'>
           github.com/atsman
           </a>
@@ -42,7 +44,7 @@ const User = () => (
       <Point>
         <FaIcon icon='at' />
         <PointText>
-          <a href='mailto:aleh.atsman@gmail.com'>
+          <a href={`mailto:${config.email}`}>
           aleh.atsman@gmail.com
           </a>
         </PointText>
@@ -51,7 +53,7 @@ const User = () => (
       <Point>
         <FaIcon icon={['fab', 'linkedin']} />
         <PointText>
-          <a href='https://www.linkedin.com/in/alehatsman'
+          <a href={config.linkedin}
             target='_blank'>
           linkedin.com/in/alehatsman
           </a>

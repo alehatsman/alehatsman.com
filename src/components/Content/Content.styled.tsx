@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import styled, { css } from 'styled-components'
 
 import colors from '@/styles/colors'
@@ -17,9 +15,7 @@ const AWrapper = styled.a`
 `
 
 const a = (props) => (
-  <Link href={props.href}>
-    <AWrapper {...props} target='_blank' />
-  </Link>
+  <AWrapper {...props} target='_blank' />
 )
 
 const img = styled.img`
@@ -31,7 +27,7 @@ const pre = styled.pre`
   max-height: 300px;
   padding: 10px;
   font-size: 1.6rem;
-  border: 1px solid #ddd;
+  border: 1px solid ${colors.lightGrey};
   border-radius: 3px;
 `
 
@@ -49,7 +45,7 @@ const h = css`
 
 const h1 = styled.h1`
   ${h}
-  color: ${colors.header};
+  color: ${colors.black};
   font-size: 4rem;
 `
 

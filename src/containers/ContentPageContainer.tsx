@@ -17,6 +17,7 @@ class ContentContainer extends React.Component<Props> {
   render () {
     const { doc, title, description, tags } = findPost(this.props.id)
     return <PostPage 
+      id={this.props.id}
       title={title}
       description={description}
       tags={tags}

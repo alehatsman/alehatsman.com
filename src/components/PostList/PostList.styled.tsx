@@ -14,7 +14,7 @@ export const PostWrapper = styled.a`
 `
 
 export const PostTitle = styled.h1`
-  color: ${colors.header};
+  color: ${colors.black};
   font-family: Lato;
   font-size: 24px;
   font-weight: 700;

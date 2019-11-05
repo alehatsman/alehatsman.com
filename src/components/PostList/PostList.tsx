@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import moment from 'moment'
+import urls from '@/urls'
 import { PostListWrapper, PostWrapper, PostTitle, PostDescription, PostDate } from './PostList.styled'
 
 function formatDate (date) {
@@ -7,12 +8,12 @@ function formatDate (date) {
     .format('MMM D, YYYY')
 }
 
-function postHref (id) {
-  return `/post/${id}.html`
-}
-
 const Post = ({ id, title, description, createdAt }) => (
-  <Link href={{ pathname: '/post', query: { id } }} as={postHref(id)} passHref>
+  <Link 
+    href={{ pathname: '/post', query: { id } }} 
+    as={urls.postHref(id)} 
+    passHref
+  >
     <PostWrapper>
       <PostTitle>{title}</PostTitle>
       <PostDescription>{description}</PostDescription>

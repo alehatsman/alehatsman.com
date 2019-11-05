@@ -13,7 +13,7 @@ export const Fullname = styled.div`
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
-  color: ${colors.header};
+  color: ${colors.black};
 `
 
 export const Description = styled.div`

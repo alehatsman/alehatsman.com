@@ -1,12 +1,8 @@
 import { ServerStyleSheet } from 'styled-components'
-import Document, { Head, Main, NextScript, DocumentProps } from 'next/document'
+import Document, { Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
-interface Props extends DocumentProps {
-  styleTags: any
-}
-
-export default class MyDocument extends Document<Props> {
+export default class MyDocument extends Document {
   static async getInitialProps (ctx) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
@@ -33,7 +29,7 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
-          {this.props.styleTags}
+          {this.props.styles}
         </Head>
         <body>
           <Main />
