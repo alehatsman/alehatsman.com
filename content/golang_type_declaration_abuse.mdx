@@ -1,89 +1,38 @@
 export const meta = { 
   id: 'golang_type_declaration_abuse', 
-  title: 'Type alias / declaration abuse using Golang', 
-  description: 'Developers tend to bring ideas and approaches from other languages, to the projects they currently work in. Sometimes it perfectly makes sense, but sometimes makes code only harder to read and maintain.', 
+  title: 'Golang Type Aliases, Type Definitions and Real types', 
+  description: 'What is the difference between Type Alias and Type Definition? What are the best and worst use cases for Type Aliases and Type Definitions? Examples of problematic code from real projects and ideas that you should avoid.', 
   createdAt: '2019-05-09',
-  tags: ['golang', 'typesafe', 'abuse', 'best practices', 'habits'],
+  updatedAt: '2019-11-05',
+  tags: ['golang', 'type', 'alias', 'declaration', 'definition', 'typesafe'],
   public: true
 };
 
-# Type alias / declaration abuse in Go
+# Golang Type Aliases, Type Definitions and Real types
 
-## The power of habits
+This post is going to address uncertainty around Type aliases and Type definitions. Some would apply aliases to make code "well documented". Others would create a type definitions to make code more "typesafe". Both strategies are wrong, at least in my opinion.
 
-Most of us while switching to a new programming language try to bring habits and ideas from technologies we used before. There are applicable ideas and ideas that conflict with how the new language is designed and supposed to be used. 
+## Golang type declaration syntax
 
-When you try to bring ideas from second category problems arise. You make the code look like what you used to in last years. You try to make solutions look similar to how you would do it in language that you have used before.
+Let's start with the **Type declaration**. Type declaration syntax defines syntax for both **type alias** and **type definition**. Type declaration binds an identifier, the type name, to a type. It comes in two forms:
 
-When that happens, other people in the team will start to complain about you making code hard to read. They will complain that the API you have designed is hard to use. And that it is not the "language way" to do things.
+**Type declarations**:
+* **Type definition** - creates a new, distinct type with the same underlying type and operations as the given type, and binds an identifier to it.
+* **Type alias** - an alias declaration binds an identifier to the given type. And it serves as an alias for the type.
 
-It just happened that I am the person who will start complain first as soon as I would see that person tries to do things, not in the way things supposed to be done.
-
-This post is the read for people who switched to Golang and specifically who are trying to bring super - duper type safety to the language.
-
-I want to show and discuss a real example of how someone can misinterpret language feature and start abusing it to achieve some calmness of willing to bring his/her previous experience.
-
-But first let's list essential ideas, principles, best practices that you can use in almost any language. 
-
-## Essential ideas / principles / good practices
-
-There are essential ideas and principles that can be used universally in any language or technology:
-
-How can we describe good code? Code which:
-
-* Has good names
-* Testable
-* Maintainable
-* Well formatted
-* Well structured
-* Easy to change
-* Simple, focused, short
-
-How can you archive that?
-
-* Consistently decompose processes and hierarchies into small parts. (Split data transformations into small, independent steps).
-* Make each level of abstraction simple enough that you can load it in your head.
-* Hide complexity behind clean, simple and well-defined API (Cohesive abstractions with rich encapsulation).
-* Keep good separation of concepts, think each time when you add something, what is the best place for your logic. Should it be handled on a low level on high level etc?
-* Eliminating side effects using pure functions
-* Trying to separate code which manages concurrency and code that does business logic
-* Try to solve problems in simplest form.
-* Avoid over-engineering.
-
-Most problems in the code arise because of people laziness. Quite often what happens is, while trying to implement a new feature or trying to fix a specific bug, you see that in the ideal case you have to change the design a little bit, but on another hand, you can add horrible hack and feature ready. You will have abstraction leak, not consistent API. But the task in JIRA can be closed. And you do it.
-
-It may seem like you move fast doing dirty hacks, that you deliver as crazy. But in reality, you increase your tech dept, and quite often you will pay twice later. And I want to make it clear here, that we do not talk about "IDEAL" solutions here. If it was at least 1/10 from ideal that would be nice.
-
-Making good software means that you value good engineering and work to improve your habits so that with time, solutions you generate on the fly are good by default. It requires strong discipline and hard work on improving yourself.
-
-## Golang
-
-I love Golang for being so pragmatic and simple tool. It has minimal syntax, standard formatting and tooling. The projects on Github are written almost in the same style, problems solved in the same manner. It is easy to follow and to write.
-
-But even having all that, so people will try to invent something.
-
-Let's talks a little bit about golang type declaration syntax. We need some introduction before going further.
-
-## Golang type declaration syntax.
-
-A type declaration binds an identifier, the type name, to a type. Type declaration comes in two forms:
-
-* Type definition - creates a new, distinct type with the same underlying type and operations as the given type, and binds an identifier to it.
-* Type alias - an alias declaration binds an identifier to the given type. And it serves as an alias for the type.
-
-An alias declaration has the form
+An alias declaration has the form:
 
 ```
 type T1 = T2
 ```
 
-as opposed to a standard type definition
+as opposed to a type definition:
 
 ```
 type T1 T2
 ```
 
-An alias declaration doesn't create a new distinct type different from the type it's created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by T2.
+An alias declaration doesn't create a new distinct type different from the type it's created from. It just introduces an **alias name** T1, an alternate spelling, for the type denoted by T2.
 
 More examples:
 
@@ -99,11 +48,15 @@ type MyNode = Node // Type alias
 
 ## When is it supposed to be used?
 
-Type aliases are not meant for everyday use. They were introduced to support gradual code repair while moving a type between packages during large scale refactoring. And should be used only for that purpose. [Codebase Refactoring (with help from Go)](https://talks.golang.org/2016/refactor.article)
+### Type alias
 
-Type definitions meant to be used of course to express your problem domain. The way those elements of domain interact with each other. 
+Type aliases **are not meant** for everyday use. They were introduced to support gradual code repair while moving a type between packages during large scale refactoring. And should be used only for that purpose. [Codebase Refactoring (with help from Go)][CodebaseRefactoringGo]
 
-## Distinct type for basic types
+### Type definition
+
+Type definitions on top of basic type should be used only in a very limited number of cases. For example when you create enum using int type or when you want to add additional behaviour to a concrete type.
+
+## Type definition - distinct type on top of basic types 
 
 What do I want to talk about is the case when you do want to create a new distinct type for basic golang types like byte, int, string, slice, map etc.
 
@@ -111,7 +64,7 @@ There are two cases when you do want to create a new type for primitive type:
 
 ### 1. Constants using iota
 
-Constant type of Vehicle.
+Constant for Vehicle type:
 
 ```go
 type Vehicle int
@@ -125,12 +78,11 @@ const (
 )
 ```
 
-Here it really makes sense, because we created a new type and we limited value range. Using it everywhere after makes code more type safe.
-
+It has a valid reason as we have created a new type and limited value range of it. Using it throughout the codebase makes code more readable and safe. 
 
 ### 2. Additional behaviour
 
-In rare cases when you want to add behaviour to basic types, you can create a new type with method:
+In unusual cases when you need to add some additional behaviour to basic types, you can create a new type with method:
 
 ```go
 type Person string
@@ -145,11 +97,11 @@ aleh := Person("Aleh")
 elon.Hello(aleh) // Aleh, Hello from Elon Musk
 ```
 
-## How to abuse type declaration?
+## How you shouldn't use type declarations?
 
-In one of the projects I've participated, I found code similar to the code below. I am not going to judge how to type-safe is it, send me a message and tell what do you think.
+Below is an example of code adapted from the real project on which I worked:
 
-We have User struct like this:
+User struct that as you can guess defines user model:
 
 ```go
 package app
@@ -164,7 +116,8 @@ type User {
 }
 ```
 
-How readable is it? Double readable! Let's check what do those types mean: 
+How readable is it? In my opinion, it is double readable, I understood from the first time that Firstname is Firstname. But what type is it? Lookup is needed to determine that. Let's supposed we jumped to it:
+
 
 ```go
 package app
@@ -188,9 +141,9 @@ type Email = string
 type DOB = time.Time
 ```
 
-### Why?
+### Why would somebody do it?
 
-What drives people to do that? 
+In my case, that were developers who dreamed about type-safety like in Scala.
 
 * Some believe that it makes the code more readable.
 * Some believe that it will prevent human mistakes.
@@ -206,12 +159,14 @@ You use it like that:
 ```go
 doMagic(user.Firstname, user.Lastname, user.Username, user.Email) // cool
 doMagic(user.Lastname, user.Firstname, user.Username, user.Email) // type error
+```
 
-// Now suppose that you don't have user struct, but have string values:
+Now suppose that you don't have user struct, but have string values:
+```go
 doMagic(app.Firstname("Ilon"), app.Lastname("Musk"), app.Username("spacemusk"))
 ```
 
-What prevents you from passing any random string with those type casts? Nothing.
+What prevents you from passing any random string with those typecasts? Nothing.
 
 ```go
 // no errors, but logic error present
@@ -273,7 +228,7 @@ dobTime.Format(time.UnixDate)
 
 Cool right? To use time. The time you have to cast it first to time.Time.
 
-The funny story happens when developers create two different types for the same thing in the same project but in different packages. Let's imagine that we have functionality in another package where someone defined the function:
+The funny story happens when developers create two distinct types for the equivalent thing in the same project but different packages. Let's imagine that we have functionality in another package where someone defined the function:
 
 ```go
 package report
@@ -295,7 +250,6 @@ report.getUserReport(report.Username(user.Useranme)) // and you have to use it l
 
 How helpful that we have types? In my opinion not very helpful.
 
-
 In some projects you can find also such types:
 
 ```golang
@@ -308,26 +262,15 @@ type ArrayOfArrayOfArrayOfEntities []ArrayOfArrayOfEntities
 
 What would you prefer [][][][]string or ArrayOfArrayOfArrayOfEntities?
 
-### Joke
-
-```go
-type Aleh string
-type (a Aleh) Goodbye() {
-    fmt.Println("Goodbye from" + string(a))
-}
-
-var aleh Aleh
-aleh = "Aleh"
-aleh.Goodbye() // Goodbye from Aleh
-```
-
 ## Conclusion
 
-Create good software by using essential ideas, principles, best practices. Write code which is well designed, pleasant to read,  tests and documentation. Then you will fill confident with types or without. You don't need to invent any super duper type-safety to create resilient software. Good luck!
+Create good software by using essential ideas, principles, best practices. Write code which is well designed, pleasant to read,  has tests and documentation. Then you will fill confident with types or without. You don't need to invent any type-safety to create resilient software. Good luck!
 
 # Links
 
 * [Go 1.9 Release Notes](https://golang.org/doc/go1.9)
 * [Go Specification Type Declaration](https://golang.org/ref/spec#Type_declarations)
 * [Type Alises](https://yourbasic.org/golang/type-alias)
-* [Codebase Refactoring (with help from Go)](https://talks.golang.org/2016/refactor.article)
+* [Codebase Refactoring (with help from Go)][CodebaseRefactoringGo]
+
+[CodebaseRefactoringGo]: https://talks.golang.org/2016/refactor.article
