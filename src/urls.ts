@@ -1,11 +1,15 @@
 import config from '@/config'
 
+function externalize(path: string): string {
+  return `${config.host}${path}`
+}
+
 function postHref (id: string): string {
   return `/post/${id}.html`
 }
 
 function postExternalUrl (id: string): string {
-  return `${config.host}${postHref(id)}`
+  return externalize(postHref(id))
 }
 
 function postGithubUrl (id: string): string {
@@ -13,6 +17,7 @@ function postGithubUrl (id: string): string {
 }
 
 export default {
+  externalize,
   postHref,
   postGithubUrl,
   postExternalUrl,
