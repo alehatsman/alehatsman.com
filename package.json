@@ -66,6 +66,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
+    "prism-react-renderer": "^1.0.2",
     "typescript": "^3.6.4"
   }
 }

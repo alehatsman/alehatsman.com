@@ -1,6 +1,9 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 
 import colors from '@/styles/colors'
+
+import CodeBlock from './CodeBlock'
 
 const Wrapper = styled.main`
   font-size: 1.8rem;
@@ -23,20 +26,15 @@ const img = styled.img`
 `
 
 const pre = styled.pre`
-  overflow: scroll;
-  max-height: 300px;
-  padding: 10px;
-  font-size: 1.6rem;
-  border: 1px solid ${colors.lightGrey};
-  border-radius: 3px;
 `
 
 const code = styled.code`
   display: block;
+  color: #3d3e44;
 `
 
 const h = css`
-  color: #333;
+  color: ${colors.gray20};
   font-weight: 500;
   letter-spacing: -0.0125rem;
   margin-top: 20px;
@@ -77,7 +75,7 @@ export default {
   a,
   img,
   pre,
-  code,
+  code: CodeBlock,
   h1,
   h2,
   p,
