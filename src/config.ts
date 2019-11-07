@@ -1,4 +1,5 @@
 export default {
+  author: 'Aleh Atsman',
   host: 'https://alehatsman.com',
   github: 'https://github.com/atsman',
   twitter: 'https://twitter.com/alehatsman',

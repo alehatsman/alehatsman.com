@@ -1,4 +1,5 @@
 import React from 'react'
+import { NextPageContext } from 'next'
 
 import { findPost } from '@/content'
 import PostPage from '@/components/PostPage'
@@ -7,22 +8,13 @@ interface Props {
   id: string
 }
 
-class ContentContainer extends React.Component<Props> {
-  static async getInitialProps (props) {
-    return {
-      id: props.query.id
-    }
-  }
+function ContentContainer ({ id }: Props) {
+  return <PostPage post={findPost(id)} />
+}
 
-  render () {
-    const { doc, title, description, tags } = findPost(this.props.id)
-    return <PostPage 
-      id={this.props.id}
-      title={title}
-      description={description}
-      tags={tags}
-      doc={doc}
-    />
+ContentContainer.getInitialProps = async ({ query }: NextPageContext) => {
+  return {
+    id: query.id
   }
 }
 

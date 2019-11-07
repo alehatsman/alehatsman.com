@@ -7,6 +7,7 @@
     "dev": "next -p 3333",
     "build": "next build",
     "start": "next start",
+    "types": "tsc --project ./tsconfig.json",
     "lint": "eslint ./src/**/*.ts*",
     "lint:fix": "yarn run lint --fix",
     "storybook": "start-storybook -c ./.storybook/ -s ./public",

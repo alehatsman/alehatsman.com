@@ -1,8 +1,16 @@
-import components from './Content.styled'
+import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 
-export default ({ Doc }) => (
+import components from './Content.styled'
+
+interface Props {
+  children: React.ReactNode
+}
+
+const CodeBlock = ({ children }: Props) => (
   <MDXProvider components={components}>
-    <Doc />
+    { children }
   </MDXProvider>
 )
+
+export default CodeBlock

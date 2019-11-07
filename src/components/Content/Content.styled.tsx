@@ -28,11 +28,6 @@ const img = styled.img`
 const pre = styled.pre`
 `
 
-const code = styled.code`
-  display: block;
-  color: #3d3e44;
-`
-
 const h = css`
   color: ${colors.gray20};
   font-weight: 500;
