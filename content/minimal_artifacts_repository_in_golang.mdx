@@ -1,0 +1,315 @@
+export const meta = { 
+  id: 'minimal_artifacts_repository_in_golang', 
+  title: 'Minimal artifacts repository in Golang', 
+  description: 'Artifacts repositories are the legacy we inherited from ancestors. You can like it, you can dislike it, but at some moment you will have no choice. You will need to store your artifacts in private repo, that need will force you to use some very unpleasant solution. Expensive SaaS or open software with 8GB minimal RAM requirement.',
+  tags: ['golang', 'nexus', 'maven', 'java', 'repository', 'artifacts', 'cloud', 'docker', 'aws', 'jar'],
+  createdAt: '2019-07-28',
+  updatedAt: '2019-11-08',
+  public: true
+};
+
+# Minimal artifacts repository in Golang
+
+Some time ago I was working on a side project using **Clojure**. The project was an advertisement aggregator, it was scraping and collecting data from different websites, normalizing it and presenting simple and powerfull search for end users.
+
+The project was done in Clojure and consisted of few services which were sharing some **common code**. Data validation, data schemas and so on. It was ok while development was fully going locally on my machine. 
+
+Clojure is Java-based language and because of that, it uses **Jar files** as build target format. When you build your library **locally**, build tool installs Jar file in a **global cache** on your machine. All projects that depend on this library can access it looking it up in the global cache.
+
+But as soon as I started moving everything to AWS, the project build process changed. Now to build an application that depends on shared code, build tool needed to access artifacts of the shared library from somewhere. Because there was no place where build tool can find it, builds were failing. The question **how to access shared Jar** files appeared.
+
+Initially, I wasted some time trying to configure **S3 plugin** for leiningen(Clojure build tool). The plugin was broken and outdated. Next idea was to use some **existing solution**. For example **Nexus** repository widely used by Java developers. But minimal resource requirements for it were higher than the resources needed for all my services on AWS. Nexus **required at minimum 4GB RAM**.
+
+In the modern era, 4GB sounds like nothing. But it gave birth to such a frustration, that I come up with an idea to **reverse engineer** the way leingein worked. Using **traffic sniffing** I found out that basically, leiningen is using only **two HTTP endpoints**.
+
+First for reading and second for writing build artifacts:
+
+```
+GET /*filepath
+POST /*filepath
+```
+
+On **GET** it should return artifacts files. Leingein requests it this way:
+
+`GET https://nexus.atsman.com/repository/releases/com/atsman/my-library.jar`
+
+On **POST** it sends build artifacts in the same way, building a hierarchy of files.
+
+`POST https://nexus.atsman.com/repository/releases/com/atsman/my-library.pom`
+
+It could be done even in one simple lambda function, but that time I decided to write my own simple, small artifacts repo in Golang. And deploy it in k8s cluster. 
+
+## Golang - Infrastructure language 
+
+Why Go? There are so many languages out there that I stick to next **pragmatic approach to development**. Use tools that suit best your needs. For frontend development - Js / Ts. Need to analyze some data - use Python and data science stack. For everything related to **infrastructure - Golang**.  Ease of development, cross-compilation, speed of compilation, binary executable target, tiny docker images...
+
+## Requirements
+
+My initial plan was to build as small and as light as possible service, implementing the next requirements:
+
+* Http endpoint, one for reading and one for writing 
+* Basic auth support, for minimal privacy
+* File storage support
+* Amazon simple storage (S3) support
+
+## Implementation
+
+* Configuration management
+* Http routing
+* Project structure
+* Runtime architecture
+* Deployement
+
+### Http routing library 
+
+The first thing to choose was the routing library. There are tons of them on Github. **Gin**, **Echo**, **Goji** endless list...
+
+I decided to go with **[httprouter](https://github.com/julienschmidt/httprouter)**. It is super simple and has everything needed.
+
+Basic file controller looks in a next way:
+
+```go
+type FileController struct {
+    Storage Storage
+}
+
+func NewFileController(storage Storage) *FileController {
+    return &FileController{
+        Storage: storage,
+    }
+}
+
+func (ctrl *FileController) GetFile(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+  // ...
+}
+
+func (ctrl *FileController) PutFile(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+  // ...
+}
+```
+
+It depends on abstract Storage interface. That interface can be implemented in any way. It can be fs, it can s3, it can be whatever storage you can imagine. FileController doesn't know what is inside.
+
+Actuall implementation can be found here: [Controller](https://github.com/atsman/nexus-minimal/blob/master/internal/controller.go)
+
+
+## Storage interface and implementations
+
+For storage implementation I designed the next abstract interface:
+
+```go
+type Storage interface {
+    ReadFile(path string) (io.ReadCloser, error)
+    WriteFile(path string, file io.ReadCloser) error
+}
+```
+
+And factory function to be able to create storage of needed type:
+
+```go
+func NewStorage(config StorageConfig) Storage {
+    switch config.Type {
+    case "s3":
+        return NewS3Storage(config)
+    case "fs":
+        return NewFileSystemStorage(config)
+    default:
+        panic("Unknown storage type")
+    }
+}
+```
+
+**FileSystemStorage**:
+
+```go
+type FileSystemStorage struct {
+    Config StorageConfig
+}
+
+func NewFileSystemStorage(config StorageConfig) *FileSystemStorage {
+    return &FileSystemStorage{
+        Config: config,
+    }
+}
+
+func (fs *FileSystemStorage) ReadFile(path string) (io.ReadCloser, error) {
+    fullPath := resolvePath(fs.Config.BaseDir, path)
+    return os.Open(fullPath)
+}
+
+func (fs *FileSystemStorage) WriteFile(path string, file io.ReadCloser) error {
+    fullPath := resolvePath(fs.Config.BaseDir, path)
+    directoryPath, _ := parseFilepath(fullPath)
+    os.MkdirAll(directoryPath, os.ModePerm)
+    outFile, err := os.Create(fullPath)
+    if err != nil {
+        return err
+    }
+    defer outFile.Close()
+    _, err = io.Copy(outFile, file)
+    return err
+}
+```
+
+**S3Storage**:
+
+```go
+type S3Storage struct {
+    Config     StorageConfig
+    S3Client   *s3.S3
+    S3Uploader *s3manager.Uploader
+}
+
+func NewS3Storage(config StorageConfig) *S3Storage {
+  // ...
+}
+
+func (s *S3Storage) ReadFile(path string) (io.ReadCloser, error) {
+    ctx := context.Background()
+    result, err := s.S3Client.GetObjectWithContext(ctx, &s3.GetObjectInput{
+        Bucket: aws.String(s.Config.Bucket),
+        Key:    aws.String(path),
+    })
+    if err != nil {
+        return nil, err
+    }
+    return result.Body, nil
+}
+
+func (s *S3Storage) WriteFile(path string, file io.ReadCloser) error {
+    upParams := &s3manager.UploadInput{
+        Bucket: aws.String(s.Config.Bucket),
+        Key:    aws.String(path),
+        Body:   file,
+    }
+
+    _, err := s.S3Uploader.Upload(upParams)
+    return err
+}
+```
+
+## Configuration 
+
+For configuration management, I decided to go with [viper](https://github.com/spf13/viper). Widely used library.
+
+```go
+func NewConfig() Config {
+    // ...
+    config := Config{}
+    config.HTTP.Address = viper.GetString("http.addr")
+    config.HTTP.HTTPS = viper.GetBool("http.https")
+    config.HTTP.Certificate = viper.GetString("http.crt")
+    config.HTTP.Key = viper.GetString("http.key")
+    config.HTTP.Username = viper.GetString("http.username")
+    config.HTTP.Password = viper.GetString("http.password")
+
+    config.Storage.Type = viper.GetString("storage.type")
+    config.Storage.Bucket = viper.GetString("storage.bucket")
+    config.Storage.AccessKey = viper.GetString("storage.access_key")
+    config.Storage.SecretKey = viper.GetString("storage.secret_key")
+
+    config.Storage.BaseDir = viper.GetString("storage.base_dir")
+    if config.Storage.BaseDir == "" {
+        config.Storage.BaseDir = "./.nexus"
+    }
+
+    return config
+}
+```
+
+Application searches for `config.yml` in `/etc/nexus-minimal` or in the same directory where you run the binary.
+
+It is also possible to specify `CONFIG_PATH` env variable, a full path with filename and extension.
+
+For s3:
+
+```
+---
+http:
+  addr: ":443"
+  username: "myuser"
+  password: "mypassword"
+  https: true
+  crt: "/certs/domain.crt"
+  key: "/certs/domain.key"
+
+storage:
+  type: "s3"
+  bucket_name: "my-super-nexus-bucket"
+  access_key: "xxxxxxxxxxxxxxxxxxx"
+  secret_key: "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+And for file system:
+```
+---
+http:
+  addr: ":8080"
+  username: "myuser"
+  password: "mypassword"
+
+storage:
+  type: "fs"
+  base_dir: "/tmp/nexus-minimal"
+```
+
+## Main entry point and Go style DI
+
+In the main function, we initialize configuration, reading and converting it in into Go structs for ease of use. After NewStorage returns a specific implementation of Storage interface based on what is in config. Then HTTP controller is instantiated with specific storage passed as a dependency. 
+
+```go
+func main() {
+    InitLogger()
+    config := NewConfig()
+
+    storage := NewStorage(config.Storage)
+    controller := NewFileController(storage)
+
+    InitHttp(config.HTTP, controller)
+}
+```
+
+## Deployment
+
+Thanks to Go it is possible to create minimal docker image based on the alpine image. 
+
+This file uses a docker multi-stage build. Initially, it builds a project using a golang image as a base and then copies binary to the minimal alpine image. 
+
+**Dockerfile**
+```Dockerfile
+FROM golang:latest as builder
+WORKDIR /go/src/github.com/atsman/nexus-minimal/
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./out/nexus-minimal ./internal
+
+FROM alpine:latest  
+RUN apk --no-cache add ca-certificates
+VOLUME ["/etc/nexus-minimal"]
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/atsman/nexus-minimal/out .
+CMD ./nexus-minimal
+```
+
+How to use it?
+
+```
+docker run -d -v /etc/nexus-minimal:/etc/nexus-minimal -p 8080:8080 astma/nexus-minimal
+```
+
+## Conclusion
+
+Some things only look complex, hiding really basic staff under candy wrapper. Of course, real-world implementation has much more details hidden in thousands of lines of Java code. But for my specific need, 5 structs are more than enough.
+
+Nexus minimal:
+
+* Small code size
+* Simple configuration
+* Low memory usage
+* Amazon simple storage (S3) support
+* Filesystem support
+* Basic auth support
+
+## Links
+
+* [Nexus Minimal](https://github.com/atsman/nexus-minimal)
+* [Nexus Memory Requirements](https://help.sonatype.com/repomanager3/system-requirements#SystemRequirements-Memory)

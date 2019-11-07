@@ -65,12 +65,20 @@ const ol = styled.ol`
   ${list}
 `
 
+const inlineCode = styled.code`
+  font-family: inherit;
+  padding: 5px;
+  color: rgb(57, 58, 52);
+  background-color: rgb(246, 248, 250);
+`
+
 export default {
   wrapper: Wrapper,
   a,
   img,
   pre,
   code: CodeBlock,
+  inlineCode: inlineCode,
   h1,
   h2,
   p,
