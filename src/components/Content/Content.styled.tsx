@@ -15,6 +15,10 @@ const resetBox = css`
   padding-top: 0;
 `
 
+const marginBottom = css`
+  margin-bottom: 1.75rem;
+`
+
 const Wrapper = styled.main`
   font-size: 1.8rem;
   font-weight: 300;
@@ -70,7 +74,7 @@ const img = (props) => (
 )
 
 const pre = styled.pre`
-  margin-bottom: 1.75rem;
+  ${marginBottom}
 `
 
 const h = css`
@@ -106,12 +110,12 @@ const h3 = styled.h3`
 
 const p = styled.p`
   ${resetBox}
-  margin-bottom: 1.75rem;
+  ${marginBottom}
 `
 
 const list = css`
-  margin: 0 10px 10px;
-  padding: 0 10px;
+  margin: 0 1rem 1.75rem;
+  padding: 0 1rem;
   list-style-position: inside;
 `
 
