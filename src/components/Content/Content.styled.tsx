@@ -50,13 +50,14 @@ const h = css`
   color: ${colors.gray20};
   font-weight: 500;
   letter-spacing: -0.0125rem;
-  margin-top: 2rem;
   margin-bottom: 1rem;
 `
 
 const h1 = styled.h1`
   ${h}
-  margin-top: 3.5rem;
+  &:not(:first-child) {
+    margin-top: 3.5rem;
+  }
   margin-bottom: 2rem;
   color: ${colors.black};
   font-size: 4rem;
@@ -71,6 +72,8 @@ const h2 = styled.h2`
 
 const h3 = styled.h3`
   ${h}
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   font-size: 2.1rem;
 `
 
