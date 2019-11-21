@@ -1,0 +1,358 @@
+export const meta = { 
+  id: 'async_input_output', 
+  title: 'Async, Non-Blocking, Blocking I/O. Event Loop. Libuv. Node.js. Sanic.', 
+  description: 'The most popular approach to networking programming these days is Async I/O. What is the foundation for Async I/O. What are different I/O models? What is the event loop, event queue, event table? How does Libuv work? Can everything be async?', 
+  createdAt: '2019-11-21',
+  updatedAt: '2019-11-21',
+  tags: ['I/O', 'Async I/O', 'Non-Blocking I/O', 'Blocking I/O', 'Event Loop', 'Event Queue', 'Event Table', 'Python', 'Async Await', 'Generators', 'JavaScript', 'Python', 'Libuv', 'Asyncio', '10k problem', 'Sanic', 'Flask'],
+  public: true
+};
+
+# Async, Non-Blocking, Blocking I/O. Event Loop. Libuv. Node.js. Sanic.
+
+<img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+
+## Outline
+
+1. Process, Thread, Memory Management
+2. Process vs Thread
+3. Blocking I/O, Non-Blocking I/O, Async I/O
+4. Event Loop. Event Queue. Event Table.
+5. Libuv and Node.js.
+6. Python (Async-Await, Asyncio)
+7. Flask / Sanic
+
+## Process, Thread, Memory Management
+
+Modern computers run programs simultaneously. You can listen to Spotify, browser internet in Chrome and play video games in the same time. Spotify doesn't stop when you play video game, video games doesn't stop when you receive messages in telegram. Are those programs run in parallel? Let's try to figure it out.
+
+* Every program is executed in one or multiple **processes**. 
+* Each process consists of one or multiple **threads**. 
+* Each CPU core can run only **one process at a time**.
+
+> Computer runs only N programs in parallel, where N is a number of CPU cores.
+
+Let's suppose we have one core CPU computer. Even this computer is able to run multiple programs simultaneously, Spotify doesn't stop when you copy 10GB video. How is it possible?
+
+Audio player doesn't stop, it pause. It pauses very short to give control to another program. Another program makes progress and pauses again. Pauses are too short to be noticeble. It is called **Multitasking**.
+
+> Multitasking -- illusion that programs run in parallel.
+
+O/S level component that defines the way processes use CPU is called **Scheduler**. It defines methods of assigning resources to processes.
+
+When Scheduler replaces executing process, it needs to save processe's state, load state of next process and resume it. Process works for some time and algorithms repeats. Saving and restoring process state is called **Context switching**.
+
+***Process*** \[[Wiki][ProcessWiki]\]
+* instance of program
+* has one or many threads
+* contains code and activity
+
+***Thread*** \[[Wiki][ThreadWiki]\]
+* smallest primitive managed by a scheduler
+* part of the process
+
+***Scheduler*** \[[Wiki][SchedulerWiki]\]
+* assignes work to resources that complete the work
+* work may be virtual computation elements such as threads, processes, data flows
+* which scheduled onto hardware resources such as CPU, GPU,  
+
+***Multitasking*** \[[Wiki][MultitaskingWiki]\]
+* method of sharing processor and system resources
+* allows a processor to switch between tasks
+* switches performed on I/O or hardware interrupts or time quotas 
+
+***Time-Sharing*** \[[Wiki][TimeSharingWiki]\]
+* most common form of multitasking
+* illusion that applications run in parallel
+
+***Process - Representation***
+* Machine code of the executable programm
+* Memory
+  * Executable code
+  * Input-Output data
+  * Call stack
+  * Heap
+* System descriptors (files, handlers, sinks)
+* Security attributes
+* Processor state (context), registers, addresses.
+
+***Security***
+* os keeps processes separate
+* processes don't interfere with each other
+* os allocates the resources processes needo
+
+## Process vs Thread
+
+* processes are ***independent*** - threads are ***part of process***
+* process carry all system information - threads are sharing process state, memory and resources
+* processes have separate ***address space***, whereas threads share their address space
+* processes interact only through the system provided ***inter-process communication*** mechanisms
+* processes ***context switching*** is expensive - threads context switching is cheaper
+
+## Context switch
+
+When it is time to give CPU to another process, O/S saves state of currently running process. Loads state of previous process and resumes it on CPU. This is called Context Switch.
+
+Scheduler works with both Processes and Threads. Performing processe context switch is more expensive then performing thread context switch. Threads share memory and resources with parent process. Thread switch requires less changes in current state.
+
+## Blocking I/O, Non-Blocking Io, Async I/O
+
+Programs read and write data. The type of I/O model determines how efficiently program is using CPU. For example Apache Web Server is using Blocking I/O. When you request web page, it will read data from filesystem or from network. The process will be blocked untill operation is complete.
+
+Let's imagine that we have 10000 simultanious users. Users request different pages. While one process is blocked, all 10000 will have to wait for it to complete. That is not usable.
+
+That's why Apache Web Server forks new process per new open connection. When one process blocks, it doesn't affect other processes. It works fine, but there is one problem with this approach.
+
+* 100000 processes cost a lot of memory
+* 100000 processes waste a lot of time for context switching
+
+Next example is Nginx webserver. It uses async I/O model. It is single threaded. It can handle much more open connections and requests per second using less resources.
+
+Basic idea is that it has one worker thread. Each I/O read / write doesn't block worker thread. Instead those calls only start operation and execution continues. As soon as resuly will be ready it will be added to event queue. Worker thread takes events from event queue and handles them. This way server doesn't waste memory and CPU.
+
+***I/O forms***:
+* Blocking 
+* Non-blocking
+* Asynchorous
+
+***Blocking I/O***
+* io operation blocks execution context(thread or process)
+
+```py
+# Open socket, read data from socket, print it.
+socket = network.open()
+data = socket.read() # Execution blocked untill read operation is complete
+print(data)
+```
+
+***Non-Blocking I/O --- Polling***
+* I/O operations don't block execution
+* result of the operation has to be polled
+* pooling eats CPU cycles
+
+```py
+# Open socket, wait until the socket is ready, read data and print it.
+socket = network.open()
+ready = False
+while not ready: # Execution is not blocked by the system, but blocked by the loop.
+  ready = network.poll(socket, 'input')
+data = socket.read() # Read immidiatly returns result.
+print(data)
+```
+
+***Async I/O --- Callback*** \[[Wiki][AsyncioWiki]\]
+* I/O operations don't block execution
+* Completion of the operations notifies execution
+
+```py
+# Open socket, create callback, initiate read and pass callback.
+loop = create_event_loop()
+
+socket = network.open(loop)
+def handler(err, data): # callback function
+  if err:
+    return print('Error reading data, {}'.format(err))
+
+  print(data)
+socket.read(handler)
+
+loop.run()
+```
+
+## Event loop. Libuv. Node.js. Twisted
+
+<img src="https://images.unsplash.com/photo-1527266237111-a4989d028b4b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" />
+
+***Event Table***
+* each async operation added to the event table
+* maps events to handler functions
+* doesn't execute handlers
+
+***Event queue***
+* list of events ready for handling
+
+***Event loop***
+* constantly running process spinning loop
+* each loop iteration handles an event from the event queue
+* runs event handler from the event table
+
+```py
+# Pseudo code illustrating work of event loop
+
+while True:
+  event = event_queue.get()
+  if event:
+    handler = event_table[event.id]
+    handler(event)
+```
+
+## Libuv \[[Website][LibuvWebsite]\]
+
+<img src="https://raw.githubusercontent.com/libuv/libuv/master/img/banner.png" />
+
+Cross-Platform library focusing on Async I/O. Developed primarily in C. Primary developed for Node.js. Nowadays widely used outside of initial scope.
+
+* built around the event loop
+* event loop tied to a single thread
+
+***Features***
+* cross-platform asynchronous I/O library
+* abstractions on top of epoll, kqueue, IOCP, event ports
+* async TCP / UDP
+* async DNS
+* async fs operations
+* child processes
+* thread pool
+
+***Network I/O***
+
+I/O performed on non-blocking sockets:
+
+* ***epoll*** on Linux
+* ***kqueue*** on OSX and other BSDs
+* ***event ports*** on SunOS
+* ***IOCP*** on Windows
+
+***Thread Pool***
+
+Not all operations are async in libuv. Because of lack of O/S level API for file I/O, libuv uses thread pool under the hood for next operations:
+
+* File system operations
+* DNS functions
+* User specified code
+
+## Node.js \[[Website][NodeWebsite]\]
+
+<img src="https://cdn.worldvectorlogo.com/logos/nodejs.svg" />
+
+Node is an open-source platform that allowed JavaScript to move outside of the browser. It was created by Ryal Dahl as a result of his frustration with Apache HTTP server in 2009. Apache HTTP server uses process per connection model. For each open connection, the server spawns one more child process. This model is very limited if you want to handle a huge number of concurrent connections.
+
+Node.js consists of two parts
+
+* Google V8 JavaScript engine
+* Libuv library for managing I/O
+
+JavaScript is one of the best languages for async programming model, as it was always async, and the whole ecosystem of libraries already supported the async model.
+
+## Python
+
+***Asyncio***
+
+Library to write concurrent code using async/await syntax. Foundation for writing high-performance I/O heavy applications in python.
+
+Asyncio is implemented around python [`select`][SelectLink] module. Select module provides access to `select`, `poll`, `devpoll`, `epoll`, `kqueue`.
+
+[Uvloop][UvLoopLink] is a python wrapper around `libuv`, which can be used as a replacement for `select` module. This can make the asyncio module faster, more about this in the article [*uvloop: Blazing fast Python networking, by Yury Selivanov*][UvLoopArticle]
+
+***Asyncio - Hello World***
+```py
+import asyncio 
+
+async def main():
+    print('Hello ...')
+    await asyncio.sleep(1)
+    print('... World!')
+
+asyncio.run(main())
+```
+
+***Asyncio - Quering postgresql***
+```py
+import asyncio
+import asyncpg
+
+async def run():
+    conn = await asyncpg.connect(...)
+    values = await conn.fetch('''SELECT * FROM cats''')
+    await conn.close()
+    print(values)
+
+asyncio(run())
+```
+
+## Sanic (Async Flask) \[[WebSite][SanicLink]\]
+
+Sanic - Amazing library heavily inspired by flask and built around asyncio.
+
+```py
+from sanic import Sanic
+from sanic.response import json
+from asyncpg import create_pool
+
+## Init Sanic
+
+app = Sanic(__name__)
+
+## Database management
+
+@app.listener('before_server_start')
+async def connect_to_database(app, loop):
+    pool = await create_pool(user='postgres', password='postgres',
+                             database='postgres', host='127.0.0.1',
+                             loop=loop)
+    app.config['pool'] = pool
+
+
+@app.listener('after_server_stop')
+async def close_connection(app, loop):
+    pool = app.config['pool']
+    async with pool.acquire() as conn:
+        await conn.close()
+
+
+## Database queries
+
+async def get_tweets(pool):
+    sql = '''
+        SELECT id, text FROM tweets;
+    '''
+    async with pool.acquire() as conn:
+        rows = await conn.fetch(sql)
+        return rows
+
+
+async def get_tweet(pool, id):
+    sql = '''
+        SELECT id, text FROM tweets
+        WHERE id = $1;
+    '''
+    async with pool.acquire() as conn:
+        rows = await conn.fetch(sql, id)
+        return rows
+
+## Http handlers
+
+@app.route("/api/tweets/<id>")
+async def handler_request(req, id):
+    pool = req.app.config['pool']
+    tweet = await get_tweet(pool, int(id))
+    return json(tweet)
+
+@app.route("/api/tweets")
+async def handler_request(req):
+    pool = req.app.config['pool']
+    tweets = await get_tweets(pool)
+    return json(tweets)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
+```
+
+## Special thanks to
+
+[Dima Paloskin](https://github.com/dimapaloskin)
+
+[ProcessWiki]: https://en.wikipedia.org/wiki/Process
+[ThreadWiki]: https://en.wikipedia.org/wiki/Thread_(computing)
+[MultitaskingWiki]: https://en.wikipedia.org/wiki/Computer_multitasking
+[TimeSharingWiki]: https://en.wikipedia.org/wiki/Time-sharing
+[SchedulerWiki]: https://en.wikipedia.org/wiki/Scheduling_(computing)
+[AsyncioWiki]: https://en.wikipedia.org/wiki/Asynchronous_I/O
+[LibuvWebsite]: https://libuv.org
+[NodeWebsite]: https://nodejs.org
+[SelectLink]: https://docs.python.org/3/library/select.html#module-select
+[UvLoopLink]: https://github.com/MagicStack/uvloop
+[UvLoopArticle]: http://magic.io/blog/uvloop-blazing-fast-python-networking/
+[AsyncioLink]: https://docs.python.org/3/library/asyncio-task.html
+[EventLoopTalk]: https://www.youtube.com/watch?v=8aGhZQkoFbQ
+[SanicLink]: https://sanic.readthedocs.io/en/latest/

@@ -109,6 +109,24 @@ const strong = styled.strong`
   font-weight: 600;
 `
 
+const BlockquoteWrapper = styled.blockquote`
+  margin: 1.5rem 0;
+  padding: 0 1.5rem;
+
+  border-left: 0.4rem solid #DDD;
+  color: #777;
+
+  p {
+    margin: 15px 0;
+  }
+`
+
+const Blockquote = ({ children }: { children: string }) => (
+  <BlockquoteWrapper>
+    { children }
+  </BlockquoteWrapper>
+)
+
 export default {
   wrapper: Wrapper,
   a,
@@ -116,6 +134,7 @@ export default {
   pre,
   code: CodeBlock,
   inlineCode: inlineCode,
+  blockquote: Blockquote,
   h1,
   h2,
   h3,
