@@ -5,6 +5,16 @@ import colors from '@/styles/colors'
 
 import CodeBlock from './CodeBlock'
 
+const resetBox = css`
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+`
+
 const Wrapper = styled.main`
   font-size: 1.8rem;
   font-weight: 300;
@@ -26,29 +36,41 @@ const img = styled.img`
 `
 
 const pre = styled.pre`
+  margin-bottom: 1.75rem;
 `
 
 const h = css`
+  ${resetBox}
   color: ${colors.gray20};
   font-weight: 500;
   letter-spacing: -0.0125rem;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 `
 
 const h1 = styled.h1`
   ${h}
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
   color: ${colors.black};
   font-size: 4rem;
 `
 
 const h2 = styled.h2`
   ${h}
-  font-size: 2.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+`
+
+const h3 = styled.h3`
+  ${h}
+  font-size: 2.1rem;
 `
 
 const p = styled.p`
-  margin: 25px 0;
+  ${resetBox}
+  margin-bottom: 1.75rem;
 `
 
 const list = css`
@@ -72,6 +94,10 @@ const inlineCode = styled.code`
   background-color: rgb(246, 248, 250);
 `
 
+const strong = styled.strong`
+  font-weight: 600;
+`
+
 export default {
   wrapper: Wrapper,
   a,
@@ -81,7 +107,9 @@ export default {
   inlineCode: inlineCode,
   h1,
   h2,
+  h3,
   p,
   ul,
-  ol
+  ol,
+  strong,
 }
