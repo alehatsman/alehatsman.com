@@ -81,7 +81,6 @@ const h = css`
   ${resetBox}
   font-weight: 500;
   letter-spacing: -0.0125rem;
-  margin-top: 2rem;
   margin-bottom: 1rem;
 `
 
@@ -106,6 +105,7 @@ const h2 = styled.h2`
 const h3 = styled.h3`
   ${h}
   font-size: 2rem;
+  margin-bottom: 2rem;
 `
 
 const p = styled.p`
