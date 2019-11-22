@@ -7,7 +7,7 @@ export const FooterWrapper = styled.footer`
   justify-content: center;
 
   padding: 20px;
-  border-top: 1px solid ${colors.gray30};
+  // border-top: 1px solid ${colors.gray30};
 `
 
 export const Nav = styled.nav`

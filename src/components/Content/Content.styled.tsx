@@ -60,14 +60,16 @@ const h1 = styled.h1`
   }
   margin-bottom: 2rem;
   color: ${colors.black};
-  font-size: 4rem;
+  font-size: 3.2rem;
+  border-bottom: 1px solid #eaecef;
 `
 
 const h2 = styled.h2`
   ${h}
   margin-top: 2.5rem;
   margin-bottom: 2rem;
-  font-size: 3rem;
+  font-size: 2.4rem;
+  border-bottom: 1px solid #eaecef;
 `
 
 const h3 = styled.h3`
