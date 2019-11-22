@@ -88,8 +88,9 @@ const h1 = styled.h1`
   ${h}
   margin-bottom: 2rem;
   color: ${colors.black};
-  font-size: 4rem;
+  font-size: 3.2rem;
 
+  border-bottom: 1px solid #eaecef;
   &:not(:fist-child) {
     margin-top: 3.5rem;
   }
@@ -100,6 +101,7 @@ const h2 = styled.h2`
   margin-top: 2.5rem;
   margin-bottom: 2rem;
   font-size: 2.4rem;
+  border-bottom: 1px solid #eaecef;
 `
 
 const h3 = styled.h3`
