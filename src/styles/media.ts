@@ -12,9 +12,11 @@ function mediaQuery (...queryFeatures) {
 }
 
 const breakpoints = {
-  mobile: 414
+  tablet: 576,
+  desktop: 768
 }
 
 export const media = {
-  tablet: mediaQuery`(min-width: ${breakpoints.mobile}px)`
+  tablet: mediaQuery`(min-width: ${breakpoints.tablet}px)`,
+  desktop: mediaQuery`(min-width: ${breakpoints.desktop}px)`
 }

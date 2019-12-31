@@ -1,14 +1,27 @@
 import styled from 'styled-components'
 
 import colors from '@/styles/colors'
+import { media } from '@/styles/media'
+
+export const UserWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const Photo = styled.img`
+  display: none;
   width: 100%;
   border-radius: 5px;
+
+  ${media.tablet`
+    display: block;
+  `}
 `
 
 export const Fullname = styled.div`
-  margin-top: 30px;
+  ${media.tablet`
+    margin-top: 30px;
+  `}
   font-family: Lato;
   font-size: 24px;
   font-weight: 700;
@@ -17,25 +30,25 @@ export const Fullname = styled.div`
 `
 
 export const Description = styled.div`
-  margin-top: 10px;
-  font-size: 16px;
+  margin-top: 1rem;
+  font-size: 1.8rem;
   font-weight: 300;
-`
-
-export const UserWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  color: ${colors.dimGray};
 `
 
 export const PointsWrapper = styled.div`
-  margin-top: 10px;
+  margin-top: 1.5rem;
 `
 
 export const Point = styled.div`
   display: flex;
   align-items: center;
   &:not(:first-child) {
-    margin-top: 5px;
+    margin-top: 1rem;
+  }
+
+  path {
+    fill: #999;
   }
 `
 

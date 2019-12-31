@@ -14,10 +14,11 @@ import {
 const User = () => (
   <UserWrapper>
     <Photo src='/static/images/me.jpeg' />
+
     <Fullname>Aleh Atsman</Fullname>
 
     <Description>
-      Passionate Software Engineer
+      Software Engineer
     </Description>
 
     <PointsWrapper>
@@ -58,11 +59,6 @@ const User = () => (
           linkedin.com/in/alehatsman
           </a>
         </PointText>
-      </Point>
-
-      <Point>
-        <FaIcon icon='location-arrow' />
-        <PointText>Amsterdam</PointText>
       </Point>
     </PointsWrapper>
   </UserWrapper>

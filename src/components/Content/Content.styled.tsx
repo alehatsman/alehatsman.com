@@ -20,7 +20,7 @@ const Wrapper = styled.main`
   font-weight: 300;
   line-height: 1.5;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
 
 const AWrapper = styled.a`
@@ -31,8 +31,31 @@ const a = (props) => (
   <AWrapper {...props} target='_blank' />
 )
 
+const getImageSize = (size: string) => {
+ switch (size) {
+ case 'small':
+ return 'max-width: 50%;'
+ case 'medium':
+ return 'max-width: 80%;'
+ case 'large':
+ return 'max-width: 95%;'
+ default:
+ return 'max-width: 100%;'
+ }
+}
+
+interface ImgProps {
+  size: string
+  round: boolean
+  shadow: boolean
+}
+
 const Img = styled.img`
-  max-width: 100%;
+  ${(props: ImgProps) => getImageSize(props.size)}
+  ${(props: ImgProps) => props.round && 'border-radius: 3px;'}
+  ${(props: ImgProps) => props.shadow && `
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 5px 20px 0px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  `}
 `
 
 const ImgWrapper = styled.p`
@@ -52,7 +75,6 @@ const pre = styled.pre`
 
 const h = css`
   ${resetBox}
-  color: ${colors.gray20};
   font-weight: 500;
   letter-spacing: -0.0125rem;
   margin-top: 2rem;
@@ -61,22 +83,25 @@ const h = css`
 
 const h1 = styled.h1`
   ${h}
-  margin-top: 3.5rem;
   margin-bottom: 2rem;
   color: ${colors.black};
   font-size: 4rem;
+
+  &:not(:fist-child) {
+    margin-top: 3.5rem;
+  }
 `
 
 const h2 = styled.h2`
   ${h}
   margin-top: 2.5rem;
   margin-bottom: 2rem;
-  font-size: 3rem;
+  font-size: 2.4rem;
 `
 
 const h3 = styled.h3`
   ${h}
-  font-size: 2.1rem;
+  font-size: 2rem;
 `
 
 const p = styled.p`

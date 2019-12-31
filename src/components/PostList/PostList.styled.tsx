@@ -24,14 +24,16 @@ export const PostTitle = styled.h1`
 
 export const PostDescription = styled.div`
   margin-top: 10px;
-  font-size: 16px;
+  font-family: 'Roboto Slab';
+  font-size: 1.4rem;
   font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: calc(16px * 0.01);
+  line-height: 1.5;
+  letter-spacing: 0.01rem;
 `
 
 export const PostDate = styled.div`
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
+  color: ${colors.dimGray};
 `

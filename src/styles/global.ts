@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', 'Lato', sans-serif;
     text-rendering: optimizeLegibility;
     font-size: 1.6rem;
-    color: ${colors.gray20};
+    color: ${colors.black};
     margin: 0;
     padding: 0;
   }

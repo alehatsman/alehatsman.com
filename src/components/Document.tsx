@@ -27,8 +27,8 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
+          <link href='https://fonts.googleapis.com/css?family=Lato:300,700|Roboto+Slab:300,400,500,700&display=swap' rel='stylesheet' />
           {this.props.styles}
         </Head>
         <body>

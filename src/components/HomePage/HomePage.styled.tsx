@@ -25,6 +25,10 @@ export const HomeWrapper = styled.div`
   ${media.tablet`
     flex-direction: row;
     max-width: 960px;
-    padding: 50px 20px;
+  `}
+
+  ${media.desktop`
+    max-width: 960px;
+    padding: 50px 40px;
   `}
 `
