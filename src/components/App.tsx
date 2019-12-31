@@ -2,7 +2,6 @@ import App from 'next/app'
 import React from 'react'
 import Router from 'next/router'
 import withGA from 'next-ga'
-import mixpanel from 'mixpanel-browser'
 
 import { GlobalStyle } from '@/styles/global'
 
@@ -31,7 +30,6 @@ class MyApp extends App {
 let myApp
 if (process.env.NODE_ENV !== 'development') {
   myApp = withGA(process.env.GA_ID, Router)(MyApp)
-  mixpanel.init('5538d2616018534e9694d0a8bcd1a6f3')
 } else {
   myApp = MyApp
 }

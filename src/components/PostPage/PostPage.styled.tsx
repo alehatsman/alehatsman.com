@@ -12,11 +12,7 @@ export const Wrapper = styled.div`
 `
 
 export const HomeLink = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  height: 60px;
-  width: 60px;
+  font-size: 2.8rem;
+  padding: 20px;
   margin: -20px;
 `
