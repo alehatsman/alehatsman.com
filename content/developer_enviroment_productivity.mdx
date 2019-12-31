@@ -33,19 +33,21 @@ Most of the time I spend in **command line**, writing code in **Vim**, executing
 
 ## Editor - VIM (NVIM)
 
-<img src="/static/images/developer_enviroment_productivity/neovim-logo.svg" style={{width: "500px"}} />
+<img src="/static/images/developer_enviroment_productivity/neovim-logo.svg" size="medium" round />
 
 > [Neovim][Neovim Github] - community driven, refactored version of vim.
 
 Vim is my main text editor. Vim allows me to edit text faster than any other tool. As soon as I learned how to use it on basic level I never wanted to return back to other editors.
 
-Editors with Vim emulation can't provide complete expirience of Vim. Some features are missing, or it works slightly differently. I tryed vscode and idea with vim plugins. Only Vim I got full power of mappings, custom functions, buffers, tabs, multiple cliboards, etc.
+Editors with Vim emulation can't provide complete expirience of Vim. Some features are missing, or it works slightly differently. I tryed vscode and idea with vim plugins. Only in Vim I got full power of mappings, custom functions, buffers, tabs, multiple cliboards, etc.
 
-Vim teched me to learn right habbits. Hands never take off the keys. Keeping them in an optimum position to input text, to scroll, to navigate or to apply some commands.
+Vim teached me to learn right habbits. Hands never take off the keys. Keeping them in an optimum position to input text, to scroll, to navigate or to apply commands.
 
-<img src="/static/images/developer_enviroment_productivity/nvim-screen.png" style={{width: "500px"}} />
+<img src="/static/images/developer_enviroment_productivity/nvim-screen.png" size="medium" />
 
-Don't start by copying someones config. Try to go step by step, building your understanding of editor granually. Use articles like this to learn how others use it or search for .dotfiles on github.
+My general advice - don't start by copying someones config. Try to go step by step, building your own setup, understanding of editor granually. Use articles like this to learn how others use it or search for .dotfiles on github.
+
+The way I use Vim:
 
 * Plugin management - [**Vim-Plug**][VimPlug Github]
 * File explorer - [**Nerdtree**][Nerdtree Github]
@@ -59,7 +61,7 @@ Don't start by copying someones config. Try to go step by step, building your un
 
 [**Vim-plug**][VimPlug Github] minimalist vim plugin.
 
-<img src="https://raw.githubusercontent.com/junegunn/i/master/vim-plug/installer.gif" />
+<img src="/static/images/developer_enviroment_productivity/nvim_plug_install.gif" size="medium" shadow round />
 
 Features:
 
@@ -80,12 +82,18 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 The NERDTree is a tree explorer plugin. It allows you to browse directory hierarchies and manipulate filesystem operations. It presents the filesystem in form of tree, which you navigate in Vim style.
 
-<img src="/static/images/developer_enviroment_productivity/nvim-nerdtree-screen.png" style={{width: "500px"}} />
+<img src="/static/images/developer_enviroment_productivity/nvim_nerdtree.gif" size="medium" round shadow />
 
 *Mappings*:
+```viml
+" Toggle file tree
+nnoremap <leader>n :NERDTreeToggle<cr>
+" Find current file in the tree
+nnoremap <leader>f :NERDTreeFind<cr>
 ```
-<space>n - open nerdtree 
-<space>f - find current file in nerdtree
+
+*While NERDTree is focused*
+```
 t - open file in new tab
 i - open file in a hsplit
 s - open file in a vsplit
@@ -95,52 +103,85 @@ o / enter - open file in main buffer
 For more info run `:help NERDTree` in your vim editor or check docs on [Github](https://github.com/scrooloose/nerdtree/blob/master/doc/NERDTree.txt).
 
 
-### Search - fzf, ripgrep
+### Navigation / Search - fzf, ripgrep
 
-One of the best command line tools I have ever used is FZF. It is a command-line fuzzy finder. It is generic and can be used with any list: files, command history, processes, hostnames, bookmarks, git commits. So you can use it to search files, to search commits, to search processes and so on.
+For navigation I use FZF. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits.
 
-<img src="/static/images/developer_enviroment_productivity/nvim-screen-fzf.png" style={{width: "500px"}} />
+From the inside of editor I use it to search for file in the project, to navigate between opened buffers, and to filter search by content results.
+
+<img src="/static/images/developer_enviroment_productivity/nvim_fzf_search.gif" size="medium" round shadow />
 
 Search by content
 Go to file by filename 
 Go to buffer by buffer name
 
 *Mappings*:
-```
-<ctrl>f - open fzf ripgrep search by content in all files
-<ctrl>p - open fzf search by filename for all files
-<ctrl>b - open fzf search by filename for buffers
+```viml
+" open fzf search by filename for buffers
+nnoremap <c-p> :Files<cr>
+" open fzf search by filename for all files
+nnoremap <c-b> :Buffers<cr>
+" open fzf ripgrep search by content in all files
+nnoremap <c-f> :Rg<cr>
+
+" Rg command, opens FZF, searches by content only from 4th column
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 ```
 
 ### Autocomplete - Ycm
 
 ### Linting - Ale
 
-Ale - asynchronous lint engine. Plugin that provides linting to Nvim. It is asynchronous and it just works. Most of linters and fixers work out of the box. 
+To get feedback on sytax / styling problems while typing I use ALE. It is asynchronous lint engine that is fast and works. Has tons of integrations.
 
-Eslint, standard, prettier, Flake8, rustfmt. List of linters I tryed with it.
+```viml
+let g:ale_linters = {
+      \ 'clojure': ['clj-kondo', 'joker'],
+      \ 'typescript': ['eslint', 'tsserver'],
+      \ 'javascript': ['eslint', 'tsserver'],
+      \ 'rust': ['rls'],
+      \ 'yaml': ['yamllint'],
+      \ 'python': ['flake8', 'pyls']}
+
+let g:ale_fixers = {
+      \ 'typescript': ['prettier', 'eslint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'json': ['jq'],
+      \ 'rust': ['rustfmt'],
+      \ 'scss': ['prettier'],
+      \ 'python': ['autopep8', 'yapf']}
+```
+
+Mappings:
+
+```viml
+nnoremap <leader>al :ALELint<cr>
+nnoremap <leader>af :ALEFix<cr>
+nnoremap <leader>ad :ALEDetail<cr>
+```
 
 ## Terminal - Alacritty
 
-When you use Vim, you automatically use command line more and more. Most of the time I spent in terminal. I love to use super focused tools, which solve specific problem. At some moment I found Alacritty terminal emulator. It's written in Rust and uses OpenGL for rendering. Which is super minimalistic and fast. GPU accelerated rendering makes my Vim literally fly.
+<img src="https://raw.githubusercontent.com/jwilm/alacritty/master/extra/logo/alacritty-term%2Bscanlines.svg?sanitize=true" style={{width: '200px'}} round />
 
-<img src="https://raw.githubusercontent.com/jwilm/alacritty/master/extra/logo/alacritty-term%2Bscanlines.svg?sanitize=true" style={{width: '200px'}} />
-
-[Alacritty][Alacritty Github] is really fast, open source, *GPU accelerated* terminal emulator. Alacritty is the result of frustration with existing terminal emulators. Espessially usage of Vim with Tmux in many other terminal emulators.
-
-Alacritty, GPU accelerated, minimal.o
+My prefered terminal is [Alacritty][Alacritty Github], because it has GPU accelerated rendering (makes my vim redering fly), and provides nothing more than a simple window.
 
 * Tabs - tmux
 * Shell - zsh
 
-Thanks to [Joe Wilm](https://github.com/jwilm)
-
 ## Terminal Multiplexer - Tmux
 
-Alacritty is nice and very minimal. I use it in conjunction with with Tmux terminal multiplexer, which provides me with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
+Alacritty is very minimal. I use it in conjunction with with Tmux terminal multiplexer, which provides me with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
+
+Mappings:
+
+```
+
+ctrl | - split 
+
+```
 
 ## Shell - Zsh
-
 
 [Neovim Github]: https://github.com/neovim/neovim
 [VimPlug Github]: https://github.com/junegunn/vim-plug
