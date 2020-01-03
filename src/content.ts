@@ -9,7 +9,6 @@ export interface RawPost {
     updatedAt: string
     description: string
     tags: string[]
-    public: boolean
   }
   default: React.ComponentType
 }
@@ -21,7 +20,6 @@ export interface Post {
   updatedAt: moment.Moment
   description: string
   tags: string[]
-  public: boolean
   doc: React.ComponentType
 }
 
@@ -41,11 +39,6 @@ function parsePosts (posts: RawPost[]): Post[] {
     }))
 }
 
-function filterPublic (posts) {
-  return posts
-    .filter(p => p.public)
-}
-
 function sortPosts (posts) {
   posts.sort((a, b) => a.createdAt.isBefore(b.createdAt) ? 1 : -1)
   return posts
@@ -53,8 +46,7 @@ function sortPosts (posts) {
 
 function processPosts (posts: RawPost[]): Post[] {
   const parsedPosts = parsePosts(posts)
-  const filterPosts = filterPublic(parsedPosts)
-  const sortedPosts = sortPosts(filterPosts)
+  const sortedPosts = sortPosts(parsedPosts)
   return sortedPosts
 }
 
