@@ -546,6 +546,7 @@ export default () => (
 
 ```js
 import styled, { css } from 'styled-components'
+import colors from 'global/styles/colors'
 
 const Wrapper = styled.main`
   margin: 0 auto;
@@ -558,7 +559,7 @@ const Wrapper = styled.main`
 `
 
 const a = styled.a`
-  color: #0094FF !important; 
+  color: ${colors.blue} !important; 
 `
 
 const img = styled.img`

@@ -48,7 +48,7 @@ export const Point = styled.div`
   }
 
   path {
-    fill: #999;
+    fill: ${colors.grimmyGray};
   }
 `
 

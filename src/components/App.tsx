@@ -2,6 +2,7 @@ import App from 'next/app'
 import React from 'react'
 import Router from 'next/router'
 import withGA from 'next-ga'
+import env from '@/config/env'
 
 import { GlobalStyle } from '@/styles/global'
 
@@ -27,11 +28,8 @@ class MyApp extends App {
   }
 }
 
-let myApp
-if (process.env.NODE_ENV !== 'development') {
-  myApp = withGA(process.env.GA_ID, Router)(MyApp)
-} else {
-  myApp = MyApp
-}
+const myApp = env.isProd()
+  ? withGA(process.env.GA_ID, Router)(MyApp)
+  : MyApp
 
 export default myApp

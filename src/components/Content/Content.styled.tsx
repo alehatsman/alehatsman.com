@@ -28,7 +28,7 @@ const Wrapper = styled.main`
 `
 
 const AWrapper = styled.a`
-  color: #0094FF !important; 
+  color: ${colors.blue} !important; 
 `
 
 const a = (props) => (
@@ -135,11 +135,12 @@ const inlineCode = styled.code`
   color: rgb(57, 58, 52);
   background-color: rgb(246, 248, 250);
 `
+
 const blockquote = styled.blockquote`
   margin: 0;
   padding: 0 15px;
-  border-left: 4px solid #DDD;
-  color: #777;
+  border-left: 4px solid ${colors.lightGray};
+  color: ${colors.grimmyGray};
 `
 
 const strong = styled.strong`
