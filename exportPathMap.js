@@ -1,38 +1,12 @@
 const path = require('path')
 const fs = require('fs')
+const posts = require('./posts')
 
-const contentDir = path.join(__dirname, 'content')
-
-function getContentFiles () {
-  return new Promise((resolve, reject) => {
-    fs.readdir(contentDir, (err, res) => {
-      if (err) {
-        return reject(err)
-      }
-      return resolve(res)
-    })
-  })
-}
-
-function parseFileNames (files) {
-  return files.map(f => {
-    const parsedFilename = path.parse(f)
-    return {
-      name: parsedFilename.name,
-      ext: parsedFilename.ext
-    }
-  })
-}
-
-function filterFiles (files) {
-  return files.filter(f => f.ext === '.mdx')
-}
-
-function generatePathMap (files) {
-  return files.reduce((acc, f) => {
-    acc[`/post/${f.name}.html`] = {
+function generatePathMap (posts) {
+  return posts.reduce((acc, post) => {
+    acc[`/post/${post.id}.html`] = {
       page: '/post',
-      query: { id: f.name }
+      query: { id: post.id }
     }
 
     return acc
@@ -40,10 +14,7 @@ function generatePathMap (files) {
 }
 
 async function generatePostsPathMap () {
-  const files = await getContentFiles()
-  const parsedFiles = parseFileNames(files)
-  const filteredFiles = filterFiles(parsedFiles)
-  return generatePathMap(filteredFiles)
+  return generatePathMap(posts.filter(p => p.public))
 }
 
 async function exportPathMap () {

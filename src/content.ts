@@ -1,16 +1,14 @@
 import React from 'react'
 import moment from 'moment'
+import posts from '../posts'
 
-export interface RawPost {
-  meta: {
-    id: string
-    title: string
-    createdAt: string
-    updatedAt: string
-    description: string
-    tags: string[]
-  }
-  default: React.ComponentType
+export interface PostMeta {
+  id: string
+  title: string
+  createdAt: string
+  updatedAt?: string 
+  description: string
+  tags: string[]
 }
 
 export interface Post {
@@ -23,20 +21,23 @@ export interface Post {
   doc: React.ComponentType
 }
 
-function requirePosts (): RawPost[] {
-  function requireAll (r) { return r.keys().map(r) }
-  return requireAll(require.context('../content', true, /\.mdx$/))
+function requirePost (id: string) {
+  return require(`../content/${id}.mdx`).default
 }
 
-function parsePosts (posts: RawPost[]): Post[] {
+function parsePosts (posts: PostMeta[]): Post[] {
   return posts
     .map(p => ({
-      ...p.meta,
-      createdAt: moment(p.meta.createdAt),
-      updatedAt: moment(p.meta.updatedAt || p.meta.createdAt),
-      tags: p.meta.tags || [],
-      doc: p.default
+      ...p,
+      createdAt: moment(p.createdAt),
+      updatedAt: moment(p.updatedAt || p.createdAt),
+      tags: p.tags || [],
+      doc: requirePost(p.id) 
     }))
+}
+
+function filterPublic (posts) {
+  return posts.filter(p => p.public)
 }
 
 function sortPosts (posts) {
@@ -44,14 +45,15 @@ function sortPosts (posts) {
   return posts
 }
 
-function processPosts (posts: RawPost[]): Post[] {
+function processPosts (posts: PostMeta[]): Post[] {
   const parsedPosts = parsePosts(posts)
-  const sortedPosts = sortPosts(parsedPosts)
+  const filterPosts = filterPublic(parsedPosts)
+  const sortedPosts = sortPosts(filterPosts)
   return sortedPosts
 }
 
 export function getPosts (): Post[] {
-  return processPosts(requirePosts())
+  return processPosts(posts)
 }
 
 export function findPost (id: string): Post {
