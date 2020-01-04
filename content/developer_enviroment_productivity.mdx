@@ -12,7 +12,7 @@
 
 ## Intro
 
-Last 7 years I was working as Software Engineer. All this time I was trying to improve my productivity by using right techniques and leveraging right tools in my Developer Enviroment.
+Last 7 years I was working as Software Engineer. During this time I was improving my productivity by using right techniques and leveraging right tools in my Developer Enviroment.
 
 Most of the time I spend in **command line**, writing code in **Vim**, executing commands in **Zsh** shell, which is opened in **Tmux** tab, which is rendered in **Alacritty** terminal emulator and all this is run by **macOS** on my Mac.
 
@@ -162,15 +162,47 @@ My prefered terminal is [Alacritty][Alacritty Github], because it has GPU accele
 
 ## Terminal Multiplexer - Tmux
 
-Alacritty is very minimal. I use it in conjunction with with Tmux terminal multiplexer, which provides me with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
+Alacritty is very minimal. I use it with with Tmux terminal multiplexer, which provides with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
 
-Mappings:
+In tmux, to use shortcuts, 
 
+### Shortcuts
+
+#### Panes
+
+create new pane
+```
+prefix + c - create new pane
 ```
 
-ctrl | - split 
+<img src="/static/images/developer_enviroment_productivity/tmux_new_pane.gif" size="medium" round shadow />
 
+### Splits
+
+vertical split:
 ```
+ctrl |
+```
+
+<img src="/static/images/developer_enviroment_productivity/tmux_vertical_split.gif" size="medium" round shadow />
+
+horizontal split
+```
+ctrl -
+```
+
+### Sessions
+
+navigation between sessions
+```
+prefix + s 
+
+prefix + w
+```
+
+### Navigation
+
+Navigation between splits is done using vim key bindings.
 
 ## Shell - Zsh
 
