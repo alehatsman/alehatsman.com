@@ -2,25 +2,16 @@
 
 <img src={'https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} altText />
 
-## Outline
-
-1. Intro
-2. Editor - NVIM
-3. Terminal - Alacritty
-4. Shell - ZSH
-5. Automation - Ansible, Brew
-
-## Intro
-
-Last 7 years I was working as Software Engineer. During this time I was improving my productivity by using right techniques and leveraging right tools in my Developer Enviroment.
+This article is about my developer enviroment. Mainly I wrote it to review and improve my daily habbits and to share my expirience with others.
 
 Most of the time I spend in **command line**, writing code in **Vim**, executing commands in **Zsh** shell, which is opened in **Tmux** tab, which is rendered in **Alacritty** terminal emulator and all this is run by **macOS** on my Mac.
 
-> Developer enviroment - enviroment used to develop or modificate software. It is composition of operation system, apps, terminals, shells, editors, command line tools, compilersand scripts.
+## Outline
 
-> Developer productivity - amount of useful work performed over time. Daily habits like prefering typing over mousing, ways of thinking, awareness of existing tools and their capabilities.
-
-> Installation and configuration of software is done automatically via Ansible provisioning scripts that you can find here. [osx-automation](https://github.com/atsman/osx-automation)
+1. Editor - NVIM
+2. Terminal - Alacritty
+3. Shell - ZSH
+4. Automation - Ansible, Brew
 
 ## Editor - VIM (NVIM)
 
@@ -28,15 +19,9 @@ Most of the time I spend in **command line**, writing code in **Vim**, executing
 
 > [Neovim][Neovim Github] - community driven, refactored version of vim.
 
-Vim is my main text editor. Vim allows me to edit text faster than any other tool. As soon as I learned how to use it on basic level I never wanted to return back to other editors.
-
-Editors with Vim emulation can't provide complete expirience of Vim. Some features are missing, or it works slightly differently. I tryed vscode and idea with vim plugins. Only in Vim I got full power of mappings, custom functions, buffers, tabs, multiple cliboards, etc.
-
-Vim teaches right habbits. Hands never take off the keys. Keeping them in an optimum position to input text, to scroll, to navigate or to apply commands.
+Vim is my main text editor. It allows me to edit text faster than any other tool. Vim forces to learn right habbits. Hands never take off the keys. Keeping them in an optimum position to input text, to scroll, to navigate or to apply commands.
 
 <img src="/static/images/developer_enviroment_productivity/nvim-screen.png" size="medium" />
-
-My general advice - don't start by copying someones config. Try to go step by step, building your own setup, understanding of editor granually. Use articles like this to learn how others use it or search for .dotfiles on github.
 
 The way I use Vim:
 
@@ -48,7 +33,7 @@ The way I use Vim:
 * Git - [**Fugitive**][Vim Fugitive Github], [**Gitgutter**][Vim GitGutter Github]
 * Language integration - LSP
 
-### Plugin management 
+### Plugin management
 
 [**Vim-plug**][VimPlug Github] minimalist vim plugin.
 
@@ -75,15 +60,13 @@ The NERDTree is a tree explorer plugin. It allows you to browse directory hierar
 
 <img src="/static/images/developer_enviroment_productivity/nvim_nerdtree.gif" size="medium" round shadow />
 
-*Mappings*:
-```viml
-" Toggle file tree
-nnoremap <leader>n :NERDTreeToggle<cr>
-" Find current file in the tree
-nnoremap <leader>f :NERDTreeFind<cr>
+Shortcuts:
+```
+<leader>n - toggle file tree
+<leader>f - find current file
 ```
 
-*While NERDTree is focused*
+While tree is focused
 ```
 t - open file in new tab
 i - open file in a hsplit
@@ -91,56 +74,32 @@ s - open file in a vsplit
 o / enter - open file in main buffer
 ```
 
-For more info run `:help NERDTree` in your vim editor or check docs on [Github](https://github.com/scrooloose/nerdtree/blob/master/doc/NERDTree.txt).
-
-
 ### Navigation / Search - fzf, ripgrep
 
-For navigation I use FZF. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits.
+For quick search and navigation is done via FZF. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits.
 
-From the inside of editor I use it to search for file in the project, to navigate between opened buffers, and to filter search by content results.
+From inside of the editor it is used to search for files by filename, by content and to quickly jump between buffers.
 
 <img src="/static/images/developer_enviroment_productivity/nvim_fzf_search.gif" size="medium" round shadow />
 
-Search by content
-Go to file by filename 
-Go to buffer by buffer name
-
 *Mappings*:
 ```viml
-" open fzf search by filename for buffers
-nnoremap <c-p> :Files<cr>
-" open fzf search by filename for all files
-nnoremap <c-b> :Buffers<cr>
-" open fzf ripgrep search by content in all files
-nnoremap <c-f> :Rg<cr>
-
-" Rg command, opens FZF, searches by content only from 4th column
-command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+<ctrl>p - open search by filename for all files
+<ctrl>f - open search by content for all files
+<ctrl>b - open searcg by filename for opened buffers
 ```
 
 ### Autocomplete - Ycm
 
 ### Linting - Ale
 
-To get feedback on sytax / styling problems while typing I use ALE. It is asynchronous lint engine that is fast and works. Has tons of integrations.
+Ale plugin is used for linting. It is async, fast and has wide range of integtions available.
+
+Example of configuration:
 
 ```viml
-let g:ale_linters = {
-      \ 'clojure': ['clj-kondo', 'joker'],
-      \ 'typescript': ['eslint', 'tsserver'],
-      \ 'javascript': ['eslint', 'tsserver'],
-      \ 'rust': ['rls'],
-      \ 'yaml': ['yamllint'],
-      \ 'python': ['flake8', 'pyls']}
-
-let g:ale_fixers = {
-      \ 'typescript': ['prettier', 'eslint'],
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'json': ['jq'],
-      \ 'rust': ['rustfmt'],
-      \ 'scss': ['prettier'],
-      \ 'python': ['autopep8', 'yapf']}
+let g:ale_linters = {'typescript': ['eslint', 'tsserver']}
+let g:ale_fixers = {'typescript': ['prettier', 'eslint']}
 ```
 
 Mappings:
@@ -155,12 +114,11 @@ nnoremap <leader>ad :ALEDetail<cr>
 
 <img src="https://raw.githubusercontent.com/jwilm/alacritty/master/extra/logo/alacritty-term%2Bscanlines.svg?sanitize=true" style={{width: '200px'}} round />
 
-My prefered terminal is [Alacritty][Alacritty Github], because it has GPU accelerated rendering (makes my vim redering fly), and provides nothing more than a simple window.
-
-* Tabs - tmux
-* Shell - zsh
+[Alacritty][Alacritty Github] is terminal emulator of my choice. Basically it is GPU rendered window with shell propt. Nothing more, nothing less.
 
 ## Terminal Multiplexer - Tmux
+
+<img src="/static/images/developer_enviroment_productivity/tmux_new_pane.gif" size="medium" round shadow />
 
 Alacritty is very minimal. I use it with with Tmux terminal multiplexer, which provides with capabilities to have multiple sessions open, to have multiple tabs in each session and with easy navigation between them.
 
@@ -170,41 +128,45 @@ In tmux, to use shortcuts,
 
 #### Panes
 
-create new pane
 ```
-prefix + c - create new pane
+create new pane: <prefix>c 
+go to pane 1: <prefix>1
+go to pane 2: <prefix>2
+go to pane N: <prefix>N
 ```
-
-<img src="/static/images/developer_enviroment_productivity/tmux_new_pane.gif" size="medium" round shadow />
 
 ### Splits
 
-vertical split:
 ```
-ctrl |
-```
-
-<img src="/static/images/developer_enviroment_productivity/tmux_vertical_split.gif" size="medium" round shadow />
-
-horizontal split
-```
-ctrl -
+vertical split - <ctrl>|
+horizontal split - <ctrl>-
 ```
 
 ### Sessions
 
-navigation between sessions
-```
-prefix + s 
+Navigation between different sessions
 
-prefix + w
+```
+open session list: <prefix>s 
+open session list with tabs: <prefix>w
 ```
 
 ### Navigation
 
 Navigation between splits is done using vim key bindings.
 
+```
+go to left split: <ctrl>h
+go to right split: <ctrl>l
+go to top split: <ctrl>k
+go to bottom split: <ctrl>j
+```
+
 ## Shell - Zsh
+
+## Automation
+
+Installation and configuration of software is done automatically via Ansible provisioning scripts that you can find here. [osx-automation](https://github.com/atsman/osx-automation)
 
 [Neovim Github]: https://github.com/neovim/neovim
 [VimPlug Github]: https://github.com/junegunn/vim-plug

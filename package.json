@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "types": "tsc --project ./tsconfig.json",
-    "lint": "eslint ./src/**/*.ts*",
+    "lint": "eslint -c ./.eslintrc ./src/**/*.ts*",
     "lint:fix": "yarn run lint --fix",
     "storybook": "start-storybook -c ./.storybook/ -s ./public",
     "export": "yarn run build && next export -o dist",

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React from "react"
+import styled, { css } from "styled-components"
 
-import colors from '@/styles/colors'
+import colors from "@/styles/colors"
 
-import CodeBlock from './CodeBlock'
+import CodeBlock from "./CodeBlock"
 
 const resetBox = css`
   margin-left: 0;
@@ -24,28 +24,29 @@ const Wrapper = styled.main`
   font-weight: 300;
   line-height: 1.5;
 
-  font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 `
 
 const AWrapper = styled.a`
-  color: ${colors.blue} !important; 
+  color: ${colors.blue} !important;
 `
 
-const a = (props) => (
-  <AWrapper {...props} target='_blank' />
-)
+const a = props => <AWrapper {...props} target="_blank" />
 
 const getImageSize = (size: string) => {
- switch (size) {
- case 'small':
- return 'max-width: 50%;'
- case 'medium':
- return 'max-width: 80%;'
- case 'large':
- return 'max-width: 95%;'
- default:
- return 'max-width: 100%;'
- }
+  switch (size) {
+    case "small":
+      return "max-width: 50%;"
+    case "medium":
+      return "max-width: 80%;"
+    case "large":
+      return "max-width: 95%;"
+    default:
+      return "max-width: 100%;"
+  }
 }
 
 interface ImgProps {
@@ -56,8 +57,10 @@ interface ImgProps {
 
 const Img = styled.img`
   ${(props: ImgProps) => getImageSize(props.size)}
-  ${(props: ImgProps) => props.round && 'border-radius: 3px;'}
-  ${(props: ImgProps) => props.shadow && `
+  ${(props: ImgProps) => props.round && "border-radius: 3px;"}
+  ${(props: ImgProps) =>
+    props.shadow &&
+    `
     box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 5px 20px 0px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
   `}
 `
@@ -67,28 +70,27 @@ const ImgWrapper = styled.p`
   justify-content: center;
 `
 
-const img = (props) => (
+const img = props => (
   <ImgWrapper>
     <Img {...props} />
   </ImgWrapper>
 )
 
 const pre = styled.pre`
-  ${marginBottom}
+  ${marginBottom};
 `
 
 const h = css`
-  ${resetBox}
-  font-weight: 500;
+  ${resetBox} font-weight: 700;
+  font-family: Lato;
   letter-spacing: -0.0125rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `
 
 const h1 = styled.h1`
   ${h}
-  margin-bottom: 2rem;
   color: ${colors.black};
-  font-size: 3.2rem;
+  font-size: 4rem;
 
   margin-top: 1rem;
 
@@ -98,21 +100,16 @@ const h1 = styled.h1`
 `
 
 const h2 = styled.h2`
-  ${h}
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
+  ${h} margin-top: 2.5rem;
   font-size: 2.4rem;
 `
 
 const h3 = styled.h3`
-  ${h}
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  ${h} font-size: 2rem;
 `
 
 const p = styled.p`
-  ${resetBox}
-  ${marginBottom}
+  ${resetBox} ${marginBottom};
 `
 
 const list = css`
@@ -122,11 +119,11 @@ const list = css`
 `
 
 const ul = styled.ul`
-  ${list}
+  ${list};
 `
 
 const ol = styled.ol`
-  ${list}
+  ${list};
 `
 
 const inlineCode = styled.code`
@@ -161,5 +158,5 @@ export default {
   ul,
   ol,
   blockquote,
-  strong,
+  strong
 }
