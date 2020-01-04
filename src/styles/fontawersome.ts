@@ -1,3 +1,4 @@
+import { faAt } from '@fortawesome/free-solid-svg-icons'
 import { faGithubAlt, faTelegram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -6,4 +7,5 @@ library.add(
   faGithubAlt,
   faTelegram,
   faTwitter,
+  faAt,
 )
