@@ -15,6 +15,9 @@
     "now-build": "yarn run export",
     "production": "now --target production"
   },
+  "engines": { 
+    "node": "12.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atsman/alehatsman.com.git"
