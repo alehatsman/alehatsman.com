@@ -91,17 +91,17 @@ const h1 = styled.h1`
   ${h}
   color: ${colors.black};
   font-size: 4rem;
-
   margin-top: 1rem;
-
   &:not(:fist-child) {
     margin-top: 3.5rem;
   }
 `
 
 const h2 = styled.h2`
-  ${h} margin-top: 2.5rem;
-  font-size: 2.4rem;
+  ${h} 
+  margin-top: 2.5rem;
+  font-size: 3rem;
+  border-bottom: 1px solid ${colors.lightGray};
 `
 
 const h3 = styled.h3`
