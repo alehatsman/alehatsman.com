@@ -1,0 +1,337 @@
+# Developer Environment and Automation
+
+<img src={'https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} altText />
+
+For more than 7 years I am working professionally as a software engineer. During this time I put together a nice developer setup. This article is my attempt to review it, improve it and share it with others.
+
+Most of the time I spend in **command line**, writing code in **Vim**, executing commands in **Zsh** shell, switching panes and sessions in **Tmux**  and all that is rendered in **Alacritty** terminal emulator running on my Mac.
+
+What my developer environment consists of?
+
+* MacOS as main operation system
+* Ansible for installation and configuration
+* Alacritty as a terminal emulator
+* ZSH as command interpreter (shell)
+* Tmux as a terminal multiplexer (sessions, panes)
+* Nvim as the main text editor
+
+## Configuration automation
+
+<img src="/static/images/developer_enviroment_productivity/ansible.svg" style={{width: '250px'}} round />
+
+An environment like that requires a lot of manual installation and configuration. To make life easier I keep all setup instruction in `Git` repository as text files, specifically as Ansible provisioning scripts.
+
+Each time I get new laptop, I download my [env-automation][env-automation] project and run `init.sh` script. After 20-30 minutes laptop is completely ready for work. Project automatically installs and configures everything from setting basic macOS settings, like disabling animations, to installing Google Chrome and Spotify.
+
+Ansible is heavily used in DevOps. As you may guess it mainly used for provisioning and configuration management on servers. In companies where I worked before we used it to install and configure Kubernetes on AWS for example. Even though it is mainly used to provision servers, it works great to provision my machine as well.
+
+Ansible defines the concept of Role. It describes how a software component is going to be installed and configured. Which is a set of variables, configuration templates and instructions of what to do with all that?  
+
+For example, there is a `Git` role. The script below installs git from homebrew and renders config to `~/.gitconfig`.
+
+```yml
+---
+- name: Make sure git is present
+  homebrew:
+    name:
+      - git
+    state: present
+
+- name: Make sure .gitconfig is present
+  template:
+    src: templates/.gitconfig.j2
+    dest: ~/.gitconfig
+```
+
+Git config `.gitconfig` specifies global properties for `Git`. Like what is authors name, email, what is the main editor, what is default merge tool.
+
+```j2
+[user]
+  name = {{ FULLNAME }}
+  email = {{ EMAIL }}
+  editor = nvim
+[merge]
+  tool = kdiff3
+  guitool = kdiff3
+[mergetool "kdiff3"]
+  path = /usr/local/bin/kdiff3
+  trustExitCode = false
+[diff]
+  guitool = kdiff3
+[difftool "kdiff3"]
+  path = /usr/local/bin/kdiff3
+  trustExitCode = false
+```
+
+The environment consists of many roles. `Playbook` specifies what roles are going to be installed on a machine. Here is my environment Playbook:
+
+```yml
+---
+- hosts: local
+  vars_files:
+    - vars/variables.yml
+    - vars/global_env.yml
+  roles:
+    - {role: 'macos', tags: 'macos'}
+    - {role: 'packages', tags: 'packages'}
+    - {role: 'git', tags: 'git'}
+    - {role: 'python', tags: 'python'}
+    - {role: 'ssh', tags: 'ssh'}
+    - {role: 'asdf-vm', tags: 'asdf-vm'}
+    - {role: 'zsh', tags: 'zsh'}
+    - {role: 'tmux', tags: 'tmux'}
+    - {role: 'vim', tags: 'vim'}
+    - {role: 'alacritty', tags: 'alacritty'}
+    - {role: 'aws', tags: 'aws'}
+    - {role: 'golang', tags: 'golang'}
+    - {role: 'jvm', tags: 'jvm'}
+    - {role: 'clojure', tags: 'clojure'}
+    - {role: 'docker', tags: 'docker'}
+    - {role: 'node', tags: 'node'}
+```
+
+## Terminal - Alacritty
+
+<img src="/static/images/developer_enviroment_productivity/alacritty.svg" style={{width: '200px'}} round />
+
+When you heavily use command-line tools you expect your terminal to render text fast. Especially while you moving, jumping or scrolling in Nvim.
+
+At some point, I faced performance problems and I found [Alacritty][Alacritty Github]. It is nothing more than a window which renders shell and renders it fast. It is written in Rust and uses GPU for rendering. 
+
+Alacritty is very minimal. For example, it doesn't provide you with features like tabs in `iTerm`. There is another tool for that and it is called `Tmux`, it works pretty well in combination.
+
+## Terminal Multiplexer - Tmux
+
+<img src="/static/images/developer_enviroment_productivity/tmux_new_pane.gif" size="medium" round shadow />
+
+Tmux is a terminal multiplexer which allows having multiple terminal sessions and panes in one window.  Usually, I have a session per project and multiple tabs open in each session. For example, I can have session `work` with code open in Nvim in one tab, running tests, running build in another and an additional session with `env-automation` open, to change some configuration on the fly.
+
+Tmux heavily rooted in my workflow. It allows to quickly navigate between sessions, between panes and split panes. It is configured to support Vim key bindings to navigate between split panes and be able to select and copy text from output log.
+
+### Plugins
+
+* [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) - plugin manager 
+* [tmux-plugins/tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) - predefined settings
+* [tmux-plugins/tmux-yank](https://github.com/tmux-plugins/tmux-yank) - copy to system clipboard
+* [tmux-plugins/tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) - regex search
+* [tmux-plugins/tmux-open](https://github.com/tmux-plugins/tmux-open) - open highlighted selection
+* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) - seamless navigation between tmux and vim
+
+### Shortcuts
+
+```
+<c-a> - Prefix
+<prefix>r - reload config
+```
+
+#### Panes
+
+```
+<prefix>c - create new pane
+<prefix>h - toggle panes line
+<prefix>1 - go to pane 1
+<prefix>2 - go to pane 2
+.
+<prefix><N> - go to pane N
+```
+
+#### Splits
+
+```
+<ctrl>| - vertical split
+<ctrl>- - horizontal split
+```
+
+#### Sessions
+
+```
+<prefix>:new -s <session-name> - creates new session
+<prefix>s - open session list
+<prefix>w - open session list with tabs
+```
+
+#### Navigation
+
+```
+<ctrl>h - go to left split
+<ctrl>l - go to right split
+<ctrl>k - go to top split
+<ctrl>j - go to bottom split
+```
+
+#### Copy mode
+
+```
+<prefix><c-]> - activate copy mode
+v - start copy selection
+y - copy selection
+p - paste selection
+```
+
+## Editor - NVIM
+
+<img src="/static/images/developer_enviroment_productivity/neovim-logo.svg" size="medium" round />
+
+> [Neovim][Neovim Github] - a community-driven, refactored version of vim.
+
+Nvim is my main text editor. It allows me to edit text faster than anything else. It helped me to learn the right habits. You never take hands off the keys, keeping them in an optimum position to input text, to scroll, to navigate or to apply commands.
+
+<img src="/static/images/developer_enviroment_productivity/nvim-screen.png" size="medium" />
+
+To get the max out of it heavy customization and learning required.
+
+How is it configured in my case?
+
+* Plugin management - [vim-plug][VimPlug Github]
+* File explorer - [nerdtree][Nerdtree Github]
+* Navigation / Search - [fzf][FZF Github], [fzf.vim][FZF Vim Github], [ripgrep][RipGrep Github]
+* Autocomplete - [YouCompleteMe][YCM Github]
+* Linting - [ale][Ale Github]
+* Git - [vim-fugitive][Vim Fugitive Github], [vim-gitgutter][Vim GitGutter Github], [gv.vim][GV Github]
+
+### Plugin management
+
+<img src="/static/images/developer_enviroment_productivity/nvim_plug_install.gif" size="medium" shadow round />
+
+There are a lot of plugin managers for Vim. The best so far is [vim-plug][VimPlug Github] for the next reasons:
+
+* **On-demand plugin loading** - when you open editor, it loads only needed plugins for a particular file type, it allows to have fast start-up time.
+* **Fast installation / update** - uses shadow clones and parallel installation.
+
+Example of configuration:
+
+```viml
+Plug 'w0rp/ale' " Load on start
+Plug 'fatih/vim-go', { 'for': 'go' } " Load only for Go files 
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+```
+
+### File tree
+
+The [Nerdtree][Nerdtree Github] plugin allows browsing directories and manipulating files. It presents the filesystem in the form of the tree, which you navigate in Vim style.
+
+<img src="/static/images/developer_enviroment_productivity/nvim_nerdtree.gif" size="medium" round shadow />
+
+### Navigation / Search
+
+Search and navigation is done via [fzf][FZF Github]. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits. From the shell it is used to execute commands from command history, to select git branches, to choose npm scripts and so on.
+
+From inside of the editor it is used via [fzf.vim][FZF Vim Github] to search for files by filename and to quickly jump between buffers. To search by files content, fzf is used in conjunction with [ripgrep][RipGrep Github], which is grep rewritten in rust.
+
+
+<img src="/static/images/developer_enviroment_productivity/nvim_fzf_search.gif" size="medium" round shadow />
+
+### Autocomplete - [YouCompleteMe][YCM Github]
+
+The nice feature to have is autocompleting. So far the most reliable experience I had with YCM. It requires a little bit complicated installation process, but work like charm.
+
+### Linting - [**Ale**][Ale Github]
+
+While writing code automatic formating and linting is must-have. The best vim plugin for that is [Ale][Ale Github]. It provides integration with most linting, formating tools and to LSP servers. 
+
+Reasons to use it:
+
+* async execution of linters / fixers
+* list of integrations is huge
+
+### Nvim - Shortcuts
+
+```
+<leader> - <space>
+```
+
+#### Tabs
+
+```
+<leader>tt - new tab
+<leader>tp - go to prev tab
+<leader>tn - go to next tab
+<leader>to - close all tabs expect current one
+
+<leader>1 - go to 1 tab
+<leader>2 - go to 2 tab
+.
+<leader>n - go to nth tab
+<leader>0 - go to last tab
+```
+
+#### Splits
+
+```
+<c-h> - go to left split
+<c-j> - go to bottom split
+<c-k> - go to top split
+<c-l> - go to left split
+<c-\> - go between split
+<c-w>o - close all splits except focused one
+```
+
+#### File explorer
+
+While buffer is in focus:
+```
+<leader>fe - toggle file tree
+<leader>ff - find current file
+```
+
+While the file tree is in focus:
+```
+t - open file in new tab
+i - open file in a hsplit
+s - open file in a vsplit
+o / enter - open file in the main buffer
+```
+
+#### File path / name
+
+```
+<leader>cfn - copy current filename to clipboard
+<leader>cfp - copy current filepath to clipboard
+```
+
+#### Search
+
+```
+<ctrl>p - search files by filename
+<ctrl>f - search files by content
+<ctrl>b - search buffers by filename
+```
+
+#### Lint / Format
+
+```
+<leader>lt - lint
+<leader>fx - fix
+<leader>de - show detailed error
+```
+
+#### Git
+
+```
+<leader>gpr - git pull -r
+<leader>gc - git commit
+<leader>gp - git push
+<leader>gb - git blame
+<leader>gl - git log
+<leader>gd - git diff in vertical split
+```
+
+## Shell - Zsh
+
+[Neovim Github]: https://github.com/neovim/neovim
+[VimPlug Github]: https://github.com/junegunn/vim-plug
+[Nerdtree Github]: https://github.com/scrooloose/nerdtree
+[FZF Github]: https://github.com/junegunn/fzf
+[FZF Vim Github]: https://github.com/junegunn/fzf.vim
+[Ripgrep Github]: https://github.com/BurntSushi/ripgrep
+[YCM Github]: https://github.com/ycm-core/YouCompleteMe
+[Ale Github]: https://github.com/dense-analysis/ale
+[Vim Fugitive Github]:https://github.com/tpope/vim-fugitive
+[Vim GitGutter Github]: https://github.com/airblade/vim-gitgutter
+[GV Github]: https://github.com/junegunn/gv.vim
+
+[Alacritty Github]: https://github.com/jwilm/alacritty
+
+[env-automation]: https://github.com/atsman/env-automation

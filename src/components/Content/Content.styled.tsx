@@ -77,6 +77,7 @@ const img = props => (
 )
 
 const pre = styled.pre`
+  margin-top: 0;
   ${marginBottom};
 `
 
@@ -85,6 +86,7 @@ const h = css`
   font-family: Lato;
   letter-spacing: -0.0125rem;
   margin-bottom: 0.5rem;
+  overflow:auto;
 `
 
 const h1 = styled.h1`
@@ -104,7 +106,13 @@ const h2 = styled.h2`
 `
 
 const h3 = styled.h3`
-  ${h} font-size: 2rem;
+  ${h}
+  font-size: 2rem;
+`
+
+const h4 = styled.h4`
+  ${h}
+  font-size: 1.8rem;
 `
 
 const p = styled.p`
@@ -153,6 +161,7 @@ export default {
   h1,
   h2,
   h3,
+  h4,
   p,
   ul,
   ol,
