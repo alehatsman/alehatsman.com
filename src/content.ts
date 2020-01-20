@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import posts from '../posts'
+import feed from '../feed'
 
 export interface PostMeta {
   id: string
@@ -25,8 +25,8 @@ function requirePost (id: string) {
   return require(`../content/${id}.mdx`).default
 }
 
-function parsePosts (posts: PostMeta[]): Post[] {
-  return posts
+function parsePosts (feed: PostMeta[]): Post[] {
+  return feed
     .map(p => ({
       ...p,
       createdAt: moment(p.createdAt),
@@ -36,24 +36,24 @@ function parsePosts (posts: PostMeta[]): Post[] {
     }))
 }
 
-function filterPublic (posts) {
-  return posts.filter(p => p.public)
+function filterPublic (feed) {
+  return feed.filter(p => p.public)
 }
 
-function sortPosts (posts) {
-  posts.sort((a, b) => a.createdAt.isBefore(b.createdAt) ? 1 : -1)
-  return posts
+function sortPosts (feed) {
+  feed.sort((a, b) => a.createdAt.isBefore(b.createdAt) ? 1 : -1)
+  return feed
 }
 
-function processPosts (posts: PostMeta[]): Post[] {
-  const parsedPosts = parsePosts(posts)
-  const filterPosts = filterPublic(parsedPosts)
-  const sortedPosts = sortPosts(filterPosts)
+function processPosts (feed: PostMeta[]): Post[] {
+  const filteredPosts = filterPublic(feed)
+  const parsedPosts = parsePosts(filteredPosts)
+  const sortedPosts = sortPosts(parsedPosts)
   return sortedPosts
 }
 
 export function getPosts (): Post[] {
-  return processPosts(posts)
+  return processPosts(feed)
 }
 
 export function findPost (id: string): Post {

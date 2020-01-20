@@ -1,9 +1,9 @@
 const path = require('path')
 const fs = require('fs')
-const posts = require('./posts')
+const feed = require('./feed')
 
-function generatePathMap (posts) {
-  return posts.reduce((acc, post) => {
+function generatePathMap (feed) {
+  return feed.reduce((acc, post) => {
     acc[`/post/${post.id}.html`] = {
       page: '/post',
       query: { id: post.id }
@@ -14,16 +14,16 @@ function generatePathMap (posts) {
 }
 
 async function generatePostsPathMap () {
-  return generatePathMap(posts.filter(p => p.public))
+  return generatePathMap(feed.filter(p => p.public))
 }
 
 async function exportPathMap () {
-  const postsPathMap = await generatePostsPathMap()
+  const feedPathMap = await generatePostsPathMap()
   return {
     '/': {
       page: '/'
     },
-    ...postsPathMap
+    ...feedPathMap
   }
 }
 

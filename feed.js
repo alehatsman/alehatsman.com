@@ -42,8 +42,8 @@ module.exports = [
     public: true,
   },
   { 
-    id: 'developer_enviroment_productivity', 
-    title: 'Developer Enviroment and Productivity', 
+    id: 'developer_environment_automation', 
+    title: 'Developer Enviroment and Automation', 
     description: 'How to build enviroment which will force you to have right habbits and will make you super productive? What way to compose operation system, apps, terminals, shells, editors, command line tools, compilers, scripts in a way that makes most productive?', 
     tags: ['dotfiles', 'ansible', 'iaac', 'infrastructure', 'provisioning', 'automation', 'brew', 'vim',  'nvim', 'alacritty', 'git', 'enviroment', 'developer', 'productivity', 'terminal', 'grep', 'rust', 'python', 'javascript', ''],
     createdAt: '2019-11-01',
