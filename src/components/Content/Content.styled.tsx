@@ -101,7 +101,6 @@ const h2 = styled.h2`
   ${h} 
   margin-top: 2.5rem;
   font-size: 3rem;
-  border-bottom: 1px solid ${colors.lightGray};
 `
 
 const h3 = styled.h3`
