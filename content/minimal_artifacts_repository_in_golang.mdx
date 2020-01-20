@@ -1,16 +1,16 @@
 # Minimal artifacts repository in Golang
 
-Some time ago I was working on a side project using **Clojure**. The project was an advertisement aggregator, it was scraping and collecting data from different websites, normalizing it and presenting simple and powerfull search for end users.
+Some time ago I was working on a side project using `Clojure`. The project was an advertisement aggregator, it was scraping and collecting data from different websites, normalizing it and presenting simple and powerfull search for end users.
 
-The project was done in Clojure and consisted of few services which were sharing some **common code**. Data validation, data schemas and so on. It was ok while development was fully going locally on my machine. 
+The project was done in Clojure and consisted of few services which were sharing some `common code`. Data validation, data schemas and so on. It was ok while development was fully going locally on my machine. 
 
-Clojure is Java-based language and because of that, it uses **Jar files** as build target format. When you build your library **locally**, build tool installs Jar file in a **global cache** on your machine. All projects that depend on this library can access it looking it up in the global cache.
+Clojure is Java-based language and because of that, it uses `Jar files` as build target format. When you build your library `locally`, build tool installs Jar file in a `global cache` on your machine. All projects that depend on this library can access it looking it up in the global cache.
 
-But as soon as I started moving everything to AWS, the project build process changed. Now to build an application that depends on shared code, build tool needed to access artifacts of the shared library from somewhere. Because there was no place where build tool can find it, builds were failing. The question **how to access shared Jar** files appeared.
+But as soon as I started moving everything to AWS, the project build process changed. Now to build an application that depends on shared code, build tool needed to access artifacts of the shared library from somewhere. Because there was no place where build tool can find it, builds were failing. The question `how to access shared Jar` files appeared.
 
-Initially, I wasted some time trying to configure **S3 plugin** for leiningen(Clojure build tool). The plugin was broken and outdated. Next idea was to use some **existing solution**. For example **Nexus** repository widely used by Java developers. But minimal resource requirements for it were higher than the resources needed for all my services on AWS. Nexus **required at minimum 4GB RAM**.
+Initially, I wasted some time trying to configure `S3 plugin` for leiningen(Clojure build tool). The plugin was broken and outdated. Next idea was to use some `existing solution`. For example `Nexus` repository widely used by Java developers. But minimal resource requirements for it were higher than the resources needed for all my services on AWS. Nexus `required at minimum 4GB RAM`.
 
-In the modern era, 4GB sounds like nothing. But it gave birth to such a frustration, that I come up with an idea to **reverse engineer** the way leingein worked. Using **traffic sniffing** I found out that basically, leiningen is using only **two HTTP endpoints**.
+In the modern era, 4GB sounds like nothing. But it gave birth to such a frustration, that I come up with an idea to `reverse engineer` the way leingein worked. Using `traffic sniffing` I found out that basically, leiningen is using only `two HTTP endpoints`.
 
 First for reading and second for writing build artifacts:
 
@@ -19,11 +19,11 @@ GET /*filepath
 POST /*filepath
 ```
 
-On **GET** it should return artifacts files. Leingein requests it this way:
+On `GET` it should return artifacts files. Leingein requests it this way:
 
 `GET https://nexus.atsman.com/repository/releases/com/atsman/my-library.jar`
 
-On **POST** it sends build artifacts in the same way, building a hierarchy of files.
+On `POST` it sends build artifacts in the same way, building a hierarchy of files.
 
 `POST https://nexus.atsman.com/repository/releases/com/atsman/my-library.pom`
 
@@ -31,7 +31,7 @@ It could be done even in one simple lambda function, but that time I decided to 
 
 ## Golang - Infrastructure language 
 
-Why Go? There are so many languages out there that I stick to next **pragmatic approach to development**. Use tools that suit best your needs. For frontend development - Js / Ts. Need to analyze some data - use Python and data science stack. For everything related to **infrastructure - Golang**.  Ease of development, cross-compilation, speed of compilation, binary executable target, tiny docker images...
+Why Go? There are so many languages out there that I stick to next `pragmatic approach to development`. Use tools that suit best your needs. For frontend development - Js / Ts. Need to analyze some data - use Python and data science stack. For everything related to `infrastructure - Golang`.  Ease of development, cross-compilation, speed of compilation, binary executable target, tiny docker images...
 
 ## Requirements
 
@@ -52,9 +52,9 @@ My initial plan was to build as small and as light as possible service, implemen
 
 ### Http routing library 
 
-The first thing to choose was the routing library. There are tons of them on Github. **Gin**, **Echo**, **Goji** endless list...
+The first thing to choose was the routing library. There are tons of them on Github. `Gin`, `Echo`, `Goji` endless list...
 
-I decided to go with **[httprouter](https://github.com/julienschmidt/httprouter)**. It is super simple and has everything needed.
+I decided to go with `[httprouter](https://github.com/julienschmidt/httprouter)`. It is super simple and has everything needed.
 
 Basic file controller looks in a next way:
 
