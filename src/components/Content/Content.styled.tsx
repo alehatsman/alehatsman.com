@@ -27,7 +27,8 @@ const Wrapper = styled.main`
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  "Segoe UI Symbol";
+  letter-spacing: 0.01rem;
 `
 
 const AWrapper = styled.a`
