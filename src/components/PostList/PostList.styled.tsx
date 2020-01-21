@@ -24,7 +24,7 @@ export const PostTitle = styled.h1`
 
 export const PostDescription = styled.div`
   margin-top: 10px;
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.5;

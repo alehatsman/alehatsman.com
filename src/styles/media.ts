@@ -4,7 +4,7 @@ function mediaQuery (...queryFeatures) {
   // @ts-ignore
   return (...rules) => css`
     // @ts-ignore
-    @media ${css(...queryFeatures)} { 
+    @media ${css(...queryFeatures)} {
       // @ts-ignore
       ${css(...rules)}
     }

@@ -6,15 +6,15 @@ import FaIcon from '@/components/FaIcon'
 
 import { FooterWrapper, Nav, NavSep, NavItem } from './Footer.styled'
 
-const Footer = (props) => (
+const Footer = props => (
   <FooterWrapper {...props}>
     <Nav>
-      <NavItem href={config.twitter} target="_blank">
+      <NavItem href={config.twitter} target='_blank'>
         <FaIcon icon={['fab', 'twitter']} />
-        Discuss on Twitter 
+        Discuss on Twitter
       </NavItem>
       <NavSep>-</NavSep>
-      <NavItem href={urls.postGithubUrl(props.id)} target="_blank">
+      <NavItem href={urls.postGithubUrl(props.id)} target='_blank'>
         <FaIcon icon={['fab', 'github-alt']} />
         Contribute on Github
       </NavItem>

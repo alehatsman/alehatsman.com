@@ -1,9 +1,9 @@
-import React from "react"
-import styled, { css } from "styled-components"
+import React from 'react'
+import styled, { css } from 'styled-components'
 
-import colors from "@/styles/colors"
+import colors from '@/styles/colors'
 
-import CodeBlock from "./CodeBlock"
+import CodeBlock from './CodeBlock'
 
 const resetBox = css`
   margin-left: 0;
@@ -34,30 +34,30 @@ const AWrapper = styled.a`
   color: ${colors.blue} !important;
 `
 
-const a = props => <AWrapper {...props} target="_blank" />
+const a = props => <AWrapper {...props} target='_blank' />
 
 const getImageSize = (size: string) => {
   switch (size) {
-    case "small":
-      return "max-width: 50%;"
-    case "medium":
-      return "max-width: 80%;"
-    case "large":
-      return "max-width: 95%;"
+    case 'small':
+      return 'max-width: 50%;'
+    case 'medium':
+      return 'max-width: 80%;'
+    case 'large':
+      return 'max-width: 95%;'
     default:
-      return "max-width: 100%;"
+      return 'max-width: 100%;'
   }
 }
 
 interface ImgProps {
-  size: string
-  round: boolean
-  shadow: boolean
+  size: string;
+  round: boolean;
+  shadow: boolean;
 }
 
 const Img = styled.img`
   ${(props: ImgProps) => getImageSize(props.size)}
-  ${(props: ImgProps) => props.round && "border-radius: 3px;"}
+  ${(props: ImgProps) => props.round && 'border-radius: 3px;'}
   ${(props: ImgProps) =>
     props.shadow &&
     `
@@ -65,9 +65,10 @@ const Img = styled.img`
   `}
 `
 
-const ImgWrapper = styled.p`
+const ImgWrapper = styled.figure`
   display: flex;
   justify-content: center;
+  margin: 0 0 2rem 0;
 `
 
 const img = props => (
@@ -86,7 +87,7 @@ const h = css`
   font-family: Lato;
   letter-spacing: -0.0125rem;
   margin-bottom: 0.5rem;
-  overflow:auto;
+  overflow: auto;
 `
 
 const h1 = styled.h1`
@@ -100,7 +101,7 @@ const h1 = styled.h1`
 `
 
 const h2 = styled.h2`
-  ${h} 
+  ${h}
   margin-top: 2.5rem;
   font-size: 3rem;
 `

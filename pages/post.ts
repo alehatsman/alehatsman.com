@@ -1,1 +1,1 @@
-export { default } from '@/containers/ContentPageContainer'
+export { default } from '@/containers/ContentPageContainer';

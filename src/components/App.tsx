@@ -28,8 +28,6 @@ class MyApp extends App {
   }
 }
 
-const myApp = env.isProd()
-  ? withGA(process.env.GA_ID, Router)(MyApp)
-  : MyApp
+const myApp = env.isProd() ? withGA(process.env.GA_ID, Router)(MyApp) : MyApp
 
 export default myApp

@@ -12,7 +12,7 @@ import { Wrapper, HomeLink } from './PostPage.styled'
 import { Post } from '@/content'
 
 interface Props {
-  post: Post
+  post: Post;
 }
 
 export default function PostPage ({ post }: Props) {
@@ -28,14 +28,12 @@ export default function PostPage ({ post }: Props) {
       />
       <Wrapper>
         <Link href='/' passHref>
-          <HomeLink>
-            { '<-' }
-          </HomeLink>
+          <HomeLink>{'<-'}</HomeLink>
         </Link>
         <Content>
           <Doc />
         </Content>
-        <Footer id={post.id}/>
+        <Footer id={post.id} />
       </Wrapper>
     </>
   )

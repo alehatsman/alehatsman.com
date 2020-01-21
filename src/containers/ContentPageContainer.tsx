@@ -5,7 +5,7 @@ import { findPost } from '@/content'
 import PostPage from '@/components/PostPage'
 
 interface Props {
-  id: string
+  id: string;
 }
 
 function ContentContainer ({ id }: Props) {

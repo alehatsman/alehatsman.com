@@ -1,6 +1,6 @@
-import React from "react";
-import FaIcon from "@/components/FaIcon";
-import config from "@/config";
+import React from 'react'
+import FaIcon from '@/components/FaIcon'
+import config from '@/config'
 
 import {
   UserWrapper,
@@ -10,11 +10,11 @@ import {
   PointsWrapper,
   Point,
   PointText
-} from "./User.styled";
+} from './User.styled'
 
 const User = () => (
   <UserWrapper>
-    <Photo src="/static/images/me2.jpg" />
+    <Photo src='/static/images/me2.jpg' />
 
     <Fullname>Aleh Atsman</Fullname>
 
@@ -22,40 +22,40 @@ const User = () => (
 
     <PointsWrapper>
       <Point>
-        <FaIcon icon={["fab", "telegram"]} />
+        <FaIcon icon={['fab', 'telegram']} />
         <PointText>
-          <a href={config.telegram} target="_blank">
+          <a href={config.telegram} target='_blank'>
             @alehatsman
           </a>
         </PointText>
       </Point>
 
       <Point>
-        <FaIcon icon={["fab", "github-alt"]} />
+        <FaIcon icon={['fab', 'github-alt']} />
         <PointText>
-          <a href={config.github} target="_blank">
+          <a href={config.github} target='_blank'>
             github.com/atsman
           </a>
         </PointText>
       </Point>
 
       <Point>
-        <FaIcon icon="at" />
+        <FaIcon icon='at' />
         <PointText>
           <a href={`mailto:${config.email}`}>aleh.atsman@gmail.com</a>
         </PointText>
       </Point>
 
       <Point>
-        <FaIcon icon={["fab", "linkedin"]} />
+        <FaIcon icon={['fab', 'linkedin']} />
         <PointText>
-          <a href={config.linkedin} target="_blank">
+          <a href={config.linkedin} target='_blank'>
             linkedin.com/in/alehatsman
           </a>
         </PointText>
       </Point>
     </PointsWrapper>
   </UserWrapper>
-);
+)
 
-export default User;
+export default User

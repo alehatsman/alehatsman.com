@@ -10,13 +10,18 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
         })
 
       const initialProps = await Document.getInitialProps(ctx)
       return {
         ...initialProps,
-        styles: <>{initialProps.styles}{sheet.getStyleElement()}</>
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
       }
     } finally {
       sheet.seal()
@@ -28,7 +33,10 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link rel='icon' href='/static/images/logo.png' />
-          <link href='https://fonts.googleapis.com/css?family=Lato:300,700|Roboto+Slab:300,400,500,700&display=swap' rel='stylesheet' />
+          <link
+            href='https://fonts.googleapis.com/css?family=Lato:300,700|Roboto+Slab:300,400,500,700&display=swap'
+            rel='stylesheet'
+          />
           {this.props.styles}
         </Head>
         <body>

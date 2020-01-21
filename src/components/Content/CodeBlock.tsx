@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import github from "prism-react-renderer/themes/github";
+import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+import github from 'prism-react-renderer/themes/github'
 
 interface Props {
   children: string;
@@ -12,10 +12,10 @@ interface Props {
 const Pre = styled.pre`
   padding: 20px;
   overflow: scroll;
-`;
+`
 
 const CodeBlock = ({ children, className }: Props) => {
-  const language = className ? className.replace(/language-/, "") : "";
+  const language = className ? className.replace(/language-/, '') : ''
   return (
     <Highlight
       {...defaultProps}
@@ -35,7 +35,7 @@ const CodeBlock = ({ children, className }: Props) => {
         </Pre>
       )}
     </Highlight>
-  );
-};
+  )
+}
 
-export default CodeBlock;
+export default CodeBlock

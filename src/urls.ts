@@ -1,6 +1,6 @@
 import config from '@/config'
 
-function externalize(path: string): string {
+function externalize (path: string): string {
   return `${config.host}${path}`
 }
 
@@ -20,5 +20,5 @@ export default {
   externalize,
   postHref,
   postGithubUrl,
-  postExternalUrl,
+  postExternalUrl
 }

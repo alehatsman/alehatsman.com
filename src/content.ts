@@ -6,7 +6,7 @@ export interface PostMeta {
   id: string
   title: string
   createdAt: string
-  updatedAt?: string 
+  updatedAt?: string
   description: string
   tags: string[]
 }
@@ -32,7 +32,7 @@ function parsePosts (feed: PostMeta[]): Post[] {
       createdAt: moment(p.createdAt),
       updatedAt: moment(p.updatedAt || p.createdAt),
       tags: p.tags || [],
-      doc: requirePost(p.id) 
+      doc: requirePost(p.id)
     }))
 }
 
