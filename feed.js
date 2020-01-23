@@ -117,6 +117,6 @@ module.exports = [
       ''
     ],
     createdAt: '2019-11-01',
-    public: true
+    public: false
   }
-];
+]

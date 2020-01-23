@@ -5,8 +5,8 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import github from 'prism-react-renderer/themes/github'
 
 interface Props {
-  children: string;
-  className: string;
+  children: string
+        className: string;
 }
 
 const Pre = styled.pre`

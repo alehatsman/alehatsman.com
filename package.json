@@ -23,7 +23,9 @@
   },
   "standardx": {
     "parser": "@typescript-eslint/parser",
-    "plugins": [ "@typescript-eslint/eslint-plugin" ]
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
   },
   "engines": {
     "node": "12.x"
@@ -60,10 +62,11 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-ga": "^2.7.0",
+    "remark-sectionize": "^1.1.0",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^1.5.1",
+    "@mdx-js/loader": "^1.5.5",
     "@storybook/addon-centered": "^5.2.5",
     "@storybook/react": "^5.2.5",
     "@types/next": "^8.0.6",
@@ -78,6 +81,8 @@
     "babel-plugin-styled-components": "^1.10.6",
     "jest": "^24.9.0",
     "prism-react-renderer": "^1.0.2",
+    "remark-slug": "^5.1.2",
+    "remark-toc": "^7.0.0",
     "standard": "^14.3.1",
     "standardx": "^5.0.0",
     "typescript": "^3.6.4"
