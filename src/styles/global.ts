@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
     text-rendering: optimizeLegibility;
     font-size: 1.6rem;
     color: ${colors.black};

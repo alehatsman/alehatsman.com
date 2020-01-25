@@ -46,7 +46,7 @@ const pre = styled.pre`
 
 const h = css`
   ${resetBox} font-weight: 700;
-  font-family: Lato;
+  font-family: 'Lato', sans-serif;
   letter-spacing: -0.0125rem;
   margin-bottom: 0.5rem;
   overflow: auto;
@@ -111,7 +111,7 @@ const blockquote = styled.blockquote`
 `
 
 const strong = styled.strong`
-  font-weight: 600;
+  font-weight: 700;
 `
 
 export default {

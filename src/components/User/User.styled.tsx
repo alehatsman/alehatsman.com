@@ -22,7 +22,7 @@ export const Fullname = styled.div`
   ${media.tablet`
     margin-top: 30px;
   `}
-  font-family: Lato;
+  font-family: 'Lato', sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 1;

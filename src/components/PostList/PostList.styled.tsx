@@ -15,7 +15,7 @@ export const PostWrapper = styled.a`
 
 export const PostTitle = styled.h1`
   color: ${colors.black};
-  font-family: Lato;
+  font-family: 'Lato', sans-serif;
   font-size: 24px;
   font-weight: 700;
   font-style: normal;
@@ -24,7 +24,7 @@ export const PostTitle = styled.h1`
 
 export const PostDescription = styled.div`
   margin-top: 10px;
-  font-family: "Roboto Slab";
+  font-family: 'Roboto Slab', serif;
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.5;
