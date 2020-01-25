@@ -2,6 +2,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   unicode-range: U+000-5FF;
   src: url('');
   src: local('Lato'),
@@ -15,6 +16,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   unicode-range: U+000-5FF;
   src: url('');
   src: local('Lato'),
@@ -28,6 +30,7 @@
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   unicode-range: U+000-5FF;
   src: url('');
   src: local('Lato'),
@@ -41,6 +44,7 @@
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   unicode-range: U+000-5FF;
   src: url('');
   src: local('Lato'),
