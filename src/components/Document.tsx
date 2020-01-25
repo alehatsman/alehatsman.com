@@ -38,6 +38,7 @@ export default class MyDocument extends Document {
             rel='stylesheet'
           />
           {this.props.styles}
+          <script type='application/javascript' src='https://api.renalyze.com/group/1.js' />
         </Head>
         <body>
           <Main />
