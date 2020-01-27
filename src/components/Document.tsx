@@ -30,9 +30,9 @@ export default class MyDocument extends Document {
 
   render () {
     return (
-      <html>
+      <html lang='en'>
         <Head>
-          <link rel="stylesheet" type="text/css" href="/static/css/typography.css" />
+          <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
           {this.props.styles}
           <script type='application/javascript' src='https://api.renalyze.com/group/1.js' />
