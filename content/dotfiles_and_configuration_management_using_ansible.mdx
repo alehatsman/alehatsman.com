@@ -1,250 +1,139 @@
-# Dotfiles and configuration management using Ansible
+# Dotfiles automation using Ansible
 
-Got a new mac? Don't want to spend the whole weekend installing and configuring your favourite apps? Automate that process! That what I did in my [osx-automation](https://github.com/atsman/osx-automation) project.
+My environment is a combination of many tools and programs. Most of them are delicately customized for my needs. I always wanted to be able to take a new laptop and turn it into ready for use development machine automatically.
 
-## What is Infrastructure as Code?
+## Table of Content
 
-Infrastructure as Code is the process of managing and provisioning computer data centers throught machine-readable definition files, rather than manual configuration. 
+## Package managers
 
-In simplier words, your system configuration is stored in plain text files. Plain text files than can be stored in any version control system. Thanks to VCS you have change history, you can always rollback to previous version, you can always see what was changed last.
+The first step is to avoid manual installation. Downloading installer or building from source takes a lot of time and is harder to automate. Every modern operating system has package manager with all popular applications wrapped in ready for use packages which can be loaded via the client software.
 
-The point is that it gives you **automated, reproducible, testable and self documented** enviroment setup.
+`Brew` is the most popular package manager on macOS, `Chocolatey` on Windows, `Pacman` on arch Linux. These tools simplify the installation process and management of already installed apps.
 
-So how is it related to your personal laptop? Put all your configuration in text files, and store those files in GitHub. That's what people do with **dotfiles**.
+Examples to get a taste of it:
 
-## What are dotfiles?
+Install `Google Chrome`:
 
-Dotfiles are plain text configuration files for command line tools, editors, shells, and so on.
-
-Example: *.profile.clj*, *.tmux.conf*, *.vimrc*, *.zshrc*...
-
-They are called 'dotfiles' because most of the time the name begins with `.` symbol.
-
-However, there are some open questions:
-
-1. How to install and update configuration files?
-2. How to save what apps are installed on my machine? 
-3. How to generate configurations on the fly with env variables for example?
-
-The answer to those questions is to use software provisioning tool **Ansible** or similar.
-
-## What is Ansible?
-
-Ansible is open-source software provisioning, configuration management, and application deployment tool. Includes its own declarative language to describe system configuration(YAML based). Written in Python.
-
-## How to use it?
-
-There is concept of Role in Ansible. Each role may consist of set of variables, tasks and templates.
-
-Variables are just data in yml files.
-Tasks can be shell commands, plugin commands and so on.
-Templates are templates based on Jinja2 engine.
-
-So basically in Ansible, you can create roles, which can consist of variables, tasks and templates.
-
-So in my case, I have the next roles: brew, zsh, vim, tmux, docker, git.
-
-Each role has some tasks to perform, that can install something, create folders, generate config files.
-
-Here is a tree view for my automation project:
-
-```
-.
-├── Makefile
-├── README.md
-├── hosts
-├── init.sh
-├── playbook.retry
-├── playbook.yml
-├── roles
-│   ├── brew
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   └── vars
-│   │       └── main.yml
-│   ├── clojure
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   └── templates
-│   ├── docker
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── git
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   └── templates
-│   ├── golang
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── iterm2
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   ├── templates
-│   │   │   └── com.googlecode.iterm2.plist.j2
-│   │   └── vars
-│   │       └── main.yml
-│   ├── jvm
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── node
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── python
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── ssh
-│   │   └── tasks
-│   │       └── main.yml
-│   ├── tmux
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   ├── templates
-│   │   └── vars
-│   │       └── main.yml
-│   ├── vim
-│   │   ├── tasks
-│   │   │   └── main.yml
-│   │   ├── templates
-│   │   │   ├── autocommand.vim
-│   │   │   ├── ftplugin
-│   │   │   │   ├── clojure.vim
-│   │   │   │   ├── go.vim
-│   │   │   │   ├── javascript.vim
-│   │   │   │   ├── python.vim
-│   │   │   │   ├── scala.vim
-│   │   │   │   └── yaml.vim
-│   │   │   ├── init.vim
-│   │   │   ├── mappings.vim
-│   │   │   ├── options.vim
-│   │   │   ├── plugin
-│   │   │   │   ├── ale.vim
-│   │   │   │   ├── deoplete.vim
-│   │   │   │   ├── fzf.vim
-│   │   │   │   ├── gitgutter.vim
-│   │   │   │   └── nerdtree.vim
-│   │   │   └── plugins.vim
-│   │   └── vars
-│   │       └── main.yml
-│   └── zsh
-│       ├── tasks
-│       │   └── main.yml
-│       ├── templates
-│       └── vars
-│           └── main.yml
-└── vars
-    ├── global_env.yml
-    └── variables.yml
+```sh
+brew cask install google-chrome
 ```
 
-## Example, Homebrew Role
+List all installed packages:
 
-Let's see in more details brew role brew/tasks/main.yml
+```sh
+brew cask list
+```
+
+Upgrade Google Chrome to the last version:
+
+```sh
+brew upgrade google-chrome
+```
+
+Uninstall Google Chrome:
+
+```sh
+brew uninstall google-chrome
+```
+
+## Dotfiles
+
+Next step is avoiding manual configuration. Often apps sell you beautiful complex UI for configuration, where you waste hours configuring, the problem with that is an inability to synchronize settings on multiple devices.
+
+What is very convenient is being able to serialize your preferences into a format that can be saved in the cloud and nothing is better suited for that than plain text files.
+
+Dotfiles enable you to store configuration settings in a traditional text file in YAML or JSON format from where your tool will read it and function in the way you want.
+
+Examples: `.profile.clj`, `.tmux.conf`, `.vimrc`, `.zshrc`.
+
+## Ansible
+
+After it is clear how to install and configure applications, the next issue is how to automate that process and synchronize configurations, so that one line in the terminal can turn a fresh laptop into ready for a use development machine.
+
+Bash scripts are usually used for that, although there are many small things you have to implement: variables management, templating, making sure the script is idempotent and so on. Alternately to bash scripts, I prefer to use `Ansible`.
+
+Ansible is a famous tool in the DevOps community. It is largely applied to servers provisioning, for example, installing a database on EC2 machines in AWS, however, also works like charm to provision my personal laptop.
+
+All setup instructions needed to turn my new MacBook into ready for use development machine are in the form of Ansible provision scripts and saved on Github in [env-automation][env-automation] project.
+
+### Roles
+
+Roles define application installation and configuration. Each role consists of:
+
+* tasks - actions neede to perform (brew install, create dir, copy file etc)
+* variables - configuration variables, lists etc
+* templates - file templates used to generate dotfiles, taking in account variables
+
+For example tasks of Nvim role, install package from the brew and generates `.nvimrc` 
 
 ```yml
+# main.yml
 ---
-- name: Ensure homebrew is updated
+- name: Make sure Nvim is present
   homebrew:
-    state: latest
-    update_homebrew: true
-
-- name: Tap homebrew homebrew/cask
-  homebrew_tap:
-    name: "{{ item }}"
+    name:
+      - neovim
     state: present
-  with_items: "{{ taps }}"
 
-- name: Install homebrew applications
-  homebrew:
-    name: "{{ apps }}"
-    state: latest
-
-- name: Install homebrew cask applications
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ cask_apps }}"
+- name: Make sure .nvimrc is present
+  template:
+    src: templates/.nvimrc
+    dest: ~/.nvimrc
 ```
 
-And here are variables, with lists of apps, tools, etc
+```vimrc
+".nvimrc
+filetype indent plugin on "detect ft, load FTP file and indent
+syntax on " syntax highlighting on
+
+set langmenu=en_US
+set hidden " be able to switch buffers without file save
+set showcmd " shows the command in the last line
+set nostartofline " some command move to the first non-blank line
+set number " line number on
+set clipboard=unnamedplus " allow copy-paste system <-> nvim
+```
+
+### Playbook
+
+Playbook defines which roles are going to be installed, here is the playbook that provisions my machine:
 
 ```yml
+# playbook.yml
 ---
-homebrew_url: https://raw.githubusercontent.com/Homebrew/install/master/install
-
-taps:
-  - caskroom/fonts
-  - homebrew/cask
-  - jesseduffield/lazygit
-  - wagoodman/dive
-  - wata727/tflint
-
-apps:
-  - adobe-acrobat-reader
-  - ansible
-  - ansible-lint
-  - aria2
-  - autoenv
-  - caddy
-  - dive
-  - fzf
-  - htop
-  - imagemagick
-  - jq
-  - nmap
-  - packer
-  - sshfs
-  - terraform
-  - terraform-inventory
-  - tflint
-  - tldr
-  - tmux
-  - tor
-  - tree
-  - watchman
-  - wget
-  - yamllint
-
-cask_apps:
-  - figma
-  - flux
-  - font-fira-code
-  - google-backup-and-sync
-  - google-chrome
-  - google-cloud-sdk
-  - insomniax
-  - kdiff3
-  - osxfuse
-  - pgadmin4
-  - spectacle
-  - spotify
-  - teamviewer
-  - telegram
-  - torbrowser
-  - transmission
-  - tunnelblick
-  - vagrant
-  - veracrypt
-  - visual-studio-code
-  - vlc
-  - wireshark
-  - xmind
+- hosts: local
+  vars_files:
+    - vars/variables.yml
+  roles:
+    - {role: 'macos', tags: 'macos'}
+    - {role: 'packages', tags: 'packages'}
+    - {role: 'git', tags: 'git'}
+    - {role: 'python', tags: 'python'}
+    - {role: 'ssh', tags: 'ssh'}
+    - {role: 'asdf-vm', tags: 'asdf-vm'}
+    - {role: 'zsh', tags: 'zsh'}
+    - {role: 'tmux', tags: 'tmux'}
+    - {role: 'vim', tags: 'vim'}
+    - {role: 'alacritty', tags: 'alacritty'}
+    - {role: 'aws', tags: 'aws'}
+    - {role: 'golang', tags: 'golang'}
+    - {role: 'jvm', tags: 'jvm'}
+    - {role: 'clojure', tags: 'clojure'}
+    - {role: 'docker', tags: 'docker'}
+    - {role: 'node', tags: 'node'}
 ```
 
-This role installs all specified applications via brew.
 
-## Secret variables
+## Conclusion
 
-Sometime you would like also to have some secret information in your configuration files. Ansible has a special feature for that. It is called [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html). You can encrypt your variables files and store in public repo.
+When I get an entirely new machine I download [env-automation][env-automation] from Github and use it to install all roles, special `init.sh` for that. It installs basic dependencies and runs Ansible in 20-30 minutes it automatically downloads and configures all needed software.
 
-The moment when you would like to run ansible on your computer, you will need to type the secret password and it will decrypt files for that run.
+When I need to update some specific role, I change config files it in the project first and then install only specific role:
 
-## Conslusion
+```
+make install-only tags=zsh
+```
 
-Using Ansible you can fully automate your laptop setup. Each time you got a new mac it is a matter of minutes to install all needed software and configuration and be ready to work. No waste of time, trying to remember your configuration or trying to manually copy config files.
+This way my settings are always in sync and I am never scared that my carefully crafted setup can be lost.
 
-Load your automation setup. Run it. And you are ready to go.
-
-# Links
-
-* [Ansible documentation](https://docs.ansible.com/ansible/latest/index.html)
-* [Dotfiles examples](https://dotfiles.github.io/)
+[env-automation]: https://github.com/atsman/env-automation

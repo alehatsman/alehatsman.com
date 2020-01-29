@@ -23,9 +23,9 @@ module.exports = [
   },
   {
     id: 'dotfiles_and_configuration_management_using_ansible',
-    title: 'Dotfiles and configuration management using Ansible',
+    title: 'Dotfiles automation using Ansible',
     description:
-      'Infrastructure as Code is de facto standard in the world of devops. Why not to use the same tools for your personal laptop. Got a new mac, run Ansible and have fully functional MacBook.',
+      'Applying DevOps best practices to automate the process of software installation, configuration and synchronization between multiple workstations.',
     tags: [
       'dotfiles',
       'ansible',
@@ -39,6 +39,7 @@ module.exports = [
       'productivity'
     ],
     createdAt: '2019-03-20',
+    updatedAt: '2020-01-29',
     public: true
   },
   {
@@ -60,7 +61,7 @@ module.exports = [
   },
   {
     id: 'golang_type_declaration_abuse',
-    title: 'Golang Type Aliases, Type Definitions and Real types',
+    title: 'Golang Type Aliases vs Type Definitions vs Real types',
     description:
       'What is the difference between Type Alias and Type Definition? What are the best and worst use cases for Type Aliases and Type Definitions? Examples of problematic code from real projects and ideas that you should avoid.',
     createdAt: '2019-05-09',
@@ -114,9 +115,8 @@ module.exports = [
       'rust',
       'python',
       'javascript',
-      ''
     ],
     createdAt: '2019-11-01',
-    public: false
+    public: false,
   }
 ]
