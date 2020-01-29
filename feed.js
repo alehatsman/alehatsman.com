@@ -1,9 +1,9 @@
 module.exports = [
   {
     id: 'static_blog_generator_using_nextjs_styledcomponents_mdx',
-    title: 'Static blog generator using Next.js, Styled Components, MDX',
+    title: 'Personal Blog using Next.js, ES6 and ZEIT Now',
     description:
-      "Modern frontend era gave us tons of nice JavaScript tools and libraries like Babel, React, Webpack. Ecosystems give almost infinite possibilities in the hands of developers. Let's create a custom fully functional static site generator with modern JavaScript.",
+      'Constructing a personal blog website utilizing modern frontend technologies with instant deployment, CDN, continues delivery for only 0$ per month.',
     tags: [
       'JavaScript',
       'TypeScript',
@@ -46,7 +46,7 @@ module.exports = [
     id: 'what_questions_to_ask_your_potential_employer',
     title: 'What questions to ask your potential employer?',
     description:
-      'The interview is a two-way conversation. Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness.',
+      'Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness, turn an interview into a two-way conversation. ',
     tags: [
       'reverse interview',
       'interview',
@@ -63,7 +63,7 @@ module.exports = [
     id: 'golang_type_declaration_abuse',
     title: 'Golang Type Aliases vs Type Definitions vs Real types',
     description:
-      'What is the difference between Type Alias and Type Definition? What are the best and worst use cases for Type Aliases and Type Definitions? Examples of problematic code from real projects and ideas that you should avoid.',
+      'Difference between Type Alias and Type Definition in Golang. What are the main use cases? Examples of problematic code from real projects.',
     createdAt: '2019-05-09',
     updatedAt: '2019-11-05',
     tags: ['golang', 'type', 'alias', 'declaration', 'definition', 'typesafe'],
@@ -73,7 +73,7 @@ module.exports = [
     id: 'minimal_artifacts_repository_in_golang',
     title: 'Minimal artifacts repository in Golang',
     description:
-      'Artifacts repositories are the legacy we inherited from ancestors. You can like it, you can dislike it, but at some moment you will have no choice. You will need to store your artifacts in private repo, that need will force you to use some very unpleasant solution. Expensive SaaS or open software with 8GB minimal RAM requirement.',
+      'Writing undemanding to resources minimal artefacts repository for Jar files in Golang for use in my side project Clojure applications.',
     tags: [
       'golang',
       'nexus',
@@ -114,9 +114,9 @@ module.exports = [
       'grep',
       'rust',
       'python',
-      'javascript',
+      'javascript'
     ],
     createdAt: '2019-11-01',
-    public: false,
+    public: false
   }
 ]
