@@ -35,7 +35,6 @@ export default class MyDocument extends Document {
           <link rel='stylesheet' type='text/css' href='/static/css/typography.css' />
           <link rel='icon' href='/static/images/logo.png' />
           {this.props.styles}
-          <script type='application/javascript' src='https://api.renalyze.com/group/1.js' />
         </Head>
         <body>
           <Main />
