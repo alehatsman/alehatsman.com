@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const generateId = (text: string = '') => {
   return text
     .trim()
@@ -7,20 +9,18 @@ export const generateId = (text: string = '') => {
     .toLowerCase()
 }
 
-export const Anchor = ({ id, children }) => {
-  return (
-    <a href={`#${generateId(id)}`}>
-      {id || children}
-    </a>
-  )
+export const Anchor = ({
+  id,
+  children
+}: {
+  id: string
+  children: React.ReactNode
+}) => {
+  return <a href={`#${generateId(id)}`}>{id || children}</a>
 }
 
-const Header = (Component) => ({ children }) => {
-  return (
-    <Component id={generateId(children)}>
-      {children}
-    </Component>
-  )
+const Header = Component => ({ children }) => {
+  return <Component id={generateId(children)}>{children}</Component>
 }
 
 export default Header

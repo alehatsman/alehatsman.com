@@ -1,12 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import github from 'prism-react-renderer/themes/github'
 
 interface Props {
   children: string
-        className: string;
+  className: string
 }
 
 const Pre = styled.pre`

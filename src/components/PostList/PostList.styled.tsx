@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import colors from '@/styles/colors'
 
@@ -7,8 +7,8 @@ export const PostListWrapper = styled.div`
   flex-direction: column;
 `
 
-export const PostWrapper = styled.a`
-  &:not(:first-child) {
+export const PostWrapper = styled.div`
+  &:not(:first-of-type) {
     margin-top: 30px;
   }
 `

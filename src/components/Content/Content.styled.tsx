@@ -1,11 +1,12 @@
-import styled, { css } from 'styled-components'
+import React from 'react'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 
 import colors from '@/styles/colors'
 
 import CodeBlock from './CodeBlock'
 import Image from './Image'
-import GithubCode from './GithubCode'
-import Header, { Anchor } from './Header'
+import { Anchor } from './Header'
 
 const resetBox = css`
   margin-left: 0;
@@ -121,7 +122,6 @@ export default {
   pre,
   code: CodeBlock,
   inlineCode: inlineCode,
-  GithubCode,
   h1,
   h2,
   h3,

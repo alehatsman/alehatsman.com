@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import FaIcon from '@/components/FaIcon'
 import colors from '@/styles/colors'
 

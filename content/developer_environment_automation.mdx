@@ -1,3 +1,28 @@
+export const metadata = {
+  id: 'developer_environment_automation',
+  title: 'Developer Enviroment and Automation',
+  description:
+    'Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.',
+  tags: [
+    'automation',
+    'brew',
+    'vim',
+    'nvim',
+    'alacritty',
+    'git',
+    'enviroment',
+    'developer',
+    'productivity',
+    'terminal',
+    'grep',
+    'rust',
+    'python',
+    'javascript'
+  ],
+  createdAt: '2020-02-01',
+  public: false
+}
+
 # Developer Environment and Automation
 
 <img src={'https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} altText />
@@ -17,113 +42,33 @@ What my developer environment consists of?
 
 ## Table of Contents
 
-## Automation
+## Structure of Command line
 
-Manual installation and configuration is hard, confusing and takes a lot of time. My machine setted up fully automatically, using provisional scripts, package managers and plain text confuguration files.
+Most of the time I spend in command line, reading and writing code in `Nvim`, jumpling between different windows in `Tmux` and running commands in `Zsh` and all that is rendered in `Alacritty` terminal emulator.
 
-### Package managers
+### Shell 
 
-Package managers automate process of installation, configuration, upgrading and removing programs. Most used on Mac is [homebrew](https://brew.sh).
+Command line `Shell` is a program which takes text commands, parses it, executes and prints back result. Shell defines syntax and concepts of the scripting language that you can input in. Different shells have different rules. Examples: `Bash`, `Zsh`, `Fish`.
 
-Usage examples:
+### Terminal
 
-Install `Google Chrome`:
+`Terminal` is a program which runs your shell of choice and renders GUI window where you can interact with your CLI shell. Examples: `iTerm2`, `Alacritty`, `Kitty`. Some terminals provide you with features like multiple windows, tabs, splits etc.
 
-```sh
-brew cask install google-chrome
-```
+### Terminal Multiplexer
 
-List all installed:
-
-```sh
-brew cask list
-```
-
-Upgrade Google Chrome:
-
-```sh
-brew upgrade google-chrome
-```
-
-Uninstall Google Chrome:
-
-```sh
-brew uninstall google-chrome
-```
-
-### Dotfiles
-
-Dotfiles are used to customize, configure and extend programs. They are plain text files, located in home directory and usually loaded automatically.
-
-Examples: `.profile.clj`, `.tmux.conf`, `.vimrc`, `.zshrc`.
-
-### Ansible
-
-All setup instructions are in Ansible provisioning scripts and stored on github in [env-automation][env-automation] project. Applications represented as roles (tasks, templates and variables) and executed by Ansible.
-
-Ansible provides:
-* variables management
-* `ansible-vault` for secrets
-* templating for config files
-* plugins to work with git, brew, curl
-
-For example Nvim role, installs package from brew and generates `.nvimrc` 
-
-```yml
----
-- name: Make sure Nvim is present
-  homebrew:
-    name:
-      - neovim
-    state: present
-
-- name: Make sure .nvimrc is present
-  template:
-    src: templates/.nvimrc
-    dest: ~/.nvimrc
-```
-
-Apply Nvim role:
-
-```
-ansible-playbook -i hosts playbook.yml --tags=nvim
-```
-
-Playbook defines list of roles for installation:
-
-```yml
----
-- hosts: local
-  vars_files:
-    - vars/variables.yml
-  roles:
-    - {role: 'macos', tags: 'macos'}
-    - {role: 'packages', tags: 'packages'}
-    - {role: 'git', tags: 'git'}
-    - {role: 'python', tags: 'python'}
-    - {role: 'ssh', tags: 'ssh'}
-    - {role: 'asdf-vm', tags: 'asdf-vm'}
-    - {role: 'zsh', tags: 'zsh'}
-    - {role: 'tmux', tags: 'tmux'}
-    - {role: 'vim', tags: 'vim'}
-    - {role: 'alacritty', tags: 'alacritty'}
-    - {role: 'aws', tags: 'aws'}
-    - {role: 'golang', tags: 'golang'}
-    - {role: 'jvm', tags: 'jvm'}
-    - {role: 'clojure', tags: 'clojure'}
-    - {role: 'docker', tags: 'docker'}
-    - {role: 'node', tags: 'node'}
-```
+`Terminal Multiplexer` is a program which orchestrates multiple terminal sessions into single terminal window. It is command line window manager, where windows are terminals, each terminal can have multiple windows and windows can be splitted into panes.
 
 ## Alacritty
 
-When you havily use command line, espessially when you search, move around, or write code in Nvim - you expect you terminal to render text fast. At some point I was frustrated with performance of my terminal and found a solution - [Alacritty][Alacritty Github].
+<img src="/images/posts/developer_enviroment_productivity/alacritty.svg" height="100px" />
 
-> Alacritty is the fastest terminal emulator in existence.
+In the beginning I was using terminal just as window where I execute simple commands to run tests or commit something. For quite a while I was fun of terminals that are integrated into your editor. Some forces were attracted me into world of text based apps and instead of having terminal in the Editor, I started having Editor in my terminal.
 
-Alacritty is fast and simple. It is written in Rust and uses GPU acceleration for rendering. There is no GUI features like windows, tabs or splits. It's just one very performant window. For tabs and splits I am using `Tmux`.
+When you havily use command line, espessially when you search, move around, or write code in Nvim - you expect you terminal to render text fast. At some point I was frustrated with performance of my terminal and found a solution - [Alacritty][alacritty link].
 
-Alacritty ansible role:
+Alacritty is just a very fast windows with shell running inside. It is written in Rust and uses GPU acceleration for rendering. There are no GUI features like windows, tabs or splits.
+
+### Installation
 
 ```yml
 ---
@@ -143,7 +88,18 @@ Alacritty ansible role:
     dest: ~/.config/alacritty/alacritty.yml
 ```
 
-I'm using it with `Fira Code` font, it doesn't support font ligatures.
+### Configuration
+
+Alacritty is configured using configured using global text file located in `~/.config/alacritty/alacritty.yml`
+
+Next line have to be configured for correct colors rendering:
+
+```yml
+env:
+  TERM: xterm-256color
+```
+
+I'm using it with `Fira Code` font, but it doesn't support font ligatures.
 
 ```yml
 font:
@@ -168,7 +124,10 @@ shell:
     - --login
 ```
 
-I added next line to be able to use `^`, when you type `<ctrl>6`, in Nvim to switch between files:
+### Key bindings
+
+In order to be able to use to use `^`, when you type `<ctrl>6`, in Nvim to switch between files, I had to configure Alacritty to send `\x1e` hexcode.
+
 ```yml
 key_bindings:
   - {key: Key6, mods: Control, chars: "\x1e"}
@@ -178,19 +137,23 @@ Full Alacritty configuration is here [.alacritty.yml](https://github.com/atsman/
 
 ## Tmux
 
-[Tmux][Tmux Github] is a terminal multiplexer which allows to have multiple sessions, windows and splits in one terminal window.
+<img src="/images/posts/developer_enviroment_productivity/tmux_logo.svg" height="100px" />
 
-* **sessions**: list of terminals Tmux control, each has one or more windows
+[Tmux][tmux link] is a terminal multiplexer which allows to have multiple sessions, windows and splits in one terminal window. Command line window manager.
+
+* **sessions**: list of terminals, each has one or more windows
 * **window**: window takes one screen and can be splitted into panes
 * **pane**: smallest part of the window
 
 Usually I have session per project open and multiple windows in each session. For example I can have session `work`, with 2 windows open, one for code in Nvim and one window for running build scripts and tests.
 
-Tmux allows to quickly navigate between sessions, windows and panes. With some additional configuration you can get Vim key bindings to jump between splits, browse logs and copy paste text.
+Tmux allows to quickly navigate between sessions, windows and panes. With some additional configuration I was able to get Vim key bindings to be used for jumping between splits, browsing logs and copy-pasting text.
 
 ### Plugins
 
-[Tmux Plugin Manager (tmp)](https://github.com/tmux-plugins/tpm) is used to simplify plugins management. It has to be cloned to `~/.tmux/plugins/tpm`.
+[Tmux Plugin Manager (tmp)][tmp link] is used to simplify plugins management. It simplifies installation process and management of plugins.
+
+It has to be cloned to `~/.tmux/plugins/tpm`.
 
 ```tmux
 # predefined settings
@@ -206,12 +169,17 @@ set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-open'
 ```
 
-* [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm) - plugin manager 
-* [tmux-plugins/tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) - predefined settings
-* [tmux-plugins/tmux-yank](https://github.com/tmux-plugins/tmux-yank) - copy to system clipboard
-* [tmux-plugins/tmux-copycat](https://github.com/tmux-plugins/tmux-copycat) - regex search
-* [tmux-plugins/tmux-open](https://github.com/tmux-plugins/tmux-open) - open highlighted selection
-* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) - seamless navigation between tmux and vim
+### Colors problem
+
+At some moment I noticed that Nvim colors when it is opened in Tmux are different comparing to Nvim opened outside of Tmux control, to fix that:
+
+```
+# fix terminal colors
+# set -g default-terminal screen-256color
+set -g default-terminal "screen-256color" # colors!
+# tell Tmux that outside terminal supports true color
+set -ga terminal-overrides ",xterm-256color*:Tc"
+```
 
 ### Vim-like copy paste
 
@@ -233,10 +201,12 @@ bind C-v run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux p
 
 ### Vim-like pane navigation
 
-If you don't use fzf, you can just install plugin:
+To be able to navigate between panes using Vim key-bindings, just install next plugin:
+
 ```
 set -g @plugin 'christoomey/vim-tmux-navigator'
 ```
+
 
 To be able to use navigation in fzf window, fzf needs to be added to is_vim check.
 
@@ -317,78 +287,44 @@ Here you can find full [.tmux.config](https://github.com/atsman/env-automation/b
 
 ## Nvim 
 
-> [Nvim][Neovim Github] - a community-driven, refactored version of vim.
+<img src="/images/posts/developer_enviroment_productivity/nvim_logo.svg" height="100px" />
+
+> [Nvim][neovim link] - a community-driven, refactored version of vim.
 
 Nvim allows me to edit text faster than anything else. It designed to keep hands always in an optimum position to input text, to scroll, to navigate or to apply commands.
 
 Config files are here: [.nvimrc](https://github.com/atsman/env-automation/tree/master/roles/nvim/templates)
 
+### Contents
+
+* [Plugin manager](#plugins-1)
+* [File explorer](#file-explorer)
+* [Tabs / Splits / Status line](#tabs--splits-and-status-line)
+* [Navigation / Search](#navigation--search)
+* [Autocomplete](#autocomplete)
+* [Linting / Formatting](#linting--formatting)
+* [Git](#git)
+
 ### Plugins
 
-[vim-plug][VimPlug Github] is used to simplify plugin management. It supports on-demand plugin loading for start time fast, and parallel installation / updates.
-
-* File explorer - [nerdtree][Nerdtree Github]
-* Navigation / Search - [fzf][FZF Github], [fzf.vim][FZF Vim Github], [ripgrep][RipGrep Github]
-* Autocomplete - [YouCompleteMe][YCM Github]
-* Linting - [ale][Ale Github]
-* Git - [vim-fugitive][Vim Fugitive Github], [vim-gitgutter][Vim GitGutter Github], [gv.vim][GV Github]
+[Vim-plug][vimplug link] is used to simplify plugin management. It supports on-demand plugin loading for start time fast, and parallel installation / updates.
 
 ### File explorer
 
-The [Nerdtree][Nerdtree Github] presents filesystem in the form of the tree and allows to browse, navigate and manipulate files and directories using Nvim navigation shortcuts.
-
-### Navigation / Search
-
-Search and navigation is done via [fzf][FZF Github]. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits. From the shell it is used to execute commands from command history, to select git branches, to choose npm scripts and so on.
-
-From inside of the editor it is used via [fzf.vim][FZF Vim Github] to search for files by filename and to quickly jump between buffers. To search by files content, fzf is used in conjunction with [ripgrep][RipGrep Github], which is grep rewritten in rust.
-
-### Autocomplete
-
-Having editor to predict what are you going to type is must have nowadays. So far the expirience with autocompletion I had with [YouCompleteMe][YCM Github].
-
-### Linting
-
-While writing code automatic formating and linting is must-have. The best vim plugin for that is [Ale][Ale Github]. It provides integration with most linting, formating tools and to LSP servers. 
-
-Reasons to use it:
-
-* async execution of linters / fixers
-* list of integrations is huge
-
-### Shortcuts
+The [Nerdtree][nerdtree link] presents filesystem in the form of the tree and allows to browse, navigate and manipulate files and directories using Nvim navigation shortcuts.
 
 ```
-<leader> - <space>
+Plug 'scrooloose/nerdtree'
 ```
 
-#### Tabs
+Configuration:
 
 ```
-<leader>tt - new tab
-<leader>tp - go to prev tab
-<leader>tn - go to next tab
-<leader>to - close all tabs expect current one
-
-<leader>1 - go to 1 tab
-<leader>2 - go to 2 tab
-.
-<leader>n - go to nth tab
-<leader>0 - go to last tab
+let NERDTreeShowHidden=1 " show hidden files
+let g:NERDTreeAutoDeleteBuffer = 1 " delete buffer when delete file
 ```
 
-#### Splits
-
-```
-<c-h> - go to left split
-<c-j> - go to bottom split
-<c-k> - go to top split
-<c-l> - go to left split
-<c-\> - go between split
-<c-w>o - close all splits except focused one
-```
-
-#### File explorer
+Shortcuts:
 
 While buffer is in focus:
 ```
@@ -404,14 +340,66 @@ s - open file in a vsplit
 o / enter - open file in the main buffer
 ```
 
-#### File path / name
+### Tabs / Splits and Status line
+
+Vim-airline is plugin which draws editor status in a bottom line. It shows current vim mode, current git branch, position of the cursor relative to the beginning of the file.
 
 ```
-<leader>cfn - copy current filename to clipboard
-<leader>cfp - copy current filepath to clipboard
+Plug 'bling/vim-airline'
 ```
 
-#### Search
+In addition it can be used to make tabs nice:
+
+```
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#show_close_button = 0
+```
+
+Tabs mappings:
+
+```
+<leader>tt - new tab
+<leader>tp - go to prev tab
+<leader>tn - go to next tab
+<leader>to - close all tabs expect current one
+
+<leader>1 - go to 1 tab
+<leader>2 - go to 2 tab
+.
+<leader>n - go to nth tab
+<leader>0 - go to last tab
+```
+
+Splits mappings:
+
+```
+<c-h> - go to left split
+<c-j> - go to bottom split
+<c-k> - go to top split
+<c-l> - go to left split
+<c-\> - go between split
+<c-w>o - close all splits except focused one
+```
+
+### Navigation / Search
+
+Search and navigation is done via [fzf][fzf link]. It is a generic command-line fuzzy finder. It can be used to search in any list: files, command history, processes, hostnames, bookmarks, git commits. From the shell it is used to execute commands from command history, to select git branches, to choose npm scripts and so on.
+
+From inside of the editor it is used via [fzf.vim][fzf vim link] to search for files by filename and to quickly jump between buffers. To search by files content, fzf is used in conjunction with [ripgrep][ripgrep link], which is grep rewritten in rust.
+
+```
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+```
+
+Shortcuts:
 
 ```
 <ctrl>p - search files by filename
@@ -419,7 +407,24 @@ o / enter - open file in the main buffer
 <ctrl>b - search buffers by filename
 ```
 
-#### Lint / Format
+### Autocomplete
+
+Having editor to predict what are you going to type is must have nowadays. So far the expirience with autocompletion I had with [YouCompleteMe][ycm link].
+
+### Linting / Formatting
+
+```
+Plug 'w0rp/ale'
+```
+
+While writing code automatic formating and linting is must-have. The best vim plugin for that is [Ale][ale link]. It provides integration with most linting, formating tools and to LSP servers. 
+
+Reasons to use it:
+
+* async execution of linters / fixers
+* list of integrations is huge
+
+Shortcuts:
 
 ```
 <leader>al - lint
@@ -427,8 +432,21 @@ o / enter - open file in the main buffer
 <leader>ad - error details
 ```
 
-#### Git
+### Git
 
+Git integration is done by next plugins:
+
+```
+Plug 'tpope/vim-fugitive' " git commands
+Plug 'junegunn/gv.vim' " git commit browser
+Plug 'airblade/vim-gitgutter' " git diff sign
+```
+
+* [Fugitive][vim fugitive link] - git wrapper, provides all git commands as nvim commands and more.
+* [Gv][gv link] - git commit browser, allows to view huge history line and jump between commits.
+* [Gitgutter][vim gitgutter link] - shows git diff sign for current file, makes it easy to understand whats changed.
+
+Shortcuts:
 ```
 <leader>gpr - git pull -r
 <leader>gc - git commit
@@ -440,44 +458,74 @@ o / enter - open file in the main buffer
 
 ## Zsh
 
-ZSH - highly customizable shell, supports custom color scheme, aliases, completions.
+ZSH - highly customizable shell, supports aliases, completions, custom color scheme.
 
 ### Plugins
 
-[zplug][Zplug Github] - plugin manager used to simplify plugin management. Can manage all types of plugins (git, oh-my-zsh, gist files), parallel installation, lazy loading.
+[zplug][zplug link] - plugin manager used to simplify plugin management. Can manage all types of plugins (git, oh-my-zsh, gist files), parallel installation, lazy loading.
 
-* dracula/zsh - color scheme
-* plugins/vi-mode - adds vim keybinding
-* plugins/fzf - fuzzy finder for command history
+### Vim keybindings
 
-* zsh-users/zsh-autosuggestions - suggests commands from history after cursor in a shadow gray color
-* zsh-users/zsh-completions - additional completion definitions
-* zsh-users/zsh-syntax-highlighting - highlightes commands as you type
-* zsh-users/zsh-history-substring-search - history search by subscript
-
-```zsh
-zplug "dracula/zsh", as:theme
+```
 zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "plugins/fzf", from:oh-my-zsh
+```
+[vi-mode]() - adds vim keybindings to shell. While you edit text you can exit insert mode and go to command mode where it is possible to navigate and change text the same way like in Vim.
 
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions", depth:1
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search", defer:3
+### History substring search
+
+```
+zsh-users/zsh-history-substring-search
 ```
 
-[Neovim Github]: https://github.com/neovim/neovim
-[VimPlug Github]: https://github.com/junegunn/vim-plug
-[Nerdtree Github]: https://github.com/scrooloose/nerdtree
-[FZF Github]: https://github.com/junegunn/fzf
-[FZF Vim Github]: https://github.com/junegunn/fzf.vim
-[Ripgrep Github]: https://github.com/BurntSushi/ripgrep
-[YCM Github]: https://github.com/ycm-core/YouCompleteMe
-[Ale Github]: https://github.com/dense-analysis/ale
-[Vim Fugitive Github]:https://github.com/tpope/vim-fugitive
-[Vim GitGutter Github]: https://github.com/airblade/vim-gitgutter
-[GV Github]: https://github.com/junegunn/gv.vim
-[Tmux Github]: https://github.com/tmux/tmux
-[Alacritty Github]: https://github.com/jwilm/alacritty
+Allows to search for command based based on typed part. Next bindings are used `j` `k` to cycle through matches.
+
+```
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+```
+
+### History fuzzy search
+
+```
+zplug "plugins/fzf", from:oh-my-zsh
+```
+
+Plugin allows to quickly search in command history using fuzzy search. 
+
+`<ctrl><space>` opens fzf fuzzy search with full history.
+
+### Fish like autosuggestions
+
+```
+zplug "zsh-users/zsh-autosuggestions"
+```
+
+While you type, plugin shows autosuggestion under cursor in gray color based on your history.
+
+### Completitions library
+
+```
+zplug "zsh-users/zsh-completions"
+```
+
+While you type and hit `<tab>`, plugins shows possible suggestions for command if it is present in completition library.
+
+[neovim link]: https://github.com/neovim/neovim
+[vimplug link]: https://github.com/junegunn/vim-plug
+[nerdtree link]: https://github.com/scrooloose/nerdtree
+[fzf link]: https://github.com/junegunn/fzf
+[fzf vim link]: https://github.com/junegunn/fzf.vim
+[ripgrep link]: https://github.com/BurntSushi/ripgrep
+[ycm link]: https://github.com/ycm-core/YouCompleteMe
+[ale link]: https://github.com/dense-analysis/ale
+[vim fugitive link]:https://github.com/tpope/vim-fugitive
+[vim gitgutter link]: https://github.com/airblade/vim-gitgutter
+[gv link]: https://github.com/junegunn/gv.vim
+[tmux link]: https://github.com/tmux/tmux
+[alacritty link]: https://github.com/jwilm/alacritty
 [env-automation]: https://github.com/atsman/env-automation
-[Zplug Github]: https://github.com/zplug/zplug
+[zplug link]: https://github.com/zplug/zplug
+[zsh vim mode github]: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode
+[tmp link]: https://github.com/tmux-plugins/tpm

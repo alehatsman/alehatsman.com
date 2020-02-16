@@ -1,6 +1,5 @@
 import React from 'react'
 import FaIcon from '@/components/FaIcon'
-import config from '@/config'
 
 import {
   UserWrapper,
@@ -12,50 +11,66 @@ import {
   PointText
 } from './User.styled'
 
-const User = () => (
-  <UserWrapper>
-    <Photo src='/static/images/me2.jpg' />
+export interface Props {
+  author: string
+  email: string
+  github: string
+  linkedin: string
+  image: string
+  telegram: string
+}
 
-    <Fullname>Aleh Atsman</Fullname>
+const formatUrl = (url: string) => {
+  const { host, pathname } = new URL(url)
+  return `${host}${pathname}`
+}
 
-    <Description>Software Engineer</Description>
+const User = ({ author, email, github, linkedin, image, telegram }: Props) => {
+  return (
+    <UserWrapper>
+      <Photo src={image} />
 
-    <PointsWrapper>
-      <Point>
-        <FaIcon icon={['fab', 'telegram']} />
-        <PointText>
-          <a href={config.telegram} target='_blank'>
-            @alehatsman
-          </a>
-        </PointText>
-      </Point>
+      <Fullname>{author}</Fullname>
 
-      <Point>
-        <FaIcon icon={['fab', 'github-alt']} />
-        <PointText>
-          <a href={config.github} target='_blank'>
-            github.com/atsman
-          </a>
-        </PointText>
-      </Point>
+      <Description>Software Engineer</Description>
 
-      <Point>
-        <FaIcon icon='at' />
-        <PointText>
-          <a href={`mailto:${config.email}`}>aleh.atsman@gmail.com</a>
-        </PointText>
-      </Point>
+      <PointsWrapper>
+        <Point>
+          <FaIcon icon={['fab', 'telegram']} />
+          <PointText>
+            <a href={telegram}>
+              @alehatsman
+            </a>
+          </PointText>
+        </Point>
 
-      <Point>
-        <FaIcon icon={['fab', 'linkedin']} />
-        <PointText>
-          <a href={config.linkedin} target='_blank'>
-            linkedin.com/in/alehatsman
-          </a>
-        </PointText>
-      </Point>
-    </PointsWrapper>
-  </UserWrapper>
-)
+        <Point>
+          <FaIcon icon={['fab', 'github-alt']} />
+          <PointText>
+            <a href={github}>
+              {formatUrl(github)}
+            </a>
+          </PointText>
+        </Point>
+
+        <Point>
+          <FaIcon icon='at' />
+          <PointText>
+            <a href={`mailto:${email}`}>{email}</a>
+          </PointText>
+        </Point>
+
+        <Point>
+          <FaIcon icon={['fab', 'linkedin']} />
+          <PointText>
+            <a href={linkedin}>
+              {formatUrl(linkedin)}
+            </a>
+          </PointText>
+        </Point>
+      </PointsWrapper>
+    </UserWrapper>
+  )
+}
 
 export default User

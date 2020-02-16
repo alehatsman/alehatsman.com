@@ -4,7 +4,7 @@ import { MDXProvider } from '@mdx-js/react'
 import components from './Content.styled'
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const CodeBlock = ({ children }: Props) => (

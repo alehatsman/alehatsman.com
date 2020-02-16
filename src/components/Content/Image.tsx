@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import React from 'react'
+import styled from '@emotion/styled'
 
 const getImageSize = (size: string) => {
   switch (size) {
@@ -14,9 +15,9 @@ const getImageSize = (size: string) => {
 }
 
 interface Props {
-  size: string;
-  round: boolean;
-  shadow: boolean;
+  size: string
+  round: boolean
+  shadow: boolean
 }
 
 const StyledImg = styled.img`

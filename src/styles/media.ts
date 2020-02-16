@@ -1,11 +1,8 @@
-import { css } from 'styled-components'
+import css from '@emotion/css'
 
-function mediaQuery (...queryFeatures) {
-  // @ts-ignore
-  return (...rules) => css`
-    // @ts-ignore
-    @media ${css(...queryFeatures)} {
-      // @ts-ignore
+const minWidth = (width: number) => (rules: TemplateStringsArray) => {
+  return css`
+    @media (min-width: ${width}px) {
       ${css(...rules)}
     }
   `
@@ -17,6 +14,6 @@ const breakpoints = {
 }
 
 export const media = {
-  tablet: mediaQuery`(min-width: ${breakpoints.tablet}px)`,
-  desktop: mediaQuery`(min-width: ${breakpoints.desktop}px)`
+  tablet: minWidth(breakpoints.tablet),
+  desktop: minWidth(breakpoints.desktop)
 }

@@ -1,20 +1,16 @@
-import styled from 'styled-components'
+import React from 'react'
 
-import urls from '@/urls'
-import config from '@/config'
 import FaIcon from '@/components/FaIcon'
 
-import { FooterWrapper, Nav, NavSep, NavItem } from './Footer.styled'
+import { FooterWrapper, Nav, NavItem } from './Footer.styled'
 
-const Footer = props => (
-  <FooterWrapper {...props}>
+const formatLink = (id: string) =>
+  `https://github.com/atsman/alehatsman.com/blob/master/content/${id}.mdx`
+
+const Footer = ({ id }: { id: string }) => (
+  <FooterWrapper>
     <Nav>
-      <NavItem href={config.twitter} target='_blank'>
-        <FaIcon icon={['fab', 'twitter']} />
-        Discuss on Twitter
-      </NavItem>
-      <NavSep>-</NavSep>
-      <NavItem href={urls.postGithubUrl(props.id)} target='_blank'>
+      <NavItem href={formatLink(id)} target='_blank'>
         <FaIcon icon={['fab', 'github-alt']} />
         Contribute on Github
       </NavItem>
@@ -22,4 +18,4 @@ const Footer = props => (
   </FooterWrapper>
 )
 
-export default styled(Footer)``
+export default Footer

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import colors from '@/styles/colors'
 import { media } from '@/styles/media'
@@ -43,7 +43,7 @@ export const PointsWrapper = styled.div`
 export const Point = styled.div`
   display: flex;
   align-items: center;
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-top: 1rem;
   }
 

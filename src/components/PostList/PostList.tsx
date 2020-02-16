@@ -1,8 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import moment from 'moment'
-import { Post } from '@/content'
-import urls from '@/urls'
+import { Link } from 'gatsby'
 
 import {
   PostListWrapper,
@@ -16,23 +14,24 @@ function formatDate (date) {
   return moment(date, 'YYYY-MM-DD').format('MMM D, YYYY')
 }
 
-type ShortPost = Pick<Post, 'id' | 'title' | 'description' | 'createdAt'>;
+interface Post {
+  id: string
+  title: string
+  description: string
+  createdAt: moment.Moment
+}
 
-const PostItem = ({ post }: { post: ShortPost }) => (
-  <Link
-    href={{ pathname: '/post', query: { id: post.id } }}
-    as={urls.postHref(post.id)}
-    passHref
-  >
-    <PostWrapper>
+const PostItem = ({ post }: { post: Post }) => (
+  <PostWrapper>
+    <Link to={`/posts/${post.id}.html`}>
       <PostTitle>{post.title}</PostTitle>
       <PostDescription>{post.description}</PostDescription>
       <PostDate>{formatDate(post.createdAt)}</PostDate>
-    </PostWrapper>
-  </Link>
+    </Link>
+  </PostWrapper>
 )
 
-const PostList = ({ posts }: { posts: ShortPost[] }) => (
+const PostList = ({ posts }: any) => (
   <PostListWrapper>
     {posts.map(post => (
       <PostItem key={post.id} post={post} />

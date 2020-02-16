@@ -1,20 +1,9 @@
 {
   "name": "alehatsman.com",
-  "version": "0.0.1",
-  "description": "Personal website",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next -p 3333",
-    "build": "next build",
-    "start": "next start",
-    "types": "tsc --project ./tsconfig.json",
-    "lint": "standardx './**/*.js ./**/*.jsx ./**/*.ts ./**/*.tsx'",
-    "lint:fix": "standardx --fix './**/*.js ./**/*.jsx ./**/*.ts ./**/*.tsx'",
-    "storybook": "start-storybook -c ./.storybook/ -s ./public",
-    "export": "yarn run build && next export -o dist",
-    "now-build": "yarn run export",
-    "production": "now --target production"
-  },
+  "private": true,
+  "description": "Software Engineering Blog",
+  "version": "0.1.0",
+  "author": "Aleh Atsman <aleh.atsman@gmail.com>",
   "eslintConfig": {
     "rules": {
       "no-unused-vars": "off",
@@ -27,64 +16,86 @@
       "@typescript-eslint/eslint-plugin"
     ]
   },
-  "engines": {
-    "node": "12.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atsman/alehatsman.com.git"
-  },
-  "keywords": [
-    "Next.js",
-    "Blog",
-    "Styled",
-    "Components",
-    "Mdx"
-  ],
-  "author": "Aleh Atsman",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/atsman/alehatsman.com/issues"
-  },
-  "homepage": "https://github.com/atsman/alehatsman.com#readme",
   "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-regular-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
-    "@mdx-js/tag": "^0.20.3",
-    "mixpanel": "^0.11.0",
-    "mixpanel-browser": "^2.32.0",
+    "gatsby": "^2.19.7",
+    "gatsby-image": "^2.2.40",
+    "gatsby-plugin-emotion": "^4.1.22",
+    "gatsby-plugin-manifest": "^2.2.39",
+    "gatsby-plugin-mdx": "^1.0.71",
+    "gatsby-plugin-module-resolver": "^1.0.3",
+    "gatsby-plugin-offline": "^3.0.32",
+    "gatsby-plugin-page-creator": "^2.1.40",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-typescript": "^2.1.27",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-remark-autolink-headers": "^2.1.24",
+    "gatsby-remark-images": "^3.1.44",
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-transformer-remark": "^2.6.51",
+    "gatsby-transformer-sharp": "^2.3.14",
+    "github-slugger": "^1.2.1",
     "moment": "^2.24.0",
-    "next": "^9.1.1",
-    "next-ga": "^2.3.4",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-ga": "^2.7.0",
-    "remark-sectionize": "^1.1.0",
-    "styled-components": "^4.4.0"
+    "prism-react-renderer": "^1.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^1.5.5",
-    "@storybook/addon-centered": "^5.2.5",
-    "@storybook/react": "^5.2.5",
-    "@types/next": "^8.0.6",
-    "@types/node": "^12.11.7",
-    "@types/react": "^16.9.11",
-    "@types/styled-components": "^4.1.20",
-    "@typescript-eslint/eslint-plugin": "^2.17.0",
-    "@typescript-eslint/parser": "^2.17.0",
-    "@zeit/next-mdx": "^1.2.0",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "jest": "^24.9.0",
-    "prism-react-renderer": "^1.0.2",
+    "@mdx-js/mdx": "^1.5.5",
+    "@mdx-js/react": "^1.5.5",
+    "@storybook/react": "^5.3.13",
+    "@types/node": "^13.7.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.15",
+    "@typescript-eslint/eslint-plugin": "2",
+    "eslint": "6",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-jsx": "^8.1.0",
+    "eslint-config-standard-with-typescript": "^12.0.1",
+    "eslint-plugin-import": "2",
+    "eslint-plugin-node": "9",
+    "eslint-plugin-promise": "4",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-standard": "4",
+    "gatsby-plugin-google-analytics": "^2.1.35",
+    "prettier": "^1.19.1",
+    "remark-sectionize": "^1.1.0",
     "remark-slug": "^5.1.2",
     "remark-toc": "^7.0.0",
-    "standard": "^14.3.1",
-    "standardx": "^5.0.0",
-    "typescript": "^3.6.4"
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "keywords": [
+    "blog",
+    "software engineering"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsman/alehatsman.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atsman/alehatsman.com/issues"
   }
 }
