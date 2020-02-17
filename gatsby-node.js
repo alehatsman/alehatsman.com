@@ -9,16 +9,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             id
-            exports {
-              metadata {
-                createdAt
-                description
-                id
-                public
-                tags
-                title
-                updatedAt
-              }
+            frontmatter { 
+              createdAt
+              description
+              id
+              public
+              tags
+              title
+              updatedAt
             }
           }
         }
@@ -35,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
-      path: `/posts/${node.exports.metadata.id}.html`,
+      path: `/posts/${node.frontmatter.id}.html`,
       // This component will wrap our MDX content
       component: path.resolve('./src/pages/PostPage.tsx'),
       // You can use the values in this context in

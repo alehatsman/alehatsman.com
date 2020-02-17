@@ -31,9 +31,18 @@ export const PostDescription = styled.div`
   letter-spacing: 0.01rem;
 `
 
-export const PostDate = styled.div`
+export const PostFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const PostFooterItem = styled.div`
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
   color: ${colors.dimGray};
+
+  &:not(:first-of-type) {
+    margin-left: 10px;
+  }
 `

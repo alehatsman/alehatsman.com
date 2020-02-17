@@ -7,7 +7,8 @@ import {
   PostWrapper,
   PostTitle,
   PostDescription,
-  PostDate
+  PostFooterItem,
+  PostFooter
 } from './PostList.styled'
 
 function formatDate (date) {
@@ -19,6 +20,7 @@ interface Post {
   title: string
   description: string
   createdAt: moment.Moment
+  timeToRead: number
 }
 
 const PostItem = ({ post }: { post: Post }) => (
@@ -26,7 +28,9 @@ const PostItem = ({ post }: { post: Post }) => (
     <Link to={`/posts/${post.id}.html`}>
       <PostTitle>{post.title}</PostTitle>
       <PostDescription>{post.description}</PostDescription>
-      <PostDate>{formatDate(post.createdAt)}</PostDate>
+      <PostFooter>
+        <PostFooterItem>{formatDate(post.createdAt)}</PostFooterItem>
+      </PostFooter>
     </Link>
   </PostWrapper>
 )

@@ -1,4 +1,4 @@
-export const metadata = {
+export const frontmatter = {
   id: 'developer_environment_automation',
   title: 'Developer Enviroment and Automation',
   description:
@@ -20,7 +20,7 @@ export const metadata = {
     'javascript'
   ],
   createdAt: '2020-02-01',
-  public: false
+  public: true
 }
 
 # Developer Environment and Automation
@@ -29,7 +29,7 @@ export const metadata = {
 
 For more than 7 years I have been working professionally as a Software Engineer. During this time I put together a nice developer setup. This article is my attempt to review it, improve it and share it with others.
 
-Most of the time I spend in **command line**, writing code in **Vim**, executing commands in **Zsh** shell, switching panes and sessions in **Tmux**  and all that is rendered in **Alacritty** terminal emulator running on my Mac.
+Most of the time I spend in command line, writing code in **Nvim**, executing commands in **Zsh** shell, switching panes and sessions in **Tmux**  and all that is rendered in **Alacritty** terminal emulator running on my Mac.
 
 What my developer environment consists of?
 
@@ -44,13 +44,13 @@ What my developer environment consists of?
 
 ## Structure of Command line
 
-Most of the time I spend in command line, reading and writing code in `Nvim`, jumpling between different windows in `Tmux` and running commands in `Zsh` and all that is rendered in `Alacritty` terminal emulator.
+Most of the time I spend in command line, reading and writing code in `Nvim`, jumpling between terminal sessions in `Tmux` and running commands in `Zsh` and all that is rendered in `Alacritty` terminal emulator.
 
 ### Shell 
 
 Command line `Shell` is a program which takes text commands, parses it, executes and prints back result. Shell defines syntax and concepts of the scripting language that you can input in. Different shells have different rules. Examples: `Bash`, `Zsh`, `Fish`.
 
-### Terminal
+### Terminal Emulator
 
 `Terminal` is a program which runs your shell of choice and renders GUI window where you can interact with your CLI shell. Examples: `iTerm2`, `Alacritty`, `Kitty`. Some terminals provide you with features like multiple windows, tabs, splits etc.
 

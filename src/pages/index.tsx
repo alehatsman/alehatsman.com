@@ -4,41 +4,29 @@ import HomePage from '@/components/HomePage'
 import Seo from '@/components/seo'
 
 const queryMdxPosts = graphql`
-  {
-    allMdx(
-      filter: {
-        exports: {
-          metadata: {
-            public: {
-              eq: true
-            }
-          }
-        }
-      } 
-      sort: {
-        fields: exports___metadata___createdAt, 
-        order: DESC
-      }
-    ) {
-      edges {
-        node {
+{
+  allMdx(filter: {
+    frontmatter: {public: {eq: true}}}, 
+    sort: {fields: frontmatter___createdAt, order: DESC}
+  ) {
+    edges {
+      node {
+        id
+        fileAbsolutePath
+        timeToRead
+        frontmatter {
           id
-          fileAbsolutePath
-          exports {
-            metadata {
-              createdAt
-              description
-              id
-              public
-              tags
-              title
-            }
-          }
+          createdAt
+          description
+          public
+          tags
+          title
+          updatedAt
         }
       }
     }
   }
-`
+}`
 
 const HomePageContainer = () => {
   const data = useStaticQuery(queryMdxPosts)
@@ -46,7 +34,8 @@ const HomePageContainer = () => {
     .map(e => e.node)
     .map(n => ({
       id: n.id,
-      ...n.exports.metadata
+      timeToRead: n.timeToRead,
+      ...n.frontmatter
     }))
   return <>
     <Seo />

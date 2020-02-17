@@ -18,7 +18,7 @@ export default function PostPage ({ post }: any) {
         <Content>
           <MDXRenderer>{post.body}</MDXRenderer>
         </Content>
-        <Footer id={post.exports.metadata.id} />
+        <Footer id={post.frontmatter.id} />
       </Wrapper>
     </Layout>
   )

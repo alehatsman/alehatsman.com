@@ -1,6 +1,5 @@
 const toc = require('remark-toc')
 const slug = require('remark-slug')
-const sectionize = require('remark-sectionize')
 
 const siteMetadata = {
   author: 'Aleh Atsman',
@@ -64,8 +63,23 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        gatsbyRemarkPlugins: ['gatsby-remark-images'],
-        remarkPlugins: [[toc, { tight: true }], slug, sectionize]
+        gatsbyRemarkPlugins: [
+          'gatsby-remark-images',
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'nofollow'
+            }
+          },
+          {
+            resolve: 'gatsby-remark-images-contentful',
+            options: {
+              maxWidth: 590
+            }
+          }
+        ],
+        remarkPlugins: [[toc, { tight: true }], slug]
       }
     },
     {

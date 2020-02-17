@@ -9,16 +9,15 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
-      exports {
-        metadata {
-          title
-          updatedAt
-          tags
-          public
-          id
-          description
-          createdAt
-        }
+      timeToRead
+      frontmatter {
+        createdAt
+        description
+        id
+        public
+        tags
+        title
+        updatedAt
       }
     }
   }
@@ -27,9 +26,9 @@ export const query = graphql`
 const PostPageContainer = (props: any) => {
   return <>
     <Seo
-      title={props.data.mdx.exports.metadata.title}
-      description={props.data.mdx.exports.metadata.description}
-      keywords={props.data.mdx.exports.metadata.tags}
+      title={props.data.mdx.frontmatter.title}
+      description={props.data.mdx.frontmatter.description}
+      keywords={props.data.mdx.frontmatter.tags}
     />
     <PostPage post={props.data.mdx} />
   </>
