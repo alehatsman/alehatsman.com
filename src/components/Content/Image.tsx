@@ -18,6 +18,7 @@ interface Props {
   size: string
   round: boolean
   shadow: boolean
+  caption: string
 }
 
 const StyledImg = styled.img`
@@ -39,6 +40,7 @@ const ImgWrapper = styled.figure`
 const Image = (props: Props) => (
   <ImgWrapper>
     <StyledImg {...props} />
+    {props.caption && <figcaption>{props.caption}</figcaption>}
   </ImgWrapper>
 )
 
