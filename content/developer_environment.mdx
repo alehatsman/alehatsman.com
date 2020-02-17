@@ -27,7 +27,7 @@ export const frontmatter = {
 
 For more than 7 years I have been working professionally as a Software Engineer. During this time I put together a nice developer setup. This article is my attempt to review it, improve it and share it with others.
 
-Most of the time I spend in command line, writing code in **Nvim**, executing commands in **Zsh** shell, switching panes and sessions in **Tmux**  and all that is rendered in **Alacritty** terminal emulator running on my Mac.
+Most of the time I spend in the command line, writing code in **Nvim**, executing commands in **Zsh** shell, switching panes and sessions in **Tmux**  and all that is rendered in **Alacritty** terminal emulator running on my Mac.
 
 What my developer environment consists of?
 
@@ -42,11 +42,11 @@ What my developer environment consists of?
 
 ## Structure of Command line
 
-Most of the time I spend in command line, reading and writing code in `Nvim`, jumpling between terminal sessions in `Tmux` and running commands in `Zsh` and all that is rendered in `Alacritty` terminal emulator.
+Most of the time I spend in the command line, reading and writing code in `Nvim`, jumping between terminal sessions in `Tmux` and running commands in `Zsh` and all that is rendered in `Alacritty` terminal emulator.
 
 ### Shell 
 
-Command line `Shell` is a program which takes text commands, parses it, executes and prints back result. Shell defines syntax and concepts of the scripting language that you can input in. Different shells have different rules. Examples: `Bash`, `Zsh`, `Fish`.
+Command-line `Shell` is a program which takes text commands, parses it, executes and prints back result. The shell defines syntax and concepts of the scripting language that you can input in. Different shells have different rules. Examples: `Bash`, `Zsh`, `Fish`.
 
 ### Terminal Emulator
 
@@ -54,19 +54,19 @@ Command line `Shell` is a program which takes text commands, parses it, executes
 
 ### Terminal Multiplexer
 
-`Terminal Multiplexer` is a program which orchestrates multiple terminal sessions into single terminal window. It is command line window manager, where windows are terminals, each terminal can have multiple windows and windows can be splitted into panes.
+`Terminal Multiplexer` is a program which orchestrates multiple terminal sessions into a single terminal window. It is command-line window manager, where windows are terminals, each terminal can have multiple windows and windows can be split into panes.
 
 ## Alacritty
 
 <img src="/images/posts/developer_enviroment_productivity/alacritty.svg" height="100px" />
 
-At the start of my career, my terminal usage mostly was to run a script to compile code, run tests or interact with git. For quite a long period of time I was fun of terminal that is integrated in my editor.
+At the start of my career, my terminal usage mostly was to run a script to compile code, run tests or interact with git. For quite a long period of time, I was fun of terminal that is integrated into my editor.
 
-Some forces attracted me into world of text based apps and instead of having terminal in the Editor, I'm having Editor in the terminal.
+Some forces attracted me into the world of text-based apps and instead of having the terminal in the Editor, I'm having Editor in the terminal.
 
-When you havily use command line, espessially when you search, move around, or write code in Nvim - you expect you terminal to render text fast. At some point performance of my terminal frustrated me and I found a solution - [Alacritty][alacritty link].
+When you heavily use the command line, especially when you search, move around, or write code in Nvim - you expect your terminal to render text fast. At some point performance of my terminal frustrated me and I found a solution - [Alacritty][alacritty link].
 
-Alacritty is just a very fast windows with shell running inside. It is written in Rust and uses GPU acceleration for rendering. There are no GUI features like windows, tabs or splits.
+Alacritty is just a very fast window with a shell running inside. It is written in Rust and uses GPU acceleration for rendering. There are no GUI features like windows, tabs or splits.
 
 ### Installation
 
@@ -82,7 +82,7 @@ Alacritty is just a very fast windows with shell running inside. It is written i
     path: ~/.config/alacritty
     state: directory
 
-- name: Make sure config file is present
+- name: Make sure the config file is present
   template:
     src: templates/alacritty.yml.j2
     dest: ~/.config/alacritty/alacritty.yml
@@ -90,9 +90,9 @@ Alacritty is just a very fast windows with shell running inside. It is written i
 
 ### Configuration
 
-Alacritty is configured using using global text file located in `~/.config/alacritty/alacritty.yml`
+Alacritty is configured using a global text file located in `~/.config/alacritty/alacritty.yml`
 
-Config line below fixes colors rendering:
+Config line below fixes colours rendering:
 
 ```yml
 env:
@@ -126,7 +126,7 @@ shell:
 
 ### Key bindings
 
-In order to be able to use to use `^`, when you type `<ctrl>6`, in Nvim to switch between files, I had to configure Alacritty to send `\x1e` hexcode.
+In order to be able to use `^`, when you type `<ctrl>6`, in Nvim to switch between files, I had to configure Alacritty to send `\x1e` hex code.
 
 ```yml
 key_bindings:
@@ -139,19 +139,19 @@ Full Alacritty configuration is here [.alacritty.yml](https://github.com/atsman/
 
 <img src="/images/posts/developer_enviroment_productivity/tmux_logo.svg" height="100px" />
 
-[Tmux][tmux link] is a terminal multiplexer which allows to have multiple sessions, windows and splits in one terminal window. Command line window manager.
+[Tmux][tmux link] is a terminal multiplexer which allows having multiple sessions, windows and splits in one terminal window. Command-line window manager.
 
 * **sessions**: list of terminals, each has one or more windows
-* **window**: window takes one screen and can be splitted into panes
-* **pane**: smallest part of the window
+* **window**: window takes one screen and can be split into panes
+* **pane**: the smallest part of the window
 
-Usually I have session per project open and multiple windows in each session. For example I can have session `work`, with 2 windows open, one for code in Nvim and one window for running build scripts and tests.
+Usually, I have session per project open and multiple windows in each session. For example, I can have session `work`, with 2 windows open, one for code in Nvim and one window for running build scripts and tests.
 
-Tmux allows to quickly navigate between sessions, windows and panes. With some additional configuration I was able to get Vim key bindings to be used for jumping between splits, browsing logs and copy-pasting text.
+Tmux allows to quickly navigate between sessions, windows and panes. With some additional configuration, I was able to get Vim key bindings to be used for jumping between splits, browsing logs and copy-pasting text.
 
 ### Plugins
 
-[Tmux Plugin Manager (tmp)][tmp link] is used to simplify plugins management. It simplifies installation process and management of plugins.
+[Tmux Plugin Manager (tmp)][tmp link] is used to simplify plugins management. It simplifies the installation process and management of plugins.
 
 It has to be cloned to `~/.tmux/plugins/tpm`.
 
@@ -159,7 +159,7 @@ It has to be cloned to `~/.tmux/plugins/tpm`.
 # predefined settings
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
-# copy to system clipboard
+# copy to the system clipboard
 set -g @plugin 'tmux-plugins/tmux-yank'
 
 # regex search
@@ -171,13 +171,13 @@ set -g @plugin 'tmux-plugins/tmux-open'
 
 ### Colors problem
 
-At some moment I noticed that Nvim colors when it is opened in Tmux are different comparing to Nvim opened outside of Tmux control, to fix that:
+At some moment I noticed that Nvim colours when it is opened in Tmux are different comparing to Nvim opened outside of Tmux control, to fix that:
 
 ```
-# fix terminal colors
+# fix terminal colours
 # set -g default-terminal screen-256color
 set -g default-terminal "screen-256color" # colors!
-# tell Tmux that outside terminal supports true color
+# tell Tmux that outside terminal supports true colour
 set -ga terminal-overrides ",xterm-256color*:Tc"
 ```
 
@@ -201,14 +201,14 @@ bind C-v run \"tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux p
 
 ### Vim-like pane navigation
 
-To be able to navigate between panes using Vim key-bindings, just install next plugin:
+To be able to navigate between panes using Vim key-bindings, just install the next plugin:
 
 ```
 set -g @plugin 'christoomey/vim-tmux-navigator'
 ```
 
 
-To be able to use navigation in fzf window, fzf needs to be added to is_vim check.
+To be able to use the navigation in the fzf window, fzf needs to be added to is_vim check.
 
 ```
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
@@ -307,7 +307,7 @@ Config files are here: [.nvimrc](https://github.com/atsman/env-automation/tree/m
 
 ### Plugins
 
-[Vim-plug][vimplug link] is used to simplify plugin management. It supports on-demand plugin loading for start time fast, and parallel installation / updates.
+[Vim-plug][vimplug link] is used to simplify plugin management. It supports on-demand plugin loading for start time fast, and parallel installation/updates.
 
 ### File explorer
 
@@ -326,7 +326,7 @@ let g:NERDTreeAutoDeleteBuffer = 1 " delete buffer when delete file
 
 Shortcuts:
 
-While buffer is in focus:
+While the buffer is in focus:
 ```
 <leader>fe - toggle file tree
 <leader>ff - find current file
@@ -342,7 +342,7 @@ o / enter - open file in the main buffer
 
 ### Tabs / Splits and Status line
 
-Vim-airline is plugin which draws editor status in a bottom line. It shows current vim mode, current git branch, position of the cursor relative to the beginning of the file.
+Vim-airline is a plugin which draws editor status in a bottom line. It shows current vim mode, current git branch, the position of the cursor relative to the beginning of the file.
 
 ```
 Plug 'bling/vim-airline'
@@ -409,7 +409,7 @@ Shortcuts:
 
 ### Autocomplete
 
-Having editor to predict what are you going to type is must have nowadays. So far the expirience with autocompletion I had with [YouCompleteMe][ycm link].
+Having an editor to predict what are you going to type is must-have nowadays. So far the experience with autocompletion I had with [YouCompleteMe][ycm link].
 
 ### Linting / Formatting
 
@@ -434,7 +434,7 @@ Shortcuts:
 
 ### Git
 
-Git integration is done by next plugins:
+Git integration is done by the next plugins:
 
 ```
 Plug 'tpope/vim-fugitive' " git commands
@@ -443,8 +443,8 @@ Plug 'airblade/vim-gitgutter' " git diff sign
 ```
 
 * [Fugitive][vim fugitive link] - git wrapper, provides all git commands as nvim commands and more.
-* [Gv][gv link] - git commit browser, allows to view huge history line and jump between commits.
-* [Gitgutter][vim gitgutter link] - shows git diff sign for current file, makes it easy to understand whats changed.
+* [Gv][gv link] - git commit browser, allows viewing huge history line and jump between commits.
+* [Gitgutter][vim gitgutter link] - shows git diff sign for the current file, makes it easy to understand what's changed.
 
 Shortcuts:
 ```
@@ -458,7 +458,7 @@ Shortcuts:
 
 ## Zsh
 
-ZSH - highly customizable shell, supports aliases, completions, custom color scheme.
+ZSH - highly customizable shell, supports aliases, completions, custom colour scheme.
 
 ### Plugins
 
@@ -477,7 +477,7 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zsh-users/zsh-history-substring-search
 ```
 
-Allows to search for command based based on typed part. Next bindings are used `j` `k` to cycle through matches.
+Allows to search for command based on typed part. Next bindings are used `j` `k` to cycle through matches.
 
 ```
 bindkey '^[[A' history-substring-search-up
@@ -492,7 +492,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 zplug "plugins/fzf", from:oh-my-zsh
 ```
 
-Plugin allows to quickly search in command history using fuzzy search. 
+The plugin allows to quickly search in command history using fuzzy search. 
 
 `<ctrl><space>` opens fzf fuzzy search with full history.
 
@@ -502,7 +502,7 @@ Plugin allows to quickly search in command history using fuzzy search.
 zplug "zsh-users/zsh-autosuggestions"
 ```
 
-While you type, plugin shows autosuggestion under cursor in gray color based on your history.
+While you type, the plugin shows autosuggestion under cursor in grey colour based on your history.
 
 ### Completitions library
 
@@ -510,7 +510,7 @@ While you type, plugin shows autosuggestion under cursor in gray color based on 
 zplug "zsh-users/zsh-completions"
 ```
 
-While you type and hit `<tab>`, plugins shows possible suggestions for command if it is present in completition library.
+While you type and hit `<tab>`, plugins shows possible suggestions for a command if it is present in competition library.
 
 ## Conclusion
 
@@ -520,7 +520,7 @@ Working directly with command-line tools, gave me a broad understanding of what 
 
 Only with Vim, I learned how actually linters and formatters work, how editors highlight code, what way LSP servers work etc.
 
-Each time returning back to work after long travel and opening laptop with my carifully configured setup, I feel like a kid who just got his new toy.
+Each time returning back to work after long travel and opening laptop with my carefully configured setup, I feel like a kid who just got his new toy.
 
 [neovim link]: https://github.com/neovim/neovim
 [vimplug link]: https://github.com/junegunn/vim-plug
