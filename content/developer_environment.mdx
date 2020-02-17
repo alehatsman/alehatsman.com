@@ -1,6 +1,6 @@
 export const frontmatter = {
-  id: 'developer_environment_automation',
-  title: 'Developer Enviroment and Automation',
+  id: 'developer_environment',
+  title: 'Developer Environment',
   description:
     'Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.',
   tags: [
@@ -23,9 +23,7 @@ export const frontmatter = {
   public: true
 }
 
-# Developer Environment and Automation
-
-<img src={'https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'} altText />
+# Developer Environment
 
 For more than 7 years I have been working professionally as a Software Engineer. During this time I put together a nice developer setup. This article is my attempt to review it, improve it and share it with others.
 
@@ -62,9 +60,11 @@ Command line `Shell` is a program which takes text commands, parses it, executes
 
 <img src="/images/posts/developer_enviroment_productivity/alacritty.svg" height="100px" />
 
-In the beginning I was using terminal just as window where I execute simple commands to run tests or commit something. For quite a while I was fun of terminals that are integrated into your editor. Some forces were attracted me into world of text based apps and instead of having terminal in the Editor, I started having Editor in my terminal.
+At the start of my career, my terminal usage mostly was to run a script to compile code, run tests or interact with git. For quite a long period of time I was fun of terminal that is integrated in my editor.
 
-When you havily use command line, espessially when you search, move around, or write code in Nvim - you expect you terminal to render text fast. At some point I was frustrated with performance of my terminal and found a solution - [Alacritty][alacritty link].
+Some forces attracted me into world of text based apps and instead of having terminal in the Editor, I'm having Editor in the terminal.
+
+When you havily use command line, espessially when you search, move around, or write code in Nvim - you expect you terminal to render text fast. At some point performance of my terminal frustrated me and I found a solution - [Alacritty][alacritty link].
 
 Alacritty is just a very fast windows with shell running inside. It is written in Rust and uses GPU acceleration for rendering. There are no GUI features like windows, tabs or splits.
 
@@ -90,16 +90,16 @@ Alacritty is just a very fast windows with shell running inside. It is written i
 
 ### Configuration
 
-Alacritty is configured using configured using global text file located in `~/.config/alacritty/alacritty.yml`
+Alacritty is configured using using global text file located in `~/.config/alacritty/alacritty.yml`
 
-Next line have to be configured for correct colors rendering:
+Config line below fixes colors rendering:
 
 ```yml
 env:
   TERM: xterm-256color
 ```
 
-I'm using it with `Fira Code` font, but it doesn't support font ligatures.
+I'm using `Fira Code` font, but Alacritty doesn't support font ligatures --> :(
 
 ```yml
 font:
@@ -115,7 +115,7 @@ font:
   size: 14.0
 ```
 
-Setup default shell - `Zsh`
+Configuring default shell, `Zsh` in my case:
 
 ```yml
 shell:
@@ -511,6 +511,16 @@ zplug "zsh-users/zsh-completions"
 ```
 
 While you type and hit `<tab>`, plugins shows possible suggestions for command if it is present in completition library.
+
+## Conclusion
+
+Getting proficient with Vim opened next-level productivity experience for me, allowing having common shortcuts scheme through the whole developer setup.
+
+Working directly with command-line tools, gave me a broad understanding of what is behind fancy buttons people love.
+
+Only with Vim, I learned how actually linters and formatters work, how editors highlight code, what way LSP servers work etc.
+
+Each time returning back to work after long travel and opening laptop with my carifully configured setup, I feel like a kid who just got his new toy.
 
 [neovim link]: https://github.com/neovim/neovim
 [vimplug link]: https://github.com/junegunn/vim-plug
