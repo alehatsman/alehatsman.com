@@ -2,6 +2,7 @@ const toc = require('remark-toc')
 const slug = require('remark-slug')
 const siteMetadata = require('./gatsby/siteMetadata')
 const rssPlugin = require('./gatsby/rss')
+const sitemapPlugin = require('./gatsby/sitemap')
 
 module.exports = {
   siteMetadata,
@@ -94,6 +95,7 @@ module.exports = {
         cookieDomain: 'alehatsman.com'
       }
     },
-    rssPlugin
+    rssPlugin,
+    sitemapPlugin
   ]
 }

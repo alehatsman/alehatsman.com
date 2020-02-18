@@ -15,16 +15,12 @@ export const query = graphql`
     site {
       siteMetadata {
         author
-        description
         email
         github
         image
         linkedin
         telegram
-        title
         twitter
-        twitterUsername
-        url
       }
     }
   }

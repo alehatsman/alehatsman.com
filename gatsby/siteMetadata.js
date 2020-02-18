@@ -11,6 +11,5 @@ module.exports = {
   titleTemplate: 'Aleh Atsman | %s',
   twitter: 'https://twitter.com/alehatsman',
   twitterUsername: '@alehatsman',
-  url: 'https://alehatsman.com',
   siteUrl: 'https://alehatsman.com'
 }
