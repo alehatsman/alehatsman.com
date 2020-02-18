@@ -1,4 +1,5 @@
 const path = require('path')
+const formatPostUrl = require('./gatsby/formatPostUrl')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
@@ -9,7 +10,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             id
-            frontmatter { 
+            frontmatter {
               createdAt
               description
               id
@@ -33,7 +34,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
-      path: `/posts/${node.frontmatter.id}.html`,
+      path: formatPostUrl(node.frontmatter.id),
       // This component will wrap our MDX content
       component: path.resolve('./src/pages/PostPage.tsx'),
       // You can use the values in this context in
