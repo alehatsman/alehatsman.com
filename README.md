@@ -1,6 +1,6 @@
 # alehatsman.com
 
-> Sotware Engineer Blog
+> Software Engineer Blog
 
 ## Dependency installation
 
