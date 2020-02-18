@@ -2,7 +2,7 @@ import React from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Link } from 'gatsby'
 
-import Layout from '@/components/layout'
+import Layout from '@/components/Layout'
 import Content from '@/components/Content'
 import Footer from '@/components/Footer'
 

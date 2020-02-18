@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import PostPage from '@/components/PostPage'
-import Seo from '@/components/seo'
+import Seo from '@/components/Seo'
 
 export const query = graphql`
   query PostQuery($id: String) {

@@ -2,7 +2,7 @@ import React from 'react'
 
 import User from '@/components/User/UserContainer'
 import PostList from '@/components/PostList'
-import Layout from '@/components/layout'
+import Layout from '@/components/Layout'
 
 import { SidebarWrapper, MainWrapper, HomeWrapper } from './HomePage.styled'
 
