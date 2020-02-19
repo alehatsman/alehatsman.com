@@ -1,8 +1,10 @@
 {
   "extends": [
     "standard-with-typescript",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
   ],
+
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaFeatures": {

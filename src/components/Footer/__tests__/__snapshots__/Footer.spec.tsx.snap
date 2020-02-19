@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<footer
+  className="css-x6lf9e-FooterWrapper eif7xo70"
+>
+  <nav
+    className="css-9nbx4v-Nav eif7xo71"
+  >
+    <a
+      className="css-6gsmlm-NavItem eif7xo72"
+      href="https://github.com/atsman/alehatsman.com/blob/master/content/random-id.mdx"
+      target="_blank"
+    >
+      Contribute on Github
+    </a>
+  </nav>
+</footer>
+`;
