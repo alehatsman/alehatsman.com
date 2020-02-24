@@ -4,6 +4,12 @@
   font-weight: 300;
   font-display: swap;
   unicode-range: U+000-5FF;
+  src: url('');
+  src: local('Lato'),
+   url('/fonts/Lato/Light/Lato-Light.woff2') format('woff2'), 
+   url('/fonts/Lato/Light/Lato-Light.woff') format('woff'),
+   url('/fonts/Lato/Light/Lato-Light.ttf') format('truetype'),
+   url('/fonts/Lato/Light/Lato-Light.eot') format('embedded-opentype');
 }
 
 @font-face {
@@ -12,6 +18,12 @@
   font-weight: 700;
   font-display: swap;
   unicode-range: U+000-5FF;
+  src: url('');
+  src: local('Lato'),
+   url('/fonts/Lato/Bold/Lato-Bold.woff2') format('woff2'), 
+   url('/fonts/Lato/Bold/Lato-Bold.woff') format('woff'),
+   url('/fonts/Lato/Bold/Lato-Bold.ttf') format('truetype'),
+   url('/fonts/Lato/Bold/Lato-Bold.eot') format('embedded-opentype');
 }
 
 @font-face {
@@ -20,6 +32,12 @@
   font-weight: 300;
   font-display: swap;
   unicode-range: U+000-5FF;
+  src: url('');
+  src: local('Lato'),
+   url('/fonts/Roboto_Slab/Light/RobotoSlab-Light.woff2') format('woff2'), 
+   url('/fonts/Roboto_Slab/Light/RobotoSlab-Light.woff') format('woff'),
+   url('/fonts/Roboto_Slab/Light/RobotoSlab-Light.ttf') format('truetype'),
+   url('/fonts/Roboto_Slab/Light/RobotoSlab-Light.eot') format('embedded-opentype');
 }
 
 @font-face {
@@ -28,4 +46,10 @@
   font-weight: 700;
   font-display: swap;
   unicode-range: U+000-5FF;
+  src: url('');
+  src: local('Lato'),
+   url('/fonts/Roboto_Slab/Bold/RobotoSlab-Bold.woff2') format('woff2'), 
+   url('/fonts/Roboto_Slab/Bold/RobotoSlab-Bold.woff') format('woff'),
+   url('/fonts/Roboto_Slab/Bold/RobotoSlab-Bold.ttf') format('truetype'),
+   url('/fonts/Roboto_Slab/Bold/RobotoSlab-Bold.eot') format('embedded-opentype');
 }

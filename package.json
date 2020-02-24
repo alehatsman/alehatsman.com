@@ -4,6 +4,30 @@
   "description": "Software Engineering Blog",
   "version": "0.1.0",
   "author": "Aleh Atsman <aleh.atsman@gmail.com>",
+  "keywords": [
+    "blog",
+    "software engineering"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsman/alehatsman.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atsman/alehatsman.com/issues"
+  },
   "eslintConfig": {
     "rules": {
       "no-unused-vars": "off",
@@ -32,7 +56,6 @@
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-plugin-typescript": "^2.1.27",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-autolink-headers": "^2.1.24",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^3.1.44",
@@ -84,29 +107,5 @@
     "remark-toc": "^7.0.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
-  },
-  "keywords": [
-    "blog",
-    "software engineering"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "types:check": "tsc --noEmit",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/atsman/alehatsman.com.git"
-  },
-  "bugs": {
-    "url": "https://github.com/atsman/alehatsman.com/issues"
   }
 }
