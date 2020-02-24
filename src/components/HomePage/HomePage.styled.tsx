@@ -4,7 +4,7 @@ import { media } from '@/styles/media'
 
 export const SidebarWrapper = styled.section`
   display: flex;
-  width: 30%;
+  width: 190px;
 `
 
 export const MainWrapper = styled.section`

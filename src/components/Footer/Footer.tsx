@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FaIcon from '@/components/FaIcon'
+import { FaGithubAlt } from 'react-icons/fa'
 
 import { FooterWrapper, Nav, NavItem } from './Footer.styled'
 
@@ -11,7 +11,7 @@ const Footer = ({ id }: { id: string }) => (
   <FooterWrapper>
     <Nav>
       <NavItem href={formatLink(id)} target='_blank'>
-        <FaIcon icon={['fab', 'github-alt']} />
+        <FaGithubAlt />
         Contribute on Github
       </NavItem>
     </Nav>

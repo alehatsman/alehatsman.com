@@ -6,9 +6,8 @@ export const query = graphql`
   query {
     file(relativePath: {eq: "images/me2.jpg"}) {
       childImageSharp {
-        fluid {
-          src
-          base64
+        fluid(maxWidth: 200) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -29,7 +28,7 @@ export const query = graphql`
 const dataToUserProps = (data): UserProps => {
   return {
     ...data.site.siteMetadata,
-    image: data.file.childImageSharp.fluid.src
+    image: data.file.childImageSharp.fluid
   }
 }
 

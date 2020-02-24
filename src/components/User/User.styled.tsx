@@ -1,3 +1,4 @@
+import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 
 import colors from '@/styles/colors'
@@ -8,9 +9,8 @@ export const UserWrapper = styled.div`
   flex-direction: column;
 `
 
-export const Photo = styled.img`
+export const Photo = styled(Img)`
   display: none;
-  width: 100%;
   border-radius: 5px;
 
   ${media.tablet`

@@ -1,5 +1,5 @@
 import React from 'react'
-import FaIcon from '@/components/FaIcon'
+import { FaTelegram, FaGithubAlt, FaAt, FaLinkedin } from 'react-icons/fa'
 
 import {
   UserWrapper,
@@ -28,7 +28,7 @@ const formatUrl = (url: string) => {
 const User = ({ author, email, github, linkedin, image, telegram }: Props) => {
   return (
     <UserWrapper>
-      <Photo src={image} />
+      <Photo fluid={image} />
 
       <Fullname>{author}</Fullname>
 
@@ -36,7 +36,7 @@ const User = ({ author, email, github, linkedin, image, telegram }: Props) => {
 
       <PointsWrapper>
         <Point>
-          <FaIcon icon={['fab', 'telegram']} />
+          <FaTelegram />
           <PointText>
             <a href={telegram}>
               @alehatsman
@@ -45,7 +45,7 @@ const User = ({ author, email, github, linkedin, image, telegram }: Props) => {
         </Point>
 
         <Point>
-          <FaIcon icon={['fab', 'github-alt']} />
+          <FaGithubAlt />
           <PointText>
             <a href={github}>
               {formatUrl(github)}
@@ -54,14 +54,14 @@ const User = ({ author, email, github, linkedin, image, telegram }: Props) => {
         </Point>
 
         <Point>
-          <FaIcon icon='at' />
+          <FaAt />
           <PointText>
             <a href={`mailto:${email}`}>{email}</a>
           </PointText>
         </Point>
 
         <Point>
-          <FaIcon icon={['fab', 'linkedin']} />
+          <FaLinkedin />
           <PointText>
             <a href={linkedin}>
               {formatUrl(linkedin)}

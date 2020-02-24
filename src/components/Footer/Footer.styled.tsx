@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import FaIcon from '@/components/FaIcon'
 import colors from '@/styles/colors'
 
 export const FooterWrapper = styled.footer`
@@ -17,7 +16,7 @@ export const Nav = styled.nav`
 
 export const NavItem = styled.a`
   padding: 5px;
-  ${FaIcon} {
+  svg {
     margin-right: 10px;
   }
   font-size: 20px;

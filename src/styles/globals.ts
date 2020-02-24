@@ -1,8 +1,6 @@
 import { css } from '@emotion/core'
 import colors from '@/styles/colors'
 
-import './fontawersome'
-
 export const globalStyles = css`
   html, body {
     height: 100%;
