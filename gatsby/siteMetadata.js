@@ -7,7 +7,7 @@ module.exports = {
   image: 'images/me2.jpg',
   linkedin: 'https://linkedin.com/in/alehatsman',
   telegram: 'https://t.me/alehatsman',
-  title: 'Software Engineer Blog',
+  title: 'Software Engineer',
   titleTemplate: 'Aleh Atsman | %s',
   twitter: 'https://twitter.com/alehatsman',
   twitterUsername: '@alehatsman',
