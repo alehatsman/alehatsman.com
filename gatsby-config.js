@@ -18,6 +18,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
+    'gatsby-remark-images',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -66,6 +67,13 @@ module.exports = {
       options: {
         name: 'posts',
         path: `${__dirname}/content/`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/static/images`
       }
     },
     'gatsby-transformer-sharp',

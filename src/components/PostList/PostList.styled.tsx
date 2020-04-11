@@ -1,22 +1,28 @@
 import styled from '@emotion/styled'
+import Img from 'gatsby-image'
 
-import colors from '@/styles/colors'
+import { color, fontSizes } from '@/styles/system'
 
-export const PostListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
+import { Grid, Row, Column } from '@/components/Grid'
+
+export const PostListWrapper = styled.div``
 
 export const PostWrapper = styled.div`
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   &:not(:first-of-type) {
     margin-top: 30px;
   }
 `
 
 export const PostTitle = styled.h1`
-  color: ${colors.black};
-  font-family: 'Lato', sans-serif;
-  font-size: 24px;
+  color: ${color.black};
+  font-family: "Lato", sans-serif;
+  font-size: ${fontSizes.postTitle.default};
   font-weight: 700;
   font-style: normal;
   margin: 0;
@@ -24,25 +30,16 @@ export const PostTitle = styled.h1`
 
 export const PostDescription = styled.div`
   margin-top: 10px;
-  font-family: 'Roboto Slab', serif;
-  font-size: 1.4rem;
+  font-family: "Roboto Slab", serif;
+  font-size: ${fontSizes.postDescription.default};
   font-weight: 300;
   line-height: 1.5;
   letter-spacing: 0.01rem;
 `
 
-export const PostFooter = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-export const PostFooterItem = styled.div`
+export const PostDate = styled.div`
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
-  color: ${colors.dimGray};
-
-  &:not(:first-of-type) {
-    margin-left: 10px;
-  }
+  color: ${color.dimGray};
 `

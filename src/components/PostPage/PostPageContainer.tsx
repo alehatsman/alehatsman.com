@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import PostPage from '@/components/PostPage'
-import Seo from '@/components/Seo'
+import { PostPage } from '@/components/PostPage'
+import { Seo } from '@/components/Seo'
 
 export const query = graphql`
   query PostQuery($id: String) {
@@ -23,15 +23,15 @@ export const query = graphql`
   }
 `
 
-const PostPageContainer = (props: any) => {
-  return <>
-    <Seo
-      title={props.data.mdx.frontmatter.title}
-      description={props.data.mdx.frontmatter.description}
-      keywords={props.data.mdx.frontmatter.tags}
-    />
-    <PostPage post={props.data.mdx} />
-  </>
+export const PostPageContainer = (props: any) => {
+  return (
+    <>
+      <Seo
+        title={props.data.mdx.frontmatter.title}
+        description={props.data.mdx.frontmatter.description}
+        keywords={props.data.mdx.frontmatter.tags}
+      />
+      <PostPage post={props.data.mdx} />
+    </>
+  )
 }
-
-export default PostPageContainer

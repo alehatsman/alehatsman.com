@@ -1,8 +1,9 @@
 import { css } from '@emotion/core'
-import colors from '@/styles/colors'
+import { color } from '@/styles/system'
 
 export const globalStyles = css`
-  html, body {
+  html,
+  body {
     height: 100%;
     width: 100%;
   }
@@ -12,15 +13,16 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     text-rendering: optimizeLegibility;
     font-size: 1.6rem;
-    color: ${colors.black};
+    color: ${color.black};
     margin: 0;
     padding: 0;
   }
 
-  #___gatsby, #gatsby-focus-wrapper {
+  #___gatsby,
+  #gatsby-focus-wrapper {
     height: 100%;
   }
 
@@ -32,7 +34,9 @@ export const globalStyles = css`
     text-decoration: none;
   }
 
-  a:link, a:visited, a:active {
+  a:link,
+  a:visited,
+  a:active {
     color: inherit;
   }
 `

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 export const generateId = (text: string = '') => {
   return text
@@ -9,18 +9,20 @@ export const generateId = (text: string = '') => {
     .toLowerCase()
 }
 
-export const Anchor = ({
-  id,
-  children
-}: {
+interface Props {
   id: string
-  children: React.ReactNode
-}) => {
-  return <a href={`#${generateId(id)}`}>{id || children}</a>
 }
 
-const Header = Component => ({ children }) => {
-  return <Component id={generateId(children)}>{children}</Component>
-}
+export const Anchor: FC<Props> = ({ id, children }) => (
+  <a href={`#${generateId(id)}`}>
+    {id || children}
+  </a>
+)
+
+const Header = Component => ({ children }) => (
+  <Component id={generateId(children)}>
+    {children}
+  </Component>
+)
 
 export default Header
