@@ -2,10 +2,10 @@ import React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-import colors from '@/styles/colors'
+import { color } from '@/styles/system'
 
-import CodeBlock from './CodeBlock'
-import Image from './Image'
+import { CodeBlock } from './CodeBlock'
+import { Image } from './Image'
 import { Anchor } from './Header'
 
 const resetBox = css`
@@ -30,15 +30,15 @@ const Wrapper = styled.main`
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol";
+    "Segoe UI Symbol";
   letter-spacing: 0.01rem;
 `
 
 const AWrapper = styled.a`
-  color: ${colors.blue} !important;
+  color: ${color.blue} !important;
 `
 
-const a = props => <AWrapper {...props} />
+const a = (props) => <AWrapper {...props} />
 
 const pre = styled.pre`
   margin-top: 0;
@@ -47,7 +47,7 @@ const pre = styled.pre`
 
 const h = css`
   ${resetBox} font-weight: 700;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   letter-spacing: -0.0125rem;
   margin-bottom: 0.5rem;
   overflow: auto;
@@ -55,7 +55,7 @@ const h = css`
 
 const h1 = styled.h1`
   ${h}
-  color: ${colors.black};
+  color: ${color.black};
   font-size: 4rem;
   margin-top: 1rem;
   &:not(:fist-child) {
@@ -107,8 +107,8 @@ const inlineCode = styled.code`
 const blockquote = styled.blockquote`
   margin: 0;
   padding: 0 15px;
-  border-left: 4px solid ${colors.lightGray};
-  color: ${colors.grimmyGray};
+  border-left: 4px solid ${color.lightGray};
+  color: ${color.grimmyGray};
 `
 
 const strong = styled.strong`

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from '@emotion/styled'
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
@@ -14,7 +14,7 @@ const Pre = styled.pre`
   overflow: scroll;
 `
 
-const CodeBlock = ({ children, className }: Props) => {
+export const CodeBlock: FC<Props> = ({ children, className }) => {
   const language = className ? className.replace(/language-/, '') : ''
   return (
     <Highlight
@@ -37,5 +37,3 @@ const CodeBlock = ({ children, className }: Props) => {
     </Highlight>
   )
 }
-
-export default CodeBlock

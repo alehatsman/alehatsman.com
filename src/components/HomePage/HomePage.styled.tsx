@@ -1,35 +1,25 @@
 import styled from '@emotion/styled'
 
+import { PostListWrapper } from '@/components/PostList/PostList.styled'
+
 import { media } from '@/styles/media'
 
-export const SidebarWrapper = styled.section`
-  display: flex;
-  width: 190px;
-`
-
-export const MainWrapper = styled.section`
-  display: flex;
-  margin-top: 30px;
-
-  ${media.tablet`
-    margin-top: 0;
-    margin-left: 50px;
-  `}
-`
-
-export const HomeWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
+`
+
+export const InnerWrapper = styled.div`
   margin: 0 auto;
-  padding: 20px 10px;
+  padding: 0 20px;
 
   ${media.tablet`
-    flex-direction: row;
-    max-width: 960px;
+    flex-direction: column;
+    max-width: 844px;
   `}
 
-  ${media.desktop`
-    max-width: 960px;
-    padding: 50px 40px;
-  `}
+  ${PostListWrapper} {
+    margin-top: 30px;
+  }
 `

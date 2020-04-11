@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from '@emotion/styled'
 
 const getImageSize = (size: string) => {
@@ -37,11 +37,9 @@ const ImgWrapper = styled.figure`
   margin: 0 0 2rem 0;
 `
 
-const Image = (props: Props) => (
+export const Image: FC<Props> = (props) => (
   <ImgWrapper>
     <StyledImg {...props} />
     {props.caption && <figcaption>{props.caption}</figcaption>}
   </ImgWrapper>
 )
-
-export default Image

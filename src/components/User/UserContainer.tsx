@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { FC, ComponentType, ComponentProps } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import User, { Props as UserProps } from './User'
+import { UserView } from './UserView'
+
+type UserProps = ComponentProps<typeof UserView>
+
+interface Props {
+  Presenter: ComponentType<UserProps>
+}
 
 export const query = graphql`
   query {
-    file(relativePath: {eq: "images/me2.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 200) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     site {
       siteMetadata {
         author
@@ -25,16 +24,20 @@ export const query = graphql`
   }
 `
 
+const formatUrl = (url: string) => {
+  const { host, pathname } = new URL(url)
+  return `${host}${pathname}`
+}
+
 const dataToUserProps = (data): UserProps => {
   return {
     ...data.site.siteMetadata,
-    image: data.file.childImageSharp.fluid
+    github: formatUrl(data.site.siteMetadata.github),
+    linkedin: formatUrl(data.site.siteMetadata.linkedin)
   }
 }
 
-const UserContainer = () => {
+export const UserContainer: FC<Props> = ({ Presenter }) => {
   const data = useStaticQuery(query)
-  return <User {...(dataToUserProps(data))} />
+  return <Presenter {...dataToUserProps(data)} />
 }
-
-export default UserContainer

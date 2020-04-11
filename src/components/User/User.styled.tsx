@@ -1,54 +1,41 @@
-import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 
-import colors from '@/styles/colors'
-import { media } from '@/styles/media'
+import { color, fontSizes } from '@/styles/system'
 
 export const UserWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-`
-
-export const Photo = styled(Img)`
-  display: none;
-  border-radius: 5px;
-
-  ${media.tablet`
-    display: block;
-  `}
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const Fullname = styled.div`
-  ${media.tablet`
-    margin-top: 30px;
-  `}
-  font-family: 'Lato', sans-serif;
-  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  font-size: ${fontSizes.headerTitle.default};
   font-weight: 700;
-  line-height: 1;
-  color: ${colors.black};
+  line-height: 1.5;
+  color: ${color.black};
 `
 
 export const Description = styled.div`
-  margin-top: 1rem;
-  font-size: 1.8rem;
   font-weight: 300;
-  color: ${colors.dimGray};
+  color: ${color.dimGray};
 `
 
 export const PointsWrapper = styled.div`
-  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
 `
 
 export const Point = styled.div`
   display: flex;
   align-items: center;
-  &:not(:first-of-type) {
-    margin-top: 1rem;
+
+  &:not(:first-child) {
+    margin-left: 15px;
   }
 
   path {
-    fill: ${colors.grimmyGray};
+    fill: ${color.grimmyGray};
   }
 `
 
