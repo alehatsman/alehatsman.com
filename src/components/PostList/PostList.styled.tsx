@@ -1,9 +1,6 @@
 import styled from '@emotion/styled'
-import Img from 'gatsby-image'
 
 import { color, fontSizes } from '@/styles/system'
-
-import { Grid, Row, Column } from '@/components/Grid'
 
 export const PostListWrapper = styled.div``
 

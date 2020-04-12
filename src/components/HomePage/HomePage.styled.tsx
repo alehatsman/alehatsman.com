@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  margin-bottom: 30px;
 `
 
 export const InnerWrapper = styled.div`

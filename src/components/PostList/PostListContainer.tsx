@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import { Post } from '@/types/Post'
 import { PostListView } from './PostListView'
-import { Post } from './types'
 
 const queryMdxPosts = graphql`
   {
@@ -36,6 +36,7 @@ const queryMdxPosts = graphql`
                 }
               }
             }
+            featuredImageAlt
           }
         }
       }

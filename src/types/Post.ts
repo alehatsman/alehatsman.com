@@ -6,5 +6,7 @@ export interface Post {
   description: string
   createdAt: moment.Moment
   timeToRead: number
-  featuredImage: any
+  featuredImage?: any
+  featuredImageAlt?: string
+  body?: any
 }

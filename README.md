@@ -14,4 +14,4 @@ yarn
 yarn run develop
 ```
 
-[blog website](https://alehatsman.com)
+[alehatsman.com](https://alehatsman.com)

@@ -18,7 +18,7 @@ module.exports = {
     feeds: [
       {
         serialize: ({ query: { site, allMdx } }) => {
-          return allMdx.edges.map(edge => {
+          return allMdx.edges.map((edge) => {
             return Object.assign({}, edge.node.frontmatter, {
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.createdAt,
@@ -49,6 +49,7 @@ module.exports = {
                     tags
                     title
                     updatedAt
+                    featuredImage
                   }
                 }
               }

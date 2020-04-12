@@ -11,13 +11,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node {
             id
             frontmatter {
-              createdAt
-              description
               id
-              public
-              tags
-              title
-              updatedAt
             }
           }
         }
@@ -36,7 +30,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // (or `node.frontmatter.slug`)
       path: formatPostUrl(node.frontmatter.id),
       // This component will wrap our MDX content
-      component: path.resolve('./src/components/PostPage/PostPageContainer.tsx'),
+      component: path.resolve(
+        './src/components/PostPage/PostPageContainer.tsx'
+      ),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id }
