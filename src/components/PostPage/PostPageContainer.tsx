@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 
-import { PostPage } from '@/components/PostPage'
 import { Seo } from '@/components/Seo'
+import { PostPageView } from './PostPageView'
 
 export const query = graphql`
   query PostQuery($id: String) {
@@ -18,20 +18,39 @@ export const query = graphql`
         tags
         title
         updatedAt
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
 `
 
-export const PostPageContainer = (props: any) => {
+interface Props {
+  data: any
+}
+
+const convertDataToPresenterProps = (data: any) => ({
+  ...data.mdx.frontmatter,
+  body: data.mdx.body,
+  timeToRead: data.mdx.timeToRead
+})
+
+const PostPageContainer: FC<Props> = ({ data }) => {
   return (
     <>
       <Seo
-        title={props.data.mdx.frontmatter.title}
-        description={props.data.mdx.frontmatter.description}
-        keywords={props.data.mdx.frontmatter.tags}
+        title={data.mdx.frontmatter.title}
+        description={data.mdx.frontmatter.description}
+        keywords={data.mdx.frontmatter.tags}
       />
-      <PostPage post={props.data.mdx} />
+      <PostPageView post={convertDataToPresenterProps(data)} />
     </>
   )
 }
+
+export default PostPageContainer

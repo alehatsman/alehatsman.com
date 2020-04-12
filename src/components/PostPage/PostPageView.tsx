@@ -5,10 +5,11 @@ import { Link } from 'gatsby'
 import { Layout } from '@/components/Layout'
 import { Content } from '@/components/Content'
 import { Footer } from '@/components/Footer'
+import { Post } from '@/types/Post'
 
 import { Wrapper, HomeLink } from './PostPage.styled'
 
-export const PostPage: FC<{ post: any }> = ({ post }) => (
+export const PostPageView: FC<{ post: Post }> = ({ post }) => (
   <Layout>
     <Wrapper>
       <Link to="/" css={HomeLink}>
@@ -17,7 +18,7 @@ export const PostPage: FC<{ post: any }> = ({ post }) => (
       <Content>
         <MDXRenderer>{post.body}</MDXRenderer>
       </Content>
-      <Footer id={post.frontmatter.id} />
+      <Footer id={post.id} />
     </Wrapper>
   </Layout>
 )

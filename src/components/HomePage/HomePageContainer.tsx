@@ -8,7 +8,7 @@ import React, {
 import { graphql, useStaticQuery } from 'gatsby'
 import { Seo } from '@/components/Seo'
 import { Layout } from '@/components/Layout'
-import { Post } from '@/components/PostList/types'
+import { Post } from '@/types/Post'
 
 import { HomePageView } from './HomePageView'
 

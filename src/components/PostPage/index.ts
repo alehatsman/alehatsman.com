@@ -1,1 +1,1 @@
-export { PostPage } from './PostPage'
+export { default, query } from './PostPageContainer'

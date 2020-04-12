@@ -15,7 +15,6 @@ export interface Props {
   github: string
   image: string
   linkedin: string
-  telegram: string
 }
 
 export const UserView: FC<Props> = ({
@@ -23,21 +22,12 @@ export const UserView: FC<Props> = ({
   email,
   github,
   image,
-  linkedin,
-  telegram
+  linkedin
 }) => {
   return (
     <UserWrapper>
       <Fullname>{author}</Fullname>
-
       <PointsWrapper>
-        <Point>
-          <FaTelegram />
-          <PointText>
-            <a href={telegram}>{telegram}</a>
-          </PointText>
-        </Point>
-
         <Point>
           <FaGithubAlt />
           <PointText>

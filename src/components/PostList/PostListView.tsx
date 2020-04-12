@@ -4,16 +4,14 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Grid, Row, Column } from '@/components/Grid'
-
-import { Post } from './types'
+import { Post } from '@/types/Post'
 
 import {
   PostListWrapper,
   PostWrapper,
   PostTitle,
   PostDescription,
-  PostDate,
-  PostImage
+  PostDate
 } from './PostList.styled'
 
 function formatDate (date) {
@@ -30,9 +28,13 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
             <PostDescription>{post.description}</PostDescription>
             <PostDate>{formatDate(post.createdAt)}</PostDate>
           </Column>
-          <Column width={4}>
+          <Column width={4} left={1}>
             {post.featuredImage ? (
-              <Img style={{ maxHeight: '150px' }} fluid={post.featuredImage} />
+              <Img
+                style={{ maxHeight: '150px' }}
+                fluid={post.featuredImage}
+                alt={post.featuredImageAlt}
+              />
             ) : null}
           </Column>
         </Row>
