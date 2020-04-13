@@ -11,7 +11,7 @@ import {
   PostWrapper,
   PostTitle,
   PostDescription,
-  PostDate
+  PostFooter
 } from './PostList.styled'
 
 function formatDate (date) {
@@ -26,7 +26,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
           <Column width={8}>
             <PostTitle>{post.title}</PostTitle>
             <PostDescription>{post.description}</PostDescription>
-            <PostDate>{formatDate(post.createdAt)}</PostDate>
+            <PostFooter>{formatDate(post.createdAt)} | {post.timeToRead} min read</PostFooter>
           </Column>
           <Column width={4} left={1}>
             {post.featuredImage ? (

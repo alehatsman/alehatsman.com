@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import GatsbyImage from 'gatsby-image'
 
-import { color } from '@/styles/system'
-
+import { color, size, fontSizes, weight } from '@/styles/system'
 import { CodeBlock } from './CodeBlock'
 import { Image } from './Image'
 import { Anchor } from './Header'
@@ -23,10 +23,9 @@ const marginBottom = css`
 `
 
 const Wrapper = styled.main`
-  font-size: 1.8rem;
-  font-weight: 300;
+  font-size: ${fontSizes.text.default};
+  font-weight: ${weight.regular};
   line-height: 1.5;
-
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -56,7 +55,7 @@ const h = css`
 const h1 = styled.h1`
   ${h}
   color: ${color.black};
-  font-size: 4rem;
+  font-size: ${fontSizes.h1}; 
   margin-top: 1rem;
   &:not(:fist-child) {
     margin-top: 3.5rem;
@@ -66,21 +65,22 @@ const h1 = styled.h1`
 const h2 = styled.h2`
   ${h}
   margin-top: 2.5rem;
-  font-size: 3rem;
+  font-size: ${fontSizes.h2};
 `
 
 const h3 = styled.h3`
   ${h}
-  font-size: 2rem;
+  font-size: ${fontSizes.h3};
 `
 
 const h4 = styled.h4`
   ${h}
-  font-size: 1.8rem;
+  font-size: ${fontSizes.h4};
 `
 
 const p = styled.p`
-  ${resetBox} ${marginBottom};
+  ${resetBox}
+  ${marginBottom}
 `
 
 const list = css`
@@ -112,13 +112,18 @@ const blockquote = styled.blockquote`
 `
 
 const strong = styled.strong`
-  font-weight: 700;
+  font-weight: ${weight.bold};
 `
+
+const FeaturedImage: FC<any> = (props) => (
+  <GatsbyImage fluid={props.featuredImage.childImageSharp.fluid} />
+)
 
 export default {
   wrapper: Wrapper,
   a,
   img: Image,
+  FeaturedImage,
   pre,
   code: CodeBlock,
   inlineCode: inlineCode,

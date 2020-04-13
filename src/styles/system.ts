@@ -37,6 +37,11 @@ export const weight = {
 export const fontColors = {}
 
 export const fontSizes = {
+  h1: size.xl,
+  h2: size.l,
+  h3: size.m,
+  h4: size.m,
+
   postTitle: {
     default: size.l
   },
@@ -46,6 +51,10 @@ export const fontSizes = {
   },
 
   headerTitle: {
+    default: size.m
+  },
+
+  text: {
     default: size.m
   }
 }

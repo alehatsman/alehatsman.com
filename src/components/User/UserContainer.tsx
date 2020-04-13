@@ -17,7 +17,6 @@ export const query = graphql`
         github
         image
         linkedin
-        telegram
         twitter
       }
     }
