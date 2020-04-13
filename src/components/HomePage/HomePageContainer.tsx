@@ -6,8 +6,9 @@ import React, {
   ComponentProps
 } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+
+import { ThemeWrapper } from '@/styles/ThemeWrapper'
 import { Seo } from '@/components/Seo'
-import { Layout } from '@/components/Layout'
 import { Post } from '@/types/Post'
 
 import { HomePageView } from './HomePageView'
@@ -18,9 +19,9 @@ interface Props {
 
 export const HomePageContainer: FC<Props> = ({ Presenter }) => {
   return (
-    <Layout>
+    <ThemeWrapper>
       <Seo />
       <Presenter />
-    </Layout>
+    </ThemeWrapper>
   )
 }

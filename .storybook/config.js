@@ -1,7 +1,9 @@
 import { configure } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { addDecorator } from "@storybook/react"
+import centered from '@storybook/addon-centered/react';
 import { GlobalDecorator } from "./GlobalDecorator"
+
 // automatically import all files ending in *.stories.js
 configure(
   require.context("../src", true, /\.stories\.(js|jsx|ts|tsx)$/),
@@ -20,4 +22,5 @@ window.___navigate = (pathname) => {
   action("NavigateTo:")(pathname)
 }
 
+addDecorator(centered)
 addDecorator(GlobalDecorator)

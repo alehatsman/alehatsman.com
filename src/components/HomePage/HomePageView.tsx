@@ -1,17 +1,31 @@
 import React, { FC } from 'react'
 
-import { User } from '@/components/User'
+import { Box } from '@/components/Box'
+import { Header } from '@/components/Header'
 import { PostList } from '@/components/PostList'
-
-import { Wrapper, InnerWrapper } from './HomePage.styled'
+import { Spacer } from '@/components/Spacer'
 
 export const HomePageView: FC = () => {
   return (
-    <Wrapper>
-      <InnerWrapper>
-        <User />
+    <Box 
+      display="flex" 
+      flexDirection="column"
+      mt={4}
+      mb={4}
+    >
+      <Box
+        my={2}
+        mx="auto"
+
+        width={[
+          1,
+          '844px'
+        ]}
+      >
+        <Header />
+        <Spacer mt={4} />
         <PostList />
-      </InnerWrapper>
-    </Wrapper>
+      </Box>
+    </Box>
   )
 }
