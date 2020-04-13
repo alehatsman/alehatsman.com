@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from '@emotion/styled'
 import { space, layout, color, flexbox, border } from 'styled-system'
 
@@ -7,9 +6,9 @@ export const Box = styled.div(
   color,
   flexbox,
   layout,
-  space,
+  space
 )
 
 export const Flex = styled(Box)({
-  display: 'flex',
+  display: 'flex'
 })

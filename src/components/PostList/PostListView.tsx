@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import moment from 'moment'
 import Img from 'gatsby-image'
-import { css } from '@emotion/core'
 
 import { Grid, Row, Column } from '@/components/Grid'
 import { Box } from '@/components/Box'
@@ -16,7 +15,7 @@ const formatDate = (date: moment.Moment) => {
 }
 
 const PostItem: FC<{ post: Post }> = ({ post }) => (
-  <Link 
+  <Link
     to={`/posts/${post.id}.html`}
     display="flex"
     width="100%"
@@ -24,8 +23,8 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
     <Grid>
       <Row>
         <Column width={8}>
-          <Heading 
-            color="black" 
+          <Heading
+            color="black"
             fontSize={3}
             fontWeight="bold"
           >
@@ -70,13 +69,13 @@ export const PostListView: FC<{ posts: Post[] }> = ({ posts }) => (
       <React.Fragment key={post.id}>
         {
           index !== 0 ? (
-            <Spacer 
+            <Spacer
               mt={3}
             />
           ) : null
-        } 
-        <PostItem 
-          post={post} 
+        }
+        <PostItem
+          post={post}
         />
       </React.Fragment>
     ))}

@@ -16,9 +16,9 @@ export const Footer: FC<{ id: string }> = ({ id }) => (
     borderColor="gray.0"
     py={3}
   >
-    <Link 
+    <Link
       display="flex"
-      href={formatLink(id)} 
+      href={formatLink(id)}
       target="_blank"
     >
       <FaGithubAlt />

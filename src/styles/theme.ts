@@ -7,14 +7,14 @@ export const theme = {
     bold: 600
   },
   lineHeights: {
-    normal: 1, 
+    normal: 1,
     title: 1.25,
     copy: 1.5
   },
   letterSpacings: {
     normal: 'normal',
     tracked: '0.01rem',
-    tight: '-0.0125rem',
+    tight: '-0.0125rem'
   },
   fonts: {
     lato: '"Lato", sans-serif',
@@ -30,7 +30,7 @@ export const theme = {
     gray: [
       '#DDD',
       '#777',
-      '#6A6A6A',
+      '#6A6A6A'
     ],
     blue: '#0094FF'
   },
