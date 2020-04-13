@@ -9,20 +9,6 @@
     "software engineering"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "types:check": "tsc --noEmit",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
-    "storybook": "NODE_ENV=production start-storybook -s public",
-    "build-storybook": "NODE_ENV=production build-storybook -s public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atsman/alehatsman.com.git"
@@ -30,17 +16,24 @@
   "bugs": {
     "url": "https://github.com/atsman/alehatsman.com/issues"
   },
-  "eslintConfig": {
-    "rules": {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "error"
-    }
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "jest",
+    "types:check": "tsc --noEmit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
+    "storybook": "NODE_ENV=production start-storybook -s public",
+    "build-storybook": "NODE_ENV=production build-storybook -s public"
   },
-  "standardx": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint/eslint-plugin"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint && yarn run types:check"
+    }
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
@@ -107,6 +100,7 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "eslint-plugin-standard": "4",
     "gatsby-plugin-google-analytics": "^2.1.35",
+    "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "jest-emotion": "^10.0.27",

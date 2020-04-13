@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import GatsbyImage from 'gatsby-image'
 
-import { color, size, fontSizes, weight } from '@/styles/system'
+import { color, fontSizes, weight } from '@/styles/system'
 import { CodeBlock } from './CodeBlock'
 import { Image } from './Image'
 import { Anchor } from './Header'

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { FaTelegram, FaGithubAlt, FaAt, FaLinkedin } from 'react-icons/fa'
+import { FaGithubAlt, FaAt, FaLinkedin } from 'react-icons/fa'
 
 import { Link } from '@/components/Link'
 import { Box } from '@/components/Box'
@@ -20,15 +20,15 @@ const formatUrl = (url: string) => {
 }
 
 const ExternalLink = ({ Icon, href, label }: any) => (
-  <Box 
-    display="flex" 
+  <Box
+    display="flex"
     alignItems="center"
     color="gray.2"
   >
     <Icon />
     <Spacer ml={1} />
-    <Link 
-      to={href} 
+    <Link
+      to={href}
       fontSize={1}
     >
       {label}
@@ -44,7 +44,7 @@ export const HeaderView: FC<Props> = ({
   linkedin
 }) => {
   return (
-    <Box 
+    <Box
       display="flex"
       flexDirection="row"
       justifyContent="space-between"

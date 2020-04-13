@@ -25,7 +25,7 @@ export const query = graphql`
 
 const dataToHeaderProps = (data): HeaderProps => {
   return {
-    ...data.site.siteMetadata,
+    ...data.site.siteMetadata
   }
 }
 

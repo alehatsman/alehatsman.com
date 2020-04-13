@@ -1,4 +1,3 @@
-import React, { FC, useRef, useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 
 export const Grid = styled.div`

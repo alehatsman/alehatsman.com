@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { SerializedStyles } from '@emotion/serialize'
 import { Link as GatsbyLink } from 'gatsby'

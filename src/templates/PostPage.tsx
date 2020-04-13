@@ -6,7 +6,6 @@ import { Box } from '@/components/Box'
 import { Content } from '@/components/Content'
 import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
-import { Post } from '@/types/Post'
 import { Seo } from '@/components/Seo'
 import { ThemeWrapper } from '@/styles/ThemeWrapper'
 
@@ -16,7 +15,7 @@ const convertDataToPresenterProps = (data: any) => ({
   timeToRead: data.mdx.timeToRead
 })
 
-const PostPage: FC<Props> = ({ data }: any) => {
+const PostPage: FC<any> = ({ data }) => {
   const post = convertDataToPresenterProps(data)
 
   return (
@@ -26,8 +25,8 @@ const PostPage: FC<Props> = ({ data }: any) => {
         description={data.mdx.frontmatter.description}
         keywords={data.mdx.frontmatter.tags}
       />
-      <Box 
-        display="flex" 
+      <Box
+        display="flex"
         flexDirection="column"
         mt={2}
         mb={4}
@@ -40,15 +39,15 @@ const PostPage: FC<Props> = ({ data }: any) => {
             '644px'
           ]}
         >
-          <Link to="/" 
-            fontSize={3} 
-            p={3} 
+          <Link to="/"
+            fontSize={3}
+            p={3}
             ml={-3}
           >
             {'<-'}
           </Link>
           <Content>
-            <MDXRenderer 
+            <MDXRenderer
               post={post}
               featuredImage={post.featuredImage}
             >

@@ -14,7 +14,7 @@ storiesOf('Text', module)
     <Box>
       {
         theme.fontSizes.map((_, index) => (
-          <Box color="black">
+          <Box key={index} color="black">
             <Text fontSize={index}>
               {index} - {lorem}
             </Text>
@@ -27,7 +27,7 @@ storiesOf('Text', module)
     <Box>
       {
         Object.keys(theme.fontWeights).map((key) => (
-          <Box color="black">
+          <Box key={key} color="black">
             <Text fontSize={3} fontWeight={key}>
               {key} - {lorem}
             </Text>
