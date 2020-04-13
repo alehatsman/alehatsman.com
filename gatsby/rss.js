@@ -19,6 +19,7 @@ module.exports = {
       {
         serialize: ({ query: { site, allMdx } }) => {
           return allMdx.edges.map((edge) => {
+            const imageSrc = edge.node.frontmatter.featuredImage.childImageSharp.fixed.src
             return Object.assign({}, edge.node.frontmatter, {
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.createdAt,
@@ -28,7 +29,10 @@ module.exports = {
               guid:
                 site.siteMetadata.siteUrl +
                 formatPostUrl(edge.node.frontmatter.id),
-              custom_elements: [{ 'content:encoded': edge.node.html }]
+              custom_elements: [{ 'content:encoded': edge.node.html }],
+              enclosure: imageSrc && {
+                url: site.siteMetadata.siteUrl + imageSrc
+              }
             })
           })
         },
@@ -49,7 +53,13 @@ module.exports = {
                     tags
                     title
                     updatedAt
-                    featuredImage
+                    featuredImage {
+                      childImageSharp {
+                        fixed {
+                          src
+                        }
+                      }
+                    }
                   }
                 }
               }

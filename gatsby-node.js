@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: formatPostUrl(node.frontmatter.id),
       // This component will wrap our MDX content
       component: path.resolve(
-        './src/components/PostPage/PostPageContainer.tsx'
+        './src/templates/PostPage.tsx'
       ),
       // You can use the values in this context in
       // our page layout component
