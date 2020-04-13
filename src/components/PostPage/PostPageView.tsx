@@ -16,7 +16,12 @@ export const PostPageView: FC<{ post: Post }> = ({ post }) => (
         {'<-'}
       </Link>
       <Content>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXRenderer 
+          post={post}
+          featuredImage={post.featuredImage}
+        >
+          {post.body}
+        </MDXRenderer>
       </Content>
       <Footer id={post.id} />
     </Wrapper>
