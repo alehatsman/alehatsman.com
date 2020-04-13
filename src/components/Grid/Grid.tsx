@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 export const Grid = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 `
 
 export const Row = styled.div`
@@ -26,7 +27,7 @@ export const Column = styled.div`
     margin-left: ${({ left }: ColumnProps) =>
       left && `calc(((100% - 11 * 30px) / 12) * ${left} + ${left} * 30px);`}
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 30px;
   }
 `

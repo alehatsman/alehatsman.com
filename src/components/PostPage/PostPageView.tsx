@@ -1,18 +1,32 @@
 import React, { FC } from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Link } from 'gatsby'
 
-import { Layout } from '@/components/Layout'
 import { Content } from '@/components/Content'
 import { Footer } from '@/components/Footer'
+import { Link } from '@/components/Link'
 import { Post } from '@/types/Post'
-
-import { Wrapper, HomeLink } from './PostPage.styled'
+import { Box } from '@/components/Box'
 
 export const PostPageView: FC<{ post: Post }> = ({ post }) => (
-  <Layout>
-    <Wrapper>
-      <Link to="/" css={HomeLink}>
+  <Box 
+    display="flex" 
+    flexDirection="column"
+    mt={2}
+    mb={4}
+  >
+    <Box
+      my={2}
+      mx="auto"
+      width={[
+        1,
+        '644px'
+      ]}
+    >
+      <Link to="/" 
+        fontSize={3} 
+        p={3} 
+        ml={-3}
+      >
         {'<-'}
       </Link>
       <Content>
@@ -24,6 +38,6 @@ export const PostPageView: FC<{ post: Post }> = ({ post }) => (
         </MDXRenderer>
       </Content>
       <Footer id={post.id} />
-    </Wrapper>
-  </Layout>
+    </Box>
+  </Box>
 )

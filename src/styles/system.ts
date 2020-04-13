@@ -8,7 +8,6 @@ export const color = {
 
 export const space = {
   default: '16px',
-  xxs: '2px',
   xs: '4px',
   s: '8px',
   m: '16px',

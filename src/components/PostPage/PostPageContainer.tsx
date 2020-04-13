@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 
 import { Seo } from '@/components/Seo'
+import { ThemeWrapper } from '@/styles/ThemeWrapper'
 import { PostPageView } from './PostPageView'
 
 export const query = graphql`
@@ -42,14 +43,14 @@ const convertDataToPresenterProps = (data: any) => ({
 
 const PostPageContainer: FC<Props> = ({ data }) => {
   return (
-    <>
+    <ThemeWrapper>
       <Seo
         title={data.mdx.frontmatter.title}
         description={data.mdx.frontmatter.description}
         keywords={data.mdx.frontmatter.tags}
       />
       <PostPageView post={convertDataToPresenterProps(data)} />
-    </>
+    </ThemeWrapper>
   )
 }
 

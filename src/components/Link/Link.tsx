@@ -1,10 +1,32 @@
 import React, { FC } from 'react'
+import styled from '@emotion/styled'
+import { SerializedStyles } from '@emotion/serialize'
+import { Link as GatsbyLink } from 'gatsby'
+import { typography, space, layout } from 'styled-system'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
-interface Props {
-  href: string
+const isAbsolute = (href: string) => {
+  return /^https?:\/\//i.test(href)
 }
 
-export const Link: FC<Props> = ({ href, children }) => (
-  <OutboundLink href={href}>{children}</OutboundLink>
+interface Props {
+  to: string
+  className?: string
+  css?: SerializedStyles
+}
+
+export const Link = styled(({ children, to, ...props }) => {
+  return isAbsolute(to) ? (
+    <OutboundLink href={to} {...props}>
+      { children }
+    </OutboundLink>
+  ) : (
+    <GatsbyLink to={to} {...props}>
+      { children }
+    </GatsbyLink>
+  )
+})(
+  typography,
+  space,
+  layout
 )
