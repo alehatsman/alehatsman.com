@@ -39,7 +39,7 @@ const PostPage: FC<any> = ({ data }) => {
             '644px'
           ]}
         >
-          <Link to="/"
+          <Link href="/"
             fontSize={3}
             p={3}
             ml={-3}

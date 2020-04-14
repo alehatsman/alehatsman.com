@@ -10,18 +10,18 @@ const isAbsolute = (href: string) => {
 }
 
 interface Props {
-  to: string
+  href: string
   className?: string
   css?: SerializedStyles
 }
 
-export const Link = styled(({ children, to, ...props }) => {
-  return isAbsolute(to) ? (
-    <OutboundLink href={to} {...props}>
+export const Link = styled(({ children, href, ...props }) => {
+  return isAbsolute(href) ? (
+    <OutboundLink href={href} {...props}>
       { children }
     </OutboundLink>
   ) : (
-    <GatsbyLink to={to} {...props}>
+    <GatsbyLink to={href} {...props}>
       { children }
     </GatsbyLink>
   )
