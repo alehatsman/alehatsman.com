@@ -2,11 +2,15 @@ import React, { FC } from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import GatsbyImage from 'gatsby-image'
+import scss from '@styled-system/css'
 
-import { color, fontSizes, weight } from '@/styles/system'
+import { color, weight } from '@/styles/system'
+import { Box } from '@/components/Box'
 import { CodeBlock } from './CodeBlock'
 import { Image } from './Image'
 import { Anchor } from './Header'
+import { Link } from '@/components/Link'
+import { Heading } from '@/components/Heading'
 
 const resetBox = css`
   margin-left: 0;
@@ -22,61 +26,46 @@ const marginBottom = css`
   margin-bottom: 1.75rem;
 `
 
-const Wrapper = styled.main`
-  font-size: ${fontSizes.text.default};
-  font-weight: ${weight.regular};
-  line-height: 1.5;
-  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  letter-spacing: 0.01rem;
-`
+const Wrapper = styled(Box)(scss({
+  fontSize: '2',
+  fontFamily: 'robotoslab',
+  fontWeight: 'normal',
+  lineHeight: 'copy',
+  letterSpacing: 'tracked'
+}))
 
-const AWrapper = styled.a`
-  color: ${color.blue} !important;
-`
-
-const a = (props) => <AWrapper {...props} />
+const a = styled(Link)(scss({
+  color: 'blue'
+}))
 
 const pre = styled.pre`
   margin-top: 0;
   ${marginBottom};
 `
 
-const h = css`
-  ${resetBox} font-weight: 700;
-  font-family: "Lato", sans-serif;
-  letter-spacing: -0.0125rem;
-  margin-bottom: 0.5rem;
-  overflow: auto;
-`
+const h = styled(Heading)(scss({
+  color: 'black',
+  fontWeight: 'bold',
+  fontFamily: 'lato',
+  marginBottom: 3
+}))
 
-const h1 = styled.h1`
-  ${h}
-  color: ${color.black};
-  font-size: ${fontSizes.h1}; 
-  margin-top: 1rem;
-  &:not(:fist-child) {
-    margin-top: 3.5rem;
-  }
-`
+const h1 = styled(h)(scss({
+  fontSize: 3
+})).withComponent('h1')
 
-const h2 = styled.h2`
-  ${h}
-  margin-top: 2.5rem;
-  font-size: ${fontSizes.h2};
-`
+const h2 = styled(h)(scss({
+  marginTop: 4,
+  fontSize: 3
+})).withComponent('h2')
 
-const h3 = styled.h3`
-  ${h}
-  font-size: ${fontSizes.h3};
-`
+const h3 = styled(h)(scss({
+  fontSize: 2
+})).withComponent('h3')
 
-const h4 = styled.h4`
-  ${h}
-  font-size: ${fontSizes.h4};
-`
+const h4 = styled(h)(scss({
+  fontSize: 2
+})).withComponent('h4')
 
 const p = styled.p`
   ${resetBox}
