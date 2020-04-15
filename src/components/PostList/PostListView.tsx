@@ -41,13 +41,19 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
             {post.description}
           </Text>
           <Spacer mt={2} />
-          <Text
+          <Box
             fontSize={0}
             fontWeight="normal"
             color="gray.1"
           >
-            {formatDate(post.createdAt)} | {post.timeToRead} min read
-          </Text>
+            <Text mr={2}>
+              {formatDate(post.createdAt)}
+            </Text>
+            |
+            <Text ml={2}>
+              {post.timeToRead} min read
+            </Text>
+          </Box>
         </Column>
         <Column width={4} left={1}>
           {post.featuredImage ? (

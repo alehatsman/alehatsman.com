@@ -6,7 +6,7 @@ import { typography, space, layout } from 'styled-system'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 const isAbsolute = (href: string) => {
-  return /^https?:\/\//i.test(href)
+  return /^https?:\/\//i.test(href) || /^#.+/.test(href)
 }
 
 interface Props {
