@@ -4,6 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { Box } from '@/components/Box'
 import { Content } from '@/components/Content'
+import { Spacer } from '@/components/Spacer'
 import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Seo } from '@/components/Seo'
@@ -46,6 +47,7 @@ const PostPage: FC<any> = ({ data }) => {
           >
             {'<-'}
           </Link>
+          <Spacer mt={2} />
           <Content>
             <MDXRenderer
               post={post}
