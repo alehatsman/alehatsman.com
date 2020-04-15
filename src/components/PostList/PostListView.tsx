@@ -54,6 +54,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
             <Img
               style={{ maxHeight: '150px' }}
               fluid={post.featuredImage}
+              title={post.featuredImageAlt}
               alt={post.featuredImageAlt}
             />
           ) : null}

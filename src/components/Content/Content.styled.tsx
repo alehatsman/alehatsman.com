@@ -1,10 +1,8 @@
 import React, { FC } from 'react'
-import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import GatsbyImage from 'gatsby-image'
-import scss from '@styled-system/css'
+import css from '@styled-system/css'
 
-import { color, weight } from '@/styles/system'
 import { Box } from '@/components/Box'
 import { CodeBlock } from './CodeBlock'
 import { Image } from './Image'
@@ -12,71 +10,74 @@ import { Anchor } from './Header'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
 
-const resetBox = css`
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-`
+const Wrapper = styled(Box)(
+  css({
+    fontSize: '2',
+    fontFamily: 'robotoslab',
+    fontWeight: 'normal',
+    lineHeight: 'copy',
+    letterSpacing: 'tracked'
+  })
+)
 
-const marginBottom = css`
-  margin-bottom: 1.75rem;
-`
-
-const Wrapper = styled(Box)(scss({
-  fontSize: '2',
-  fontFamily: 'robotoslab',
-  fontWeight: 'normal',
-  lineHeight: 'copy',
-  letterSpacing: 'tracked'
-}))
-
-const a = styled(Link)(scss({
+const a = styled(Link)(css({
   color: 'blue'
 }))
 
-const pre = styled.pre`
-  margin-top: 0;
-  ${marginBottom};
-`
+const pre = styled('pre')(
+  css({
+    mt: 0,
+    mb: 4
+  })
+)
 
-const h = styled(Heading)(scss({
-  color: 'black',
-  fontWeight: 'bold',
-  fontFamily: 'lato',
-  marginBottom: 3
-}))
+const h = styled(Heading)(
+  css({
+    color: 'black',
+    fontWeight: 'bold',
+    fontFamily: 'lato',
+    marginBottom: 3
+  })
+)
 
-const h1 = styled(h)(scss({
-  fontSize: 3
-})).withComponent('h1')
+const h1 = styled(h)(
+  css({
+    fontSize: 3
+  })
+).withComponent('h1')
 
-const h2 = styled(h)(scss({
-  marginTop: 4,
-  fontSize: 3
-})).withComponent('h2')
+const h2 = styled(h)(
+  css({
+    marginTop: 4,
+    fontSize: 3
+  })
+).withComponent('h2')
 
-const h3 = styled(h)(scss({
-  fontSize: 2
-})).withComponent('h3')
+const h3 = styled(h)(
+  css({
+    fontSize: 2
+  })
+).withComponent('h3')
 
-const h4 = styled(h)(scss({
-  fontSize: 2
-})).withComponent('h4')
+const h4 = styled(h)(
+  css({
+    fontSize: 2
+  })
+).withComponent('h4')
 
-const p = styled.p`
-  ${resetBox}
-  ${marginBottom}
-`
+const p = styled('p')(
+  css({
+    m: 0,
+    mb: 3
+  })
+)
 
-const list = css`
-  margin: 0 1rem 1.75rem;
-  padding: 0 1rem;
-  list-style-position: inside;
-`
+const list = css({
+  mx: 2,
+  mb: 3,
+  pl: 1,
+  'list-style-position': 'inside'
+})
 
 const ul = styled.ul`
   ${list};
@@ -86,23 +87,26 @@ const ol = styled.ol`
   ${list};
 `
 
-const inlineCode = styled.code`
-  font-family: inherit;
-  padding: 5px;
-  color: rgb(57, 58, 52);
-  background-color: rgb(246, 248, 250);
-`
+const inlineCode = styled.code(css({
+  fontFamily: 'inherit',
+  padding: 1,
+  color: 'inherit',
+  backgroundColor: 'gray.0'
+}))
 
-const blockquote = styled.blockquote`
-  margin: 0;
-  padding: 0 15px;
-  border-left: 4px solid ${color.lightGray};
-  color: ${color.grimmyGray};
-`
+const blockquote = styled.blockquote(
+  css({
+    m: 0,
+    px: 3,
+    borderLeft: 3,
+    borderColor: 'gray.1',
+    color: 'gray.2'
+  })
+)
 
-const strong = styled.strong`
-  font-weight: ${weight.bold};
-`
+const strong = styled.strong(css({
+  fontWeight: 'bold'
+}))
 
 const FeaturedImage: FC<any> = (props) => (
   <GatsbyImage fluid={props.featuredImage.childImageSharp.fluid} />
