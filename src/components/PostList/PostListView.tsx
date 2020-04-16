@@ -33,7 +33,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
           <Spacer mt={2} />
           <Text
             fontFamily="robotoslab"
-            fontSize={2}
+            fontSize={1}
             fontWeight="normal"
             lineHeight="copy"
             letterSpacing="tracked"
