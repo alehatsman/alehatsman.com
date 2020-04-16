@@ -28,7 +28,7 @@ const ExternalLink = ({ Icon, href, label }: any) => (
     <Icon />
     <Spacer ml={1} />
     <Link
-      to={href}
+      href={href}
       fontSize={1}
     >
       {label}
