@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/atsman/alehatsman.com.svg?branch=master)](https://travis-ci.com/atsman/alehatsman.com)
+
 # alehatsman.com
 
 > Software Engineer Blog
