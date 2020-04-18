@@ -1,52 +1,45 @@
 import React, { FC } from 'react'
 import styled from '@emotion/styled'
-import css from '@styled-system/css'
-import { space, layout, border, shadow, variant } from 'styled-system'
 
-import { Box } from '@/components/Box'
-
-const ImageStyled = styled.img(
-  space,
-  layout,
-  border,
-  shadow,
-  {
-    maxWidth: '100%'
-  },
-  variant({
-    prop: 'size',
-    variants: {
-      small: {
-        maxWidth: '50%'
-      },
-      medium: {
-        maxWidth: '80%'
-      },
-      large: {
-        maxWidth: '95%'
-      }
-    }
-  }),
-  variant({
-    prop: ''
-  })
-)
+const getImageSize = (size: string) => {
+  switch (size) {
+    case 'small':
+      return 'max-width: 50%;'
+    case 'medium':
+      return 'max-width: 80%;'
+    case 'large':
+      return 'max-width: 95%;'
+    default:
+      return 'max-width: 100%;'
+  }
+}
 
 interface Props {
   size: string
+  round: boolean
+  shadow: boolean
   caption: string
 }
 
-const ImageWrapper = styled(Box)(css({
-  display: 'flex',
-  justifyContent: 'center',
-  m: 0,
-  mb: 4
-})).withComponent('figure')
+const StyledImg = styled.img`
+  ${(props: Props) => getImageSize(props.size)}
+  ${(props: Props) => props.round && 'border-radius: 3px;'}
+  ${(props: Props) =>
+    props.shadow &&
+    `
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 5px 20px 0px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  `}
+`
+
+const ImgWrapper = styled.figure`
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2rem 0;
+`
 
 export const Image: FC<Props> = (props) => (
-  <ImageWrapper>
-    <ImageStyled {...props} />
+  <ImgWrapper>
+    <StyledImg {...props} />
     {props.caption && <figcaption>{props.caption}</figcaption>}
-  </ImageWrapper>
+  </ImgWrapper>
 )

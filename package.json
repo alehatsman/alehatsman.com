@@ -34,11 +34,12 @@
     "test:update-snapshots": "jest -u",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watchAll --coverage",
-    "types:check": "tsc --noEmit"
+    "types:check": "tsc --noEmit",
+    "check": "yarn run lint:fix && yarn run types:check && yarn run test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint:fix && yarn run types:check && yarn run test"
+      "pre-commit": "yarn run check"
     }
   },
   "dependencies": {
@@ -116,7 +117,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "jest-emotion": "^10.0.32",
-    "now": "^18.0.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.12.0",
     "remark-sectionize": "^1.1.0",

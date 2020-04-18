@@ -5,9 +5,9 @@ import css from '@styled-system/css'
 
 import { Box } from '@/components/Box'
 import { Code } from '@/components/Code'
+import { Image as DynamicImage } from '@/components/Image'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
-import { Image as DynamicImage } from '@/components/Image'
 
 import { Image } from './Image'
 
