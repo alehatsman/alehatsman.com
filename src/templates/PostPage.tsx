@@ -1,14 +1,15 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from '@mdx-js/react'
 
 import { Box } from '@/components/Box'
-import { Content } from '@/components/Content'
 import { Spacer } from '@/components/Spacer'
 import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Seo } from '@/components/Seo'
 import { ThemeWrapper } from '@/styles/ThemeWrapper'
+import mdxComponets from '@/components/MdxComponents'
 
 const convertDataToPresenterProps = (data: any) => ({
   ...data.mdx.frontmatter,
@@ -30,7 +31,7 @@ const PostPage: FC<any> = ({ data }) => {
         display="flex"
         flexDirection="column"
         mt={2}
-        mb={4}
+        mb={2}
       >
         <Box
           my={2}
@@ -48,14 +49,14 @@ const PostPage: FC<any> = ({ data }) => {
             {'<-'}
           </Link>
           <Spacer mt={2} />
-          <Content>
+          <MDXProvider components={mdxComponets}>
             <MDXRenderer
               post={post}
               featuredImage={post.featuredImage}
             >
               {post.body}
             </MDXRenderer>
-          </Content>
+          </MDXProvider>
           <Footer id={post.id} />
         </Box>
       </Box>

@@ -1,30 +1,24 @@
 import React, { FC } from 'react'
-import styled from '@emotion/styled'
-
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import github from 'prism-react-renderer/themes/github'
 
+import { Box } from '@/components/Box'
+
 interface Props {
-  children: string
   className: string
 }
 
-const Pre = styled.pre`
-  padding: 20px;
-  overflow: scroll;
-`
-
-export const CodeBlock: FC<Props> = ({ children, className }) => {
+export const Code: FC<Props> = ({ children, className }) => {
   const language = className ? className.replace(/language-/, '') : ''
   return (
     <Highlight
       {...defaultProps}
       theme={github}
-      code={children.trim()}
+      code={children.toString().trim()}
       language={language as Language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={{ ...style }}>
+        <Box padding={3} className={className} style={{ ...style }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -32,7 +26,7 @@ export const CodeBlock: FC<Props> = ({ children, className }) => {
               ))}
             </div>
           ))}
-        </Pre>
+        </Box>
       )}
     </Highlight>
   )

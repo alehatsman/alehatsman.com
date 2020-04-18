@@ -13,5 +13,7 @@ module.exports = {
     __PATH_PREFIX__: ''
   },
   testURL: 'http://localhost',
-  setupFiles: ['<rootDir>/loadershim.js']
+  setupFiles: ['<rootDir>/loadershim.js'],
+  setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.ts'],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.stories.{ts,tsx}']
 }

@@ -4,9 +4,8 @@ import GatsbyImage from 'gatsby-image'
 import css from '@styled-system/css'
 
 import { Box } from '@/components/Box'
-import { CodeBlock } from './CodeBlock'
+import { Code } from './Code'
 import { Image } from './Image'
-import { Anchor } from './Header'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
 
@@ -104,13 +103,12 @@ export default {
   img: Image,
   FeaturedImage,
   pre,
-  code: CodeBlock,
+  code: Code,
   inlineCode: inlineCode,
   h1,
   h2,
   h3,
   h4,
-  Anchor,
   p,
   ul,
   ol,

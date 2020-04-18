@@ -1,10 +1,8 @@
-import moment from 'moment'
-
 export interface Post {
   id: string
   title: string
   description: string
-  createdAt: moment.Moment
+  createdAt: string
   timeToRead: number
   featuredImage?: any
   featuredImageAlt?: string

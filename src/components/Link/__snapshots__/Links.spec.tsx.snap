@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should render GatsbyLink for relative links should match snapshot 1`] = `
+<DocumentFragment>
+  <a
+    class="css-1bnujwn-Link emotion-0"
+    href="/about.html"
+  >
+    About
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Link should render OutboundLink for external links should match snapshot 1`] = `
+<DocumentFragment>
+  <a
+    class="css-1bnujwn-Link emotion-0"
+    href="https://google.com"
+    target="_blank"
+  >
+    Google
+  </a>
+</DocumentFragment>
+`;

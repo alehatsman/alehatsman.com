@@ -6,8 +6,6 @@ import React, {
   useEffect
 } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import moment from 'moment'
-
 import { Post } from '@/types/Post'
 import { PostListView } from './PostListView'
 
@@ -24,7 +22,7 @@ const queryMdxPosts = graphql`
           timeToRead
           frontmatter {
             id
-            createdAt
+            createdAt(formatString: "MMM D, YYYY")
             description
             public
             tags
@@ -59,7 +57,6 @@ export const PostListContainer: FC<Props> = ({ Presenter }) => {
       .map((n) => ({
         ...n.frontmatter,
         id: n.frontmatter.id,
-        createdAt: moment(n.frontmatter.createdAt, 'YYYY-MM-DD'),
         timeToRead: n.timeToRead,
         featuredImage: n.frontmatter.featuredImage?.childImageSharp?.fluid
       }))

@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import moment from 'moment'
 import Img from 'gatsby-image'
 
 import { Grid, Row, Column } from '@/components/Grid'
@@ -10,12 +9,9 @@ import { Spacer } from '@/components/Spacer'
 import { Link } from '@/components/Link'
 import { Post } from '@/types/Post'
 
-const formatDate = (date: moment.Moment) => {
-  return date.format('MMM D, YYYY')
-}
-
 const PostItem: FC<{ post: Post }> = ({ post }) => (
   <Link
+    data-testid="post-item"
     to={`/posts/${post.id}.html`}
     display="flex"
     width="100%"
@@ -47,7 +43,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
             color="gray.1"
           >
             <Text mr={2}>
-              {formatDate(post.createdAt)}
+              {post.createdAt}
             </Text>
             |
             <Text ml={2}>

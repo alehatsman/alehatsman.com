@@ -5,8 +5,12 @@ import { Link as GatsbyLink } from 'gatsby'
 import { typography, space, layout } from 'styled-system'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
-const isAbsolute = (href: string) => {
-  return /^https?:\/\//i.test(href) || /^#.+/.test(href) || /^mailto:.+/.test(href)
+const isAnchor = (href: string) => {
+  return /^#.+/.test(href)
+}
+
+const isExternal = (href: string) => {
+  return /^https?:\/\//i.test(href) || /^mailto:.+/.test(href)
 }
 
 interface Props {
@@ -16,17 +20,17 @@ interface Props {
 }
 
 export const Link = styled(({ children, href, ...props }) => {
-  return isAbsolute(href) ? (
-    <OutboundLink href={href} target="_blank" {...props}>
-      { children }
+  return isExternal(href) || isAnchor(href) ? (
+    <OutboundLink
+      href={href}
+      target={isAnchor(href) ? '_self' : '_blank'}
+      {...props}
+    >
+      {children}
     </OutboundLink>
   ) : (
     <GatsbyLink to={href} {...props}>
-      { children }
+      {children}
     </GatsbyLink>
   )
-})(
-  typography,
-  space,
-  layout
-)
+})(typography, space, layout)

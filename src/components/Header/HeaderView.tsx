@@ -7,14 +7,19 @@ import { Text } from '@/components/Text'
 import { Spacer } from '@/components/Spacer'
 
 export interface Props {
-  author: string
-  email: string
-  github: string
-  image: string
-  linkedin: string
+  data: {
+    site: {
+      siteMetadata: {
+        author: string
+        email: string
+        github: string
+        linkedin: string
+      }
+    }
+  }
 }
 
-const formatUrl = (url: string) => {
+const formatLabel = (url: string) => {
   const { host, pathname } = new URL(url)
   return `${host}${pathname}`
 }
@@ -36,13 +41,14 @@ const ExternalLink = ({ Icon, href, label }: any) => (
   </Box>
 )
 
-export const HeaderView: FC<Props> = ({
-  author,
-  email,
-  github,
-  image,
-  linkedin
-}) => {
+export const HeaderView: FC<Props> = ({ data }) => {
+  const {
+    author,
+    email,
+    github,
+    linkedin
+  } = data.site.siteMetadata
+
   return (
     <Box
       display="flex"
@@ -64,7 +70,7 @@ export const HeaderView: FC<Props> = ({
         <ExternalLink
           Icon={FaGithubAlt}
           href={github}
-          label={formatUrl(github)}
+          label={formatLabel(github)}
         />
         <Spacer ml={3} />
         <ExternalLink
@@ -76,7 +82,7 @@ export const HeaderView: FC<Props> = ({
         <ExternalLink
           Icon={FaLinkedin}
           href={linkedin}
-          label={formatUrl(linkedin)}
+          label={formatLabel(linkedin)}
         />
       </Box>
     </Box>

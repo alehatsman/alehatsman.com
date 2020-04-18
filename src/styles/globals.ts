@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { color } from '@/styles/system'
+import { theme } from '@/styles/theme'
 
 export const globalStyles = css`
   html,
@@ -16,7 +16,7 @@ export const globalStyles = css`
     font-family: "Lato", sans-serif;
     text-rendering: optimizeLegibility;
     font-size: 1.6rem;
-    color: ${color.black};
+    color: ${theme.colors.black};
     margin: 0;
     padding: 0;
   }

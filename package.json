@@ -18,21 +18,26 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "build-storybook": "NODE_ENV=production build-storybook -s public",
+    "clean": "gatsby clean",
+    "cy:open": "cypress open",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "jest",
-    "types:check": "tsc --noEmit",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
     "storybook": "NODE_ENV=production start-storybook -s public",
-    "build-storybook": "NODE_ENV=production build-storybook -s public"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
+    "test:watch": "jest --watch",
+    "test:watch:coverage": "jest --watchAll --coverage",
+    "types:check": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint && yarn run types:check"
+      "pre-commit": "yarn run lint && yarn run types:check && yarn run test"
     }
   },
   "dependencies": {
@@ -75,6 +80,8 @@
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-centered": "^5.3.18",
     "@storybook/react": "^5.3.13",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.2",
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.0",
     "@types/react": "^16.9.19",
@@ -84,10 +91,11 @@
     "@types/styled-system": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "2",
     "babel-jest": "^25.1.0",
-    "babel-plugin-emotion": "^10.0.27",
+    "babel-plugin-emotion": "^10.0.33",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-gatsby": "^0.3.1",
     "babel-preset-react-app": "^9.1.2",
+    "cypress": "^4.4.0",
     "eslint": "6",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-jsx": "^8.1.0",
@@ -103,12 +111,13 @@
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
-    "jest-emotion": "^10.0.27",
+    "jest-emotion": "^10.0.32",
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.12.0",
     "remark-sectionize": "^1.1.0",
     "remark-slug": "^6.0.0",
     "remark-toc": "^7.0.0",
+    "start-server-and-test": "^1.11.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
