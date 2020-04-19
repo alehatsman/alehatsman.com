@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code should match snapshot 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 16px;
+}
+
+<div
+    class="prism-code language-javascript emotion-0 emotion-1"
+    style="color: rgb(57, 58, 52); background-color: rgb(246, 248, 250); overflow: scroll;"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(57, 58, 52);"
+    >
+      <span
+        class="token console class-name"
+      >
+        console
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(57, 58, 52);"
+      >
+        .
+      </span>
+      <span
+        class="token method function property-access"
+        style="color: rgb(215, 58, 73);"
+      >
+        log
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(57, 58, 52);"
+      >
+        (
+      </span>
+      <span
+        class="token string"
+        style="color: rgb(227, 17, 108);"
+      >
+        'hello world'
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(57, 58, 52);"
+      >
+        )
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

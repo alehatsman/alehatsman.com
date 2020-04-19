@@ -3,6 +3,8 @@
 exports[`HeaderView should match snapshot 1`] = `
 <DocumentFragment>
   .emotion-26 {
+  box-sizing: border-box;
+  min-width: 0;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -23,6 +25,8 @@ exports[`HeaderView should match snapshot 1`] = `
 }
 
 .emotion-24 {
+  box-sizing: border-box;
+  min-width: 0;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -33,6 +37,8 @@ exports[`HeaderView should match snapshot 1`] = `
 }
 
 .emotion-6 {
+  box-sizing: border-box;
+  min-width: 0;
   color: gray.2;
   -webkit-align-items: center;
   -webkit-box-align: center;

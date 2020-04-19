@@ -3,6 +3,8 @@
 exports[`Footer matches snapshot 1`] = `
 <DocumentFragment>
   .emotion-6 {
+  box-sizing: border-box;
+  min-width: 0;
   border-top: 1px;
   border-color: gray.0;
   -webkit-box-pack: center;

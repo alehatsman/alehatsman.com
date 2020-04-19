@@ -4,10 +4,11 @@ import GatsbyImage from 'gatsby-image'
 import css from '@styled-system/css'
 
 import { Box } from '@/components/Box'
-import { Code } from './Code'
-import { Image } from './Image'
+import { Code } from '@/components/Code'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
+
+import { Image } from './Image'
 
 const Wrapper = styled(Box)(
   css({

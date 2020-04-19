@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { useStaticQuery } from 'gatsby'
 import { HeaderView } from './HeaderView'
+import { HeaderContainer } from './HeaderContainer'
 
 const data = {
   site: {
@@ -12,6 +14,15 @@ const data = {
     }
   }
 }
+
+describe('HeaderContainer', () => {
+  it('should pass data to Presenter', () => {
+    (useStaticQuery as jest.MockedFunction<typeof useStaticQuery>).mockReturnValue(data)
+    const presenter = jest.fn(() => (<div></div>))
+    render(<HeaderContainer Presenter={presenter} />)
+    expect(presenter).toBeCalledWith({ data }, {})
+  })
+})
 
 describe('HeaderView', () => {
   it('should match snapshot', () => {

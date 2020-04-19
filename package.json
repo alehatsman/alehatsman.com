@@ -21,6 +21,7 @@
     "build-storybook": "NODE_ENV=production build-storybook -s public",
     "clean": "gatsby clean",
     "cy:open": "cypress open",
+    "deploy": "now",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -31,6 +32,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
+    "test:update-snapshots": "jest -u",
     "test:watch": "jest --watch",
     "test:watch:coverage": "jest --watchAll --coverage",
     "types:check": "tsc --noEmit"
@@ -112,6 +114,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "jest-emotion": "^10.0.32",
+    "now": "^18.0.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "^16.12.0",
     "remark-sectionize": "^1.1.0",

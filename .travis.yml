@@ -7,3 +7,10 @@ script:
   - yarn lint
   - yarn types:check
   - yarn test
+  - yarn build
+deploy:
+  provider: script
+  script: yarn run deploy
+  skip_cleanup: true
+  on:
+    branch: master
