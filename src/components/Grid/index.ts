@@ -1,1 +1,1 @@
-export { Grid, Column, Row } from './Grid'
+export { Grid, Column } from './Grid'

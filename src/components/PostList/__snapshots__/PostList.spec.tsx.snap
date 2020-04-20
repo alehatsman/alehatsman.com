@@ -2,17 +2,9 @@
 
 exports[`PostListView should match snapshot 1`] = `
 <DocumentFragment>
-  .emotion-154 {
+  .emotion-142 {
   box-sizing: border-box;
   min-width: 0;
-}
-
-.emotion-22 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
 }
 
 .emotion-20 {
@@ -20,35 +12,36 @@ exports[`PostListView should match snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  width: 100%;
 }
 
 .emotion-18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-14 {
-  width: calc(((100% - 11 * 30px) / 12) * 8 + 7 * 30px);
+  grid-column: span 12;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
 }
 
-margin-left:.emotion-14:not(:first-of-type) {
-  margin-left: 30px;
+@media screen and (min-width:40em) {
+  .emotion-14 {
+    grid-column: span 8;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-14 {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+  }
 }
 
 .emotion-0 {
@@ -102,430 +95,431 @@ margin-left:.emotion-14:not(:first-of-type) {
 }
 
 .emotion-16 {
-  width: calc(((100% - 11 * 30px) / 12) * 4 + 3 * 30px);
-  margin-left: calc(((100% - 11 * 30px) / 12) * 1 + 1 * 30px);
+  grid-column: span 12;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  margin-bottom: 8px;
 }
 
-.emotion-16:not(:first-of-type) {
-  margin-left: 30px;
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    grid-column: span 4;
+  }
 }
 
-.emotion-24 {
-  margin-top: 16px;
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    margin-bottom: 0;
+  }
+}
+
+.emotion-22 {
+  margin-top: 32px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-22 {
+    margin-top: 16px;
+  }
 }
 
 <div
-    class="emotion-154 emotion-13"
+    class="emotion-142 emotion-13"
   >
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/0.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              What questions to ask your potential employer?
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness, turn an interview into a two-way conversation.
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Mar 3, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                13 min read
-              </span>
-            </div>
-          </div>
+            What questions to ask your potential employer?
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness, turn an interview into a two-way conversation.
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Mar 3, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              13 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-3"
+      class="emotion-22 emotion-3"
     />
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/1.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              The Danger in Fake Positivity and Spiritual Bypassing
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              Negative emotions and experiences allow us to grow
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Apr 3, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                8 min read
-              </span>
-            </div>
-          </div>
+            The Danger in Fake Positivity and Spiritual Bypassing
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            Negative emotions and experiences allow us to grow
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Apr 3, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              8 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-3"
+      class="emotion-22 emotion-3"
     />
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/2.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              Thinking Fast and Slow book summary
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              Amazing inside on how your mind operates: rational and irrational thinking, energy saving, self-control and decision making.
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Apr 16, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                24 min read
-              </span>
-            </div>
-          </div>
+            Thinking Fast and Slow book summary
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            Amazing inside on how your mind operates: rational and irrational thinking, energy saving, self-control and decision making.
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Apr 16, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              24 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-3"
+      class="emotion-22 emotion-3"
     />
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/3.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              How This Popular Psychiatrist Uses Instagram to Fight Mental Health Stigma
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              When a black person is getting treated for a mental illness, it’s usually in an emergency room setting.
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Jan 1, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                18 min read
-              </span>
-            </div>
-          </div>
+            How This Popular Psychiatrist Uses Instagram to Fight Mental Health Stigma
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            When a black person is getting treated for a mental illness, it’s usually in an emergency room setting.
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Jan 1, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              18 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-3"
+      class="emotion-22 emotion-3"
     />
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/4.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              Minimal artifacts repository in GO
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              Writing undemanding to resources minimal artefacts repository for Jar files in Golang for use in my side Clojure projects.
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Apr 18, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                16 min read
-              </span>
-            </div>
-          </div>
+            Minimal artifacts repository in GO
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            Writing undemanding to resources minimal artefacts repository for Jar files in Golang for use in my side Clojure projects.
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Apr 18, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              16 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-3"
+      class="emotion-22 emotion-3"
     />
     <a
-      class="emotion-22 emotion-23"
+      class="emotion-20 emotion-21"
       data-testid="post-item"
       display="flex"
       href="/posts/5.html"
       width="100%"
     >
       <div
-        class="emotion-20 emotion-21"
+        class="emotion-18 emotion-19"
       >
         <div
-          class="emotion-18 emotion-19"
+          class="emotion-14 emotion-15"
+          order="1,0"
         >
-          <div
-            class="emotion-14 emotion-15"
-            width="8"
+          <h1
+            class="emotion-0 emotion-1"
+            color="black"
+            font-size="3"
+            font-weight="bold"
           >
-            <h1
-              class="emotion-0 emotion-1"
-              color="black"
-              font-size="3"
-              font-weight="bold"
-            >
-              Developer Environment
-            </h1>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <span
-              class="emotion-4 emotion-5"
-              font-family="robotoslab"
-              font-size="1"
-              font-weight="normal"
-              letter-spacing="tracked"
-            >
-              Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.
-            </span>
-            <div
-              class="emotion-2 emotion-3"
-            />
-            <div
-              class="emotion-12 emotion-13"
-              color="gray.1"
-              font-size="0"
-              font-weight="normal"
-            >
-              <span
-                class="emotion-8 emotion-5"
-              >
-                Feb 2, 2019
-              </span>
-              |
-              <span
-                class="emotion-10 emotion-5"
-              >
-                12 min read
-              </span>
-            </div>
-          </div>
+            Developer Environment
+          </h1>
           <div
-            class="emotion-16 emotion-15"
-            width="4"
+            class="emotion-2 emotion-3"
           />
+          <span
+            class="emotion-4 emotion-5"
+            font-family="robotoslab"
+            font-size="1"
+            font-weight="normal"
+            letter-spacing="tracked"
+          >
+            Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.
+          </span>
+          <div
+            class="emotion-2 emotion-3"
+          />
+          <div
+            class="emotion-12 emotion-13"
+            color="gray.1"
+            font-size="0"
+            font-weight="normal"
+          >
+            <span
+              class="emotion-8 emotion-5"
+            >
+              Feb 2, 2019
+            </span>
+            |
+            <span
+              class="emotion-10 emotion-5"
+            >
+              12 min read
+            </span>
+          </div>
         </div>
+        <div
+          class="emotion-16 emotion-15"
+          order="0,1"
+        />
       </div>
     </a>
   </div>

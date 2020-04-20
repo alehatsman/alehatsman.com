@@ -36,6 +36,7 @@ const PostPage: FC<any> = ({ data }) => {
         <Box
           my={2}
           mx="auto"
+          px={[2, 2, 0]}
           width={[
             1,
             '644px'

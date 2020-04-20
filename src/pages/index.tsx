@@ -14,20 +14,23 @@ const HomePage: FC = () => {
       <Box
         display="flex"
         flexDirection="column"
-        mt={4}
-        mb={4}
+        mt={3}
+        mb={3}
       >
         <Box
           my={2}
           mx="auto"
 
+          px={[2, 2, 0]}
+
           width={[
+            1,
             1,
             '844px'
           ]}
         >
           <Header />
-          <Spacer mt={4} />
+          <Spacer mt={[4]} />
           <PostList />
         </Box>
       </Box>
