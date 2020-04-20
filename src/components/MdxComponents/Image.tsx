@@ -10,6 +10,9 @@ const ImageStyled = styled.img(
   layout,
   border,
   shadow,
+  {
+    maxWidth: '100%'
+  },
   variant({
     prop: 'size',
     variants: {
@@ -37,6 +40,7 @@ interface Props {
 const ImageWrapper = styled(Box)(css({
   display: 'flex',
   justifyContent: 'center',
+  m: 0,
   mb: 4
 })).withComponent('figure')
 

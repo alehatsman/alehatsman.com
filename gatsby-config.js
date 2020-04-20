@@ -18,7 +18,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
-    'gatsby-remark-images',
+    // 'gatsby-remark-images',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -44,18 +44,19 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
-          'gatsby-remark-images',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-unwrap-images',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200
+            }
+          },
           {
             resolve: 'gatsby-remark-external-links',
             options: {
               target: '_blank',
               rel: 'nofollow'
-            }
-          },
-          {
-            resolve: 'gatsby-remark-images-contentful',
-            options: {
-              maxWidth: 590
             }
           }
         ],
@@ -65,15 +66,19 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
         path: `${__dirname}/content/`
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
         path: `${__dirname}/static/images`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content`
       }
     },
     'gatsby-transformer-sharp',

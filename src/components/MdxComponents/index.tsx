@@ -7,6 +7,7 @@ import { Box } from '@/components/Box'
 import { Code } from '@/components/Code'
 import { Link } from '@/components/Link'
 import { Heading } from '@/components/Heading'
+import { Image as DynamicImage } from '@/components/Image'
 
 import { Image } from './Image'
 
@@ -103,6 +104,7 @@ export default {
   a,
   img: Image,
   FeaturedImage,
+  DynamicImage,
   pre,
   code: Code,
   inlineCode: inlineCode,
