@@ -33,9 +33,9 @@ describe('HeaderView', () => {
     const container = render(<HeaderView data={data} />)
 
     const author = await container.findByText('Aleh Atsman')
-    const github = await container.findByText('github.com/atsman')
-    const email = await container.findByText('aleh.atsman@gmail.com')
-    const linkedin = await container.findByText('linkedin.com/in/alehatsman')
+    const github = await container.findByText('github.com/atsman').then(el => el.closest('a'))
+    const email = await container.findByText('aleh.atsman@gmail.com').then(el => el.closest('a'))
+    const linkedin = await container.findByText('linkedin.com/in/alehatsman').then(el => el.closest('a'))
 
     expect(author).toBeInTheDocument()
     expect(github).toHaveAttribute('href', 'https://github.com/atsman')

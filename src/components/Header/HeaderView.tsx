@@ -43,13 +43,16 @@ const ExternalLink: FC<LinkProps> = ({ Icon, href, label, ...props }) => (
       css={css({
         display: 'flex',
         alignItems: 'center',
-        py: [2, 0],
-        fontSize: 1
+        fontSize: 1,
+        p: 3,
+        pr: 0
       })}
     >
       <Icon />
       <Spacer ml={1} />
-      {label}
+      <Text display={['none', 'inline']}>
+        {label}
+      </Text>
     </Link>
   </Box>
 )
@@ -65,8 +68,9 @@ export const HeaderView: FC<Props> = ({ data }) => {
   return (
     <Box
       display="flex"
-      flexDirection={['column', 'row']}
+      flexDirection="row"
       justifyContent="space-between"
+      alignItems="center"
     >
       <Text
         fontSize={2}
@@ -78,7 +82,7 @@ export const HeaderView: FC<Props> = ({ data }) => {
       </Text>
       <Box
         display="flex"
-        flexDirection={['column', 'row']}
+        flexDirection="row"
       >
         <ExternalLink
           Icon={FaGithubAlt}

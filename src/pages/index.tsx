@@ -14,7 +14,7 @@ const HomePage: FC = () => {
       <Box
         display="flex"
         flexDirection="column"
-        mt={3}
+        mt={2}
         mb={3}
       >
         <Box
@@ -30,7 +30,7 @@ const HomePage: FC = () => {
           ]}
         >
           <Header />
-          <Spacer mt={[4]} />
+          <Spacer mt={[3]} />
           <PostList />
         </Box>
       </Box>
