@@ -38,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint && yarn run types:check && yarn run test"
+      "pre-commit": "yarn run lint:fix && yarn run types:check && yarn run test"
     }
   },
   "dependencies": {

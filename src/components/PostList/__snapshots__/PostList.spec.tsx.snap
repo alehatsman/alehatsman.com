@@ -18,6 +18,7 @@ exports[`PostListView should match snapshot 1`] = `
 .emotion-18 {
   display: grid;
   grid-template-columns: repeat(12,1fr);
+  grid-gap: 16px;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;

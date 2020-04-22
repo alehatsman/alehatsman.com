@@ -16,7 +16,11 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
     display="flex"
     width="100%"
   >
-    <Grid flexDirection="column" gridTemplateColumns="repeat(12, 1fr)">
+    <Grid
+      flexDirection="column"
+      gridTemplateColumns="repeat(12, 1fr)"
+      gridGap={3}
+    >
       <Column gridColumn={['span 12', 'span 8']} order={[1, 0]}>
         <Heading color="black" fontSize={[3]} fontWeight="bold">
           {post.title}
