@@ -7,7 +7,7 @@ import { Spacer } from '@/components/Spacer'
 import { Text } from '@/components/Text'
 
 const formatLink = (id: string) =>
-  `https://github.com/atsman/alehatsman.com/blob/master/content/${id}.mdx`
+  `https://github.com/atsman/alehatsman.com/blob/master/content/${id}/index.mdx`
 
 export const Footer: FC<{ id: string }> = ({ id }) => (
   <Flex

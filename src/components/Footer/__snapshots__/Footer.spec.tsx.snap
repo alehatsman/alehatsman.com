@@ -36,7 +36,7 @@ exports[`Footer matches snapshot 1`] = `
     <a
       class="emotion-4 emotion-5"
       display="flex"
-      href="https://github.com/atsman/alehatsman.com/blob/master/content/postid.mdx"
+      href="https://github.com/atsman/alehatsman.com/blob/master/content/postid/index.mdx"
       target="_blank"
     >
       <svg
