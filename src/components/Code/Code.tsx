@@ -18,7 +18,7 @@ export const Code: FC<Props> = ({ children, className }) => {
       language={language as Language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Box padding={3} className={className} style={{ ...style, overflow: 'scroll' }}>
+        <Box padding={3} className={className} style={{ ...style, overflow: 'auto' }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (

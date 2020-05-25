@@ -10,7 +10,7 @@ exports[`Code should match snapshot 1`] = `
 
 <div
     class="prism-code language-javascript emotion-0 emotion-1"
-    style="color: rgb(57, 58, 52); background-color: rgb(246, 248, 250); overflow: scroll;"
+    style="color: rgb(57, 58, 52); background-color: rgb(246, 248, 250); overflow: auto;"
   >
     <div
       class="token-line"
