@@ -5,3 +5,12 @@
  */
 
 // You can delete this file if you're not using it
+
+const heapAnalytics = require('./gatsby/heapAnalytics')
+
+exports.onClientEntry = () => {
+  heapAnalytics({
+    appId: '1890589631',
+    enableOnDevMode: false
+  })
+}

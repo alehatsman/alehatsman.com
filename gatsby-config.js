@@ -81,8 +81,6 @@ module.exports = {
         path: `${__dirname}/content`
       }
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
