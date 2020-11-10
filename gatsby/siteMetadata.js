@@ -3,7 +3,7 @@ module.exports = {
   description:
     'Computer hacker from young childhood. Full-stack software engineer. Freelancer. Solve problems, deliver high-quality software, write about programming.',
   email: 'aleh.atsman@gmail.com',
-  github: 'https://github.com/atsman',
+  github: 'https://github.com/alehatsman',
   image: 'images/me2.jpg',
   linkedin: 'https://linkedin.com/in/alehatsman',
   title: 'Software Engineer',
