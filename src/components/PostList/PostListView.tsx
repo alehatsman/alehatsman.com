@@ -29,7 +29,8 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
         <Text
           fontFamily="open_sans"
           fontSize={1}
-          fontWeight="light"
+          color="gray.1"
+          fontWeight="normal"
           lineHeight="copy"
           letterSpacing="tracked"
         >
@@ -38,7 +39,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
         <Spacer mt={2} />
         <Box
           fontSize={0}
-          fontWeight="light"
+          fontWeight="normal"
           color="gray.1"
           fontFamily="open_sans"
         >
@@ -47,16 +48,14 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
         </Box>
       </Column>
       <Column gridColumn={['span 12', 'span 4']} order={[0, 1]} mb={[2, 0]}>
-        {post.featuredImage
-          ? (
+        {post.featuredImage ? (
           <GatsbyImage
             style={{ maxHeight: '150px' }}
             image={getImage(post.featuredImage)}
             title={post.featuredImageAlt}
             alt={post.featuredImageAlt}
           />
-            )
-          : null}
+        ) : null}
       </Column>
     </Grid>
   </Link>
