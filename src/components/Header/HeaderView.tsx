@@ -32,12 +32,7 @@ interface LinkProps {
 }
 
 const ExternalLink: FC<LinkProps> = ({ Icon, href, label, ...props }) => (
-  <Box
-    display="flex"
-    alignItems="center"
-    color="gray.2"
-    {...props}
-  >
+  <Box display="flex" alignItems="center" color="gray.2" {...props}>
     <Link
       href={href}
       css={css({
@@ -50,20 +45,13 @@ const ExternalLink: FC<LinkProps> = ({ Icon, href, label, ...props }) => (
     >
       <Icon />
       <Spacer ml={1} />
-      <Text display={['none', 'inline']}>
-        {label}
-      </Text>
+      <Text display={['none', 'inline']}>{label}</Text>
     </Link>
   </Box>
 )
 
 export const HeaderView: FC<Props> = ({ data }) => {
-  const {
-    author,
-    email,
-    github,
-    linkedin
-  } = data.site.siteMetadata
+  const { author, email, github, linkedin } = data.site.siteMetadata
 
   return (
     <Box
@@ -71,30 +59,19 @@ export const HeaderView: FC<Props> = ({ data }) => {
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
+      borderBottom="1px solid #DEDEDE"
     >
-      <Text
-        fontSize={2}
-        lineHeight="copy"
-        fontWeight="bold"
-        color="black"
-      >
+      <Text fontSize={2} lineHeight="copy" fontWeight="bold" color="black">
         {author}
       </Text>
-      <Box
-        display="flex"
-        flexDirection="row"
-      >
+      <Box display="flex" flexDirection="row">
         <ExternalLink
           Icon={FaGithubAlt}
           href={github}
           label={formatLabel(github)}
         />
         <Spacer ml={[0, 3]} />
-        <ExternalLink
-          Icon={FaAt}
-          href={`mailto:${email}`}
-          label={email}
-        />
+        <ExternalLink Icon={FaAt} href={`mailto:${email}`} label={email} />
         <Spacer ml={[0, 3]} />
         <ExternalLink
           Icon={FaLinkedin}

@@ -2,15 +2,15 @@
 
 exports[`HeaderView should match snapshot 1`] = `
 <DocumentFragment>
-  .emotion-32 {
+  .emotion-0 {
   box-sizing: border-box;
   min-width: 0;
+  border-bottom: 1px solid #DEDEDE;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -22,13 +22,14 @@ exports[`HeaderView should match snapshot 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-2 {
   font-size: 16px;
   line-height: copy;
   font-weight: bold;
+  color: black;
 }
 
-.emotion-30 {
+.emotion-4 {
   box-sizing: border-box;
   min-width: 0;
   -webkit-flex-direction: row;
@@ -40,7 +41,7 @@ exports[`HeaderView should match snapshot 1`] = `
   display: flex;
 }
 
-.emotion-8 {
+.emotion-6 {
   box-sizing: border-box;
   min-width: 0;
   color: gray.2;
@@ -54,7 +55,7 @@ exports[`HeaderView should match snapshot 1`] = `
   display: flex;
 }
 
-.emotion-6 {
+.emotion-8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,36 +69,36 @@ exports[`HeaderView should match snapshot 1`] = `
   padding-right: 0;
 }
 
-.emotion-2 {
+.emotion-10 {
   margin-left: 4px;
 }
 
-.emotion-4 {
+.emotion-12 {
   display: none;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-12 {
     display: inline;
   }
 }
 
-.emotion-10 {
+.emotion-14 {
   margin-left: 0;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-10 {
+@media screen and (min-width: 40em) {
+  .emotion-14 {
     margin-left: 16px;
   }
 }
 
 <div
-    class="emotion-32 emotion-9"
+    class="emotion-0 emotion-1"
     display="flex"
   >
     <span
-      class="emotion-0 emotion-1"
+      class="emotion-2 emotion-3"
       color="black"
       font-size="2"
       font-weight="bold"
@@ -105,16 +106,16 @@ exports[`HeaderView should match snapshot 1`] = `
       Aleh Atsman
     </span>
     <div
-      class="emotion-30 emotion-9"
+      class="emotion-4 emotion-1"
       display="flex"
     >
       <div
-        class="emotion-8 emotion-9"
+        class="emotion-6 emotion-1"
         color="gray.2"
         display="flex"
       >
         <a
-          class="emotion-6 emotion-7"
+          class="emotion-8 emotion-9"
           href="https://github.com/atsman"
           target="_blank"
         >
@@ -132,10 +133,10 @@ exports[`HeaderView should match snapshot 1`] = `
             />
           </svg>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-1"
+            class="emotion-12 emotion-3"
             display="none,inline"
           >
             github.com/atsman
@@ -143,15 +144,15 @@ exports[`HeaderView should match snapshot 1`] = `
         </a>
       </div>
       <div
-        class="emotion-10 emotion-3"
+        class="emotion-14 emotion-11"
       />
       <div
-        class="emotion-8 emotion-9"
+        class="emotion-6 emotion-1"
         color="gray.2"
         display="flex"
       >
         <a
-          class="emotion-6 emotion-7"
+          class="emotion-8 emotion-9"
           href="mailto:aleh.atsman@gmail.com"
           target="_blank"
         >
@@ -169,10 +170,10 @@ exports[`HeaderView should match snapshot 1`] = `
             />
           </svg>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-1"
+            class="emotion-12 emotion-3"
             display="none,inline"
           >
             aleh.atsman@gmail.com
@@ -180,15 +181,15 @@ exports[`HeaderView should match snapshot 1`] = `
         </a>
       </div>
       <div
-        class="emotion-10 emotion-3"
+        class="emotion-14 emotion-11"
       />
       <div
-        class="emotion-8 emotion-9"
+        class="emotion-6 emotion-1"
         color="gray.2"
         display="flex"
       >
         <a
-          class="emotion-6 emotion-7"
+          class="emotion-8 emotion-9"
           href="https://linkedin.com/in/alehatsman"
           target="_blank"
         >
@@ -206,10 +207,10 @@ exports[`HeaderView should match snapshot 1`] = `
             />
           </svg>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-1"
+            class="emotion-12 emotion-3"
             display="none,inline"
           >
             linkedin.com/in/alehatsman

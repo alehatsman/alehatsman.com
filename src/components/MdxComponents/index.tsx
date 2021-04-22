@@ -14,7 +14,7 @@ import { Image } from './Image'
 const Wrapper = styled(Box)(
   css({
     fontSize: '2',
-    fontFamily: 'robotoslab',
+    fontFamily: 'open_sans',
     fontWeight: 'normal',
     lineHeight: 'copy',
     letterSpacing: 'tracked'
@@ -87,6 +87,7 @@ const blockquote = styled.blockquote(css({
   m: 0,
   px: 3,
   borderLeft: 3,
+  borderLeftStyle: 'solid',
   borderColor: 'gray.1',
   color: 'gray.2'
 }))

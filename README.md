@@ -2,18 +2,18 @@
 
 # alehatsman.com
 
-> Software Engineer Blog
+> Code in human language about code. Software Engineer.
 
 ## Dependency installation
 
 ```
-yarn
+npm i
 ```
 
 ## Start development
 
 ```
-yarn run develop
+npm run develop
 ```
 
 [alehatsman.com](https://alehatsman.com)

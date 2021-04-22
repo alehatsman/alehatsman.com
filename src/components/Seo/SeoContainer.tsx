@@ -23,5 +23,5 @@ interface Props extends ViewProps {
 
 export const SeoContainer: FC<Props> = ({ Presenter, ...rest }) => {
   const { site } = useStaticQuery(query)
-  return <Presenter {...rest} {...site.siteMetadata} />
+  return <Presenter {...site.siteMetadata} {...rest} />
 }

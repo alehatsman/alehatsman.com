@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
-import { Global } from '@emotion/core'
-import { ThemeProvider } from 'emotion-theming'
-
+import { Global, ThemeProvider } from '@emotion/react'
 import { globalStyles } from '@/styles/globals'
 import { theme } from '@/styles/theme'
 import '@/styles/font_faces.css'

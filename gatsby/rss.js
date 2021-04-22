@@ -1,3 +1,4 @@
+const gpi = require('gatsby-plugin-image')
 const formatPostUrl = require('./formatPostUrl')
 
 module.exports = {
@@ -19,7 +20,8 @@ module.exports = {
       {
         serialize: ({ query: { site, allMdx } }) => {
           return allMdx.edges.map((edge) => {
-            const imageSrc = edge.node.frontmatter.featuredImage.childImageSharp.fixed.src
+            const imageSrc = gpi.getSrc(edge.node.frontmatter.featuredImage)
+
             return Object.assign({}, edge.node.frontmatter, {
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.createdAt,
@@ -55,9 +57,7 @@ module.exports = {
                     updatedAt
                     featuredImage {
                       childImageSharp {
-                        fixed {
-                          src
-                        }
+                        gatsbyImageData(layout: FIXED, width: 600)
                       }
                     }
                   }

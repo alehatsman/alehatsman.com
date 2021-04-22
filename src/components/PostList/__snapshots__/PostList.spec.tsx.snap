@@ -2,12 +2,12 @@
 
 exports[`PostListView should match snapshot 1`] = `
 <DocumentFragment>
-  .emotion-142 {
+  .emotion-0 {
   box-sizing: border-box;
   min-width: 0;
 }
 
-.emotion-20 {
+.emotion-2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15,37 +15,37 @@ exports[`PostListView should match snapshot 1`] = `
   width: 100%;
 }
 
-.emotion-18 {
+.emotion-4 {
   display: grid;
-  grid-template-columns: repeat(12,1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-gap: 16px;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.emotion-14 {
+.emotion-6 {
   grid-column: span 12;
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-14 {
+@media screen and (min-width: 40em) {
+  .emotion-6 {
     grid-column: span 8;
   }
 }
 
-@media screen and (min-width:40em) {
-  .emotion-14 {
+@media screen and (min-width: 40em) {
+  .emotion-6 {
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
   }
 }
 
-.emotion-0 {
+.emotion-8 {
   margin: 0;
   font-weight: bold;
   color: black;
@@ -53,49 +53,36 @@ exports[`PostListView should match snapshot 1`] = `
   font-weight: bold;
 }
 
-.emotion-2 {
+.emotion-10 {
   margin-top: 8px;
 }
 
-.emotion-4 {
-  font-family: robotoslab;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: copy;
-  -webkit-letter-spacing: tracked;
-  -moz-letter-spacing: tracked;
-  -ms-letter-spacing: tracked;
-  letter-spacing: tracked;
-}
-
-.emotion-4 {
-  font-family: robotoslab;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: copy;
-  -webkit-letter-spacing: tracked;
-  -moz-letter-spacing: tracked;
-  -ms-letter-spacing: tracked;
-  letter-spacing: tracked;
-}
-
 .emotion-12 {
+  font-family: open_sans;
+  font-size: 14px;
+  font-weight: light;
+  line-height: copy;
+  letter-spacing: tracked;
+}
+
+.emotion-16 {
   box-sizing: border-box;
   min-width: 0;
   color: gray.1;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: light;
+  font-family: open_sans;
 }
 
-.emotion-8 {
+.emotion-18 {
   margin-right: 8px;
 }
 
-.emotion-10 {
+.emotion-20 {
   margin-left: 8px;
 }
 
-.emotion-16 {
+.emotion-22 {
   grid-column: span 12;
   -webkit-order: 0;
   -ms-flex-order: 0;
@@ -103,55 +90,55 @@ exports[`PostListView should match snapshot 1`] = `
   margin-bottom: 8px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-16 {
+@media screen and (min-width: 40em) {
+  .emotion-22 {
     grid-column: span 4;
   }
 }
 
-@media screen and (min-width:40em) {
-  .emotion-16 {
+@media screen and (min-width: 40em) {
+  .emotion-22 {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
   }
 }
 
-@media screen and (min-width:40em) {
-  .emotion-16 {
+@media screen and (min-width: 40em) {
+  .emotion-22 {
     margin-bottom: 0;
   }
 }
 
-.emotion-22 {
+.emotion-24 {
   margin-top: 32px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-22 {
+@media screen and (min-width: 40em) {
+  .emotion-24 {
     margin-top: 16px;
   }
 }
 
 <div
-    class="emotion-142 emotion-13"
+    class="emotion-0 emotion-1"
   >
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/0.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -159,64 +146,65 @@ exports[`PostListView should match snapshot 1`] = `
             What questions to ask your potential employer?
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness, turn an interview into a two-way conversation.
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Mar 3, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               13 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-22 emotion-3"
+      class="emotion-24 emotion-11"
     />
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/1.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -224,64 +212,65 @@ exports[`PostListView should match snapshot 1`] = `
             The Danger in Fake Positivity and Spiritual Bypassing
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             Negative emotions and experiences allow us to grow
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Apr 3, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               8 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-22 emotion-3"
+      class="emotion-24 emotion-11"
     />
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/2.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -289,64 +278,65 @@ exports[`PostListView should match snapshot 1`] = `
             Thinking Fast and Slow book summary
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             Amazing inside on how your mind operates: rational and irrational thinking, energy saving, self-control and decision making.
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Apr 16, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               24 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-22 emotion-3"
+      class="emotion-24 emotion-11"
     />
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/3.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -354,64 +344,65 @@ exports[`PostListView should match snapshot 1`] = `
             How This Popular Psychiatrist Uses Instagram to Fight Mental Health Stigma
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             When a black person is getting treated for a mental illness, it’s usually in an emergency room setting.
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Jan 1, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               18 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-22 emotion-3"
+      class="emotion-24 emotion-11"
     />
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/4.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -419,64 +410,65 @@ exports[`PostListView should match snapshot 1`] = `
             Minimal artifacts repository in GO
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             Writing undemanding to resources minimal artefacts repository for Jar files in Golang for use in my side Clojure projects.
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Apr 18, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               16 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-22 emotion-3"
+      class="emotion-24 emotion-11"
     />
     <a
-      class="emotion-20 emotion-21"
+      class="emotion-2 emotion-3"
       data-testid="post-item"
       display="flex"
       href="/posts/5.html"
       width="100%"
     >
       <div
-        class="emotion-18 emotion-19"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="emotion-14 emotion-15"
+          class="emotion-6 emotion-7"
           order="1,0"
         >
           <h1
-            class="emotion-0 emotion-1"
+            class="emotion-8 emotion-9"
             color="black"
             font-size="3"
             font-weight="bold"
@@ -484,41 +476,42 @@ exports[`PostListView should match snapshot 1`] = `
             Developer Environment
           </h1>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <span
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
+            class="emotion-12 emotion-13"
+            font-family="open_sans"
             font-size="1"
-            font-weight="normal"
+            font-weight="light"
             letter-spacing="tracked"
           >
             Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.
           </span>
           <div
-            class="emotion-2 emotion-3"
+            class="emotion-10 emotion-11"
           />
           <div
-            class="emotion-12 emotion-13"
+            class="emotion-16 emotion-1"
             color="gray.1"
+            font-family="open_sans"
             font-size="0"
-            font-weight="normal"
+            font-weight="light"
           >
             <span
-              class="emotion-8 emotion-5"
+              class="emotion-18 emotion-13"
             >
               Feb 2, 2019
             </span>
             |
             <span
-              class="emotion-10 emotion-5"
+              class="emotion-20 emotion-13"
             >
               12 min read
             </span>
           </div>
         </div>
         <div
-          class="emotion-16 emotion-15"
+          class="emotion-22 emotion-7"
           order="0,1"
         />
       </div>

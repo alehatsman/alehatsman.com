@@ -4,7 +4,7 @@ title: 'Async, Non-Blocking and Blocking I/O'
 description: 'What are different I/O models? What is the foundation for Async I/O. What is the event loop, event queue, event table?'
 createdAt: '2020-05-25'
 updatedAt: '2019-11-21'
-tags: 
+tags:
   - 'I/O'
   - 'Async I/O'
   - 'Non-Blocking I/O'
@@ -23,6 +23,7 @@ tags:
   - 'Sanic'
   - 'Flask'
 featuredImage: './images/featuredImage.jpeg'
+featuredImageAlt: 'https://unsplash.com/photos/uj3hvdfQujI'
 public: true
 ---
 
@@ -36,8 +37,8 @@ public: true
 
 Modern computers run programs simultaneously. You can listen to Spotify, browser internet in Chrome and play video games at the same time. Spotify doesn't stop when you play a video game, video games don't stop when you receive messages in telegram. Are those programs run in parallel? Let's try to figure it out.
 
-* Every program is executed in one or multiple **processes**. 
-* Each process consists of one or multiple **threads**. 
+* Every program is executed in one or multiple **processes**.
+* Each process consists of one or multiple **threads**.
 * Each CPU core can run only **one process at a time**.
 
 > Computer runs only N programs in parallel, where N is a number of CPU cores.
@@ -64,12 +65,12 @@ When Scheduler replaces the executing process, it needs to save the process's st
 ***Scheduler***
 * assigns work to resources that complete the work
 * work may be virtual computation elements such as threads, processes, data flows
-* which scheduled onto hardware resources such as CPU, GPU,  
+* which scheduled onto hardware resources such as CPU, GPU,
 
 ***Multitasking***
 * method of sharing processor and system resources
 * allows a processor to switch between tasks
-* switches performed on I/O or hardware interrupts or time quotas 
+* switches performed on I/O or hardware interrupts or time quotas
 
 ***Time-Sharing***
 * most common form of multitasking
@@ -121,7 +122,7 @@ Next example is Nginx webserver. It uses async I/O model. It is single-threaded.
 Basic idea is that it has one worker thread. Each I/O read/write doesn't block worker thread. Instead, those calls only start operation and execution continues. As soon as the result will be ready it will be added to the event queue. Worker thread takes events from the event queue and handles them. This way the server doesn't waste memory and CPU.
 
 ***I/O forms***:
-* Blocking 
+* Blocking
 * Non-blocking
 * Asynchorous
 
@@ -256,7 +257,7 @@ Asyncio is implemented around python [`select`][SelectLink] module. Select modul
 
 ***Asyncio - Hello World***
 ```py
-import asyncio 
+import asyncio
 
 async def main():
     print('Hello ...')

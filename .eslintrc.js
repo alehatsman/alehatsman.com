@@ -22,5 +22,6 @@ module.exports = {
     "@typescript-eslint/restrict-template-expressions": 0,
     "@typescript-eslint/no-base-to-string": 0,
     "react/prop-types": 0,
+    "react/display-name": 0
   },
 }

@@ -16,28 +16,27 @@ module.exports = {
       }
     },
     'gatsby-plugin-typescript',
+    // {
+    // resolve: "gatsby-source-sanity",
+    // options: {
+    // projectId: "rfnezq6e",
+    // dataset: "draft",
+    // },
+    // },
     'gatsby-plugin-emotion',
-    'gatsby-plugin-react-helmet',
-    // 'gatsby-remark-images',
+    'gatsby-plugin-image',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        name: 'static',
-        path: `${__dirname}/static`
+        trackingId: 'G-FRKBVXGDYY'
       }
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'static/images/icon.png' // This path is relative to the root of the site.
+        icon: 'static/images/icon.png'
       }
     },
     {
@@ -63,6 +62,24 @@ module.exports = {
         remarkPlugins: [[toc, { tight: true }], slug]
       }
     },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './static/images/'
+      },
+      __key: 'images'
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/'
+      },
+      __key: 'pages'
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -70,32 +87,9 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-disqus',
       options: {
-        path: `${__dirname}/static/images`
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content`
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-99002751-2',
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: false,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Any additional optional fields
-        cookieDomain: 'alehatsman.com'
+        shortname: 'alehatsman-com'
       }
     },
     rssPlugin,

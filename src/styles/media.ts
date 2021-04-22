@@ -1,4 +1,4 @@
-import css from '@emotion/css'
+import { css } from '@emotion/css'
 
 const minWidth = (width: number) => (rules: TemplateStringsArray) => {
   return css`

@@ -10,6 +10,7 @@ import { Link } from '@/components/Link'
 import { Seo } from '@/components/Seo'
 import { ThemeWrapper } from '@/styles/ThemeWrapper'
 import mdxComponets from '@/components/MdxComponents'
+import { Disqus } from 'gatsby-plugin-disqus'
 
 const convertDataToPresenterProps = (data: any) => ({
   ...data.mdx.frontmatter,
@@ -17,8 +18,14 @@ const convertDataToPresenterProps = (data: any) => ({
   timeToRead: data.mdx.timeToRead
 })
 
+const formatGithubLink = (id: string) =>
+  `https://github.com/atsman/alehatsman.com/blob/master/content/${id}/index.mdx`
+
 const PostPage: FC<any> = ({ data }) => {
   const post = convertDataToPresenterProps(data)
+  const disqusConfig = {
+    config: { identifier: post.id, title: data.mdx.frontmatter.title }
+  }
 
   return (
     <ThemeWrapper>
@@ -27,38 +34,25 @@ const PostPage: FC<any> = ({ data }) => {
         description={data.mdx.frontmatter.description}
         keywords={data.mdx.frontmatter.tags}
       />
-      <Box
-        display="flex"
-        flexDirection="column"
-        mt={2}
-        mb={2}
-      >
-        <Box
-          my={2}
-          mx="auto"
-          px={[2, 2, 0]}
-          width={[
-            1,
-            '644px'
-          ]}
-        >
-          <Link href="/"
-            fontSize={3}
-            p={3}
-            ml={-3}
-          >
+      <Box display="flex" flexDirection="column" mt={2} mb={2}>
+        <Box my={2} mx="auto" px={[2, 2, 0]} width={[1, '644px']}>
+          <Link href="/" fontSize={3} p={3} ml={-3}>
             {'<-'}
           </Link>
           <Spacer mt={2} />
           <MDXProvider components={mdxComponets}>
-            <MDXRenderer
-              post={post}
-              featuredImage={post.featuredImage}
-            >
+            <MDXRenderer post={post} featuredImage={post.featuredImage}>
               {post.body}
             </MDXRenderer>
           </MDXProvider>
-          <Footer id={post.id} />
+          <Footer>
+            <Link href={formatGithubLink(post.id)}>
+              Found error? Click here.
+            </Link>
+            <Spacer ml={2} />
+            <Link href="https://futurumlab.io/">Futurumlab.io</Link>
+          </Footer>
+          <Disqus config={disqusConfig} />
         </Box>
       </Box>
     </ThemeWrapper>
@@ -81,9 +75,7 @@ export const query = graphql`
         updatedAt
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800)
           }
         }
       }

@@ -30,9 +30,7 @@ const queryMdxPosts = graphql`
             updatedAt
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 320) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
             }
             featuredImageAlt
@@ -58,7 +56,7 @@ export const PostListContainer: FC<Props> = ({ Presenter }) => {
         ...n.frontmatter,
         id: n.frontmatter.id,
         timeToRead: n.timeToRead,
-        featuredImage: n.frontmatter.featuredImage?.childImageSharp?.fluid
+        featuredImage: n.frontmatter.featuredImage
       }))
 
     setPosts(newPosts)

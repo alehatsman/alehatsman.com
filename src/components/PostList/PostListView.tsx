@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import { Grid, Column } from '@/components/Grid'
 import { Box } from '@/components/Box'
@@ -12,7 +12,7 @@ import { Post } from '@/types/Post'
 const PostItem: FC<{ post: Post }> = ({ post }) => (
   <Link
     data-testid="post-item"
-    to={`/posts/${post.id}.html`}
+    href={`/posts/${post.id}.html`}
     display="flex"
     width="100%"
   >
@@ -27,29 +27,36 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
         </Heading>
         <Spacer mt={2} />
         <Text
-          fontFamily="robotoslab"
+          fontFamily="open_sans"
           fontSize={1}
-          fontWeight="normal"
+          fontWeight="light"
           lineHeight="copy"
           letterSpacing="tracked"
         >
           {post.description}
         </Text>
         <Spacer mt={2} />
-        <Box fontSize={0} fontWeight="normal" color="gray.1">
+        <Box
+          fontSize={0}
+          fontWeight="light"
+          color="gray.1"
+          fontFamily="open_sans"
+        >
           <Text mr={2}>{post.createdAt}</Text>|
           <Text ml={2}>{post.timeToRead} min read</Text>
         </Box>
       </Column>
       <Column gridColumn={['span 12', 'span 4']} order={[0, 1]} mb={[2, 0]}>
-        {post.featuredImage ? (
-          <Img
+        {post.featuredImage
+          ? (
+          <GatsbyImage
             style={{ maxHeight: '150px' }}
-            fluid={post.featuredImage}
+            image={getImage(post.featuredImage)}
             title={post.featuredImageAlt}
             alt={post.featuredImageAlt}
           />
-        ) : null}
+            )
+          : null}
       </Column>
     </Grid>
   </Link>
