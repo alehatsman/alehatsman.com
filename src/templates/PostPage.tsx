@@ -34,7 +34,7 @@ const PostPage: FC<any> = ({ data }) => {
         description={data.mdx.frontmatter.description}
         keywords={data.mdx.frontmatter.tags}
       />
-      <Box display="flex" flexDirection="column" mt={2} mb={2}>
+      <Box display="flex" flexDirection="column" pt={2} pb={2}>
         <Box my={2} mx="auto" px={[2, 2, 0]} width={[1, '644px']}>
           <Link href="/" fontSize={3} p={3} ml={-3}>
             {'<-'}

@@ -45,7 +45,7 @@ const ExternalLink: FC<LinkProps> = ({ Icon, href, label, ...props }) => (
     >
       <Icon />
       <Spacer ml={1} />
-      <Text display={['none', 'inline']}>{label}</Text>
+      <Text display={['none', 'none', 'inline', 'inline']}>{label}</Text>
     </Link>
   </Box>
 )

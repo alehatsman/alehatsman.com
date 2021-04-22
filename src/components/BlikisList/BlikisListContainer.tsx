@@ -7,12 +7,12 @@ import React, {
 } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Post } from '@/types/Post'
-import { PostListView } from './PostListView'
+import { BlikisListView } from './BlikisListView'
 
-const queryMdxPosts = graphql`
+const queryMdxBlikis = graphql`
   {
     allMdx(
-      filter: { frontmatter: { public: { eq: true }, tags: { nin: "bliki" } } }
+      filter: { frontmatter: { public: { eq: true }, tags: { in: "bliki" } } }
       sort: { fields: frontmatter___createdAt, order: DESC }
     ) {
       edges {
@@ -30,7 +30,9 @@ const queryMdxPosts = graphql`
             updatedAt
             featuredImage {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                fluid(maxWidth: 320) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
             featuredImageAlt
@@ -42,11 +44,11 @@ const queryMdxPosts = graphql`
 `
 
 interface Props {
-  Presenter: ComponentType<ComponentProps<typeof PostListView>>
+  Presenter: ComponentType<ComponentProps<typeof BlikisListView>>
 }
 
-export const PostListContainer: FC<Props> = ({ Presenter }) => {
-  const data = useStaticQuery(queryMdxPosts)
+export const BlikisListContainer: FC<Props> = ({ Presenter }) => {
+  const data = useStaticQuery(queryMdxBlikis)
   const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export const PostListContainer: FC<Props> = ({ Presenter }) => {
         ...n.frontmatter,
         id: n.frontmatter.id,
         timeToRead: n.timeToRead,
-        featuredImage: n.frontmatter.featuredImage
+        featuredImage: n.frontmatter.featuredImage?.childImageSharp?.fluid
       }))
 
     setPosts(newPosts)

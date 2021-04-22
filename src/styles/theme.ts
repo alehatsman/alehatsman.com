@@ -1,7 +1,7 @@
 export const theme = {
-  breakpoints: ['40em', '52em', '64em'],
+  breakpoints: ['32rem', '42.5rem', '64rem', '76.8rem', '83.2rem', '102.4rem'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fontSizes: ['1.2rem', '1.4rem', '1.6rem', '2.4rem', '3.2rem'],
+  fontSizes: ['1.2rem', '1.4rem', '1.6rem', '2rem', '2.4rem', '3.2rem'],
   fontWeights: {
     light: 300,
     normal: 400,

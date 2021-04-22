@@ -22,6 +22,7 @@ exports[`PostListView should match snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: 100%;
 }
 
 .emotion-6 {
@@ -49,40 +50,56 @@ exports[`PostListView should match snapshot 1`] = `
   margin: 0;
   font-weight: bold;
   color: black;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-8 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-8 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .emotion-8 {
+    font-size: 20px;
+  }
 }
 
 .emotion-10 {
   margin-top: 8px;
 }
 
-<<<<<<< HEAD
 .emotion-12 {
   font-family: open_sans;
-||||||| parent of 899e609... style: open sans
-.emotion-4 {
-  font-family: robotoslab;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   line-height: copy;
-  -webkit-letter-spacing: tracked;
-  -moz-letter-spacing: tracked;
-  -ms-letter-spacing: tracked;
   letter-spacing: tracked;
 }
 
-.emotion-4 {
-  font-family: robotoslab;
-=======
-.emotion-4 {
-  font-family: open_sans;
->>>>>>> 899e609... style: open sans
-  font-size: 14px;
-  font-weight: light;
-  line-height: copy;
-  letter-spacing: tracked;
-  color: gray.1;
+@media screen and (min-width: 40em) {
+  .emotion-12 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-12 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .emotion-12 {
+    font-size: 14px;
+  }
 }
 
 .emotion-16 {
@@ -90,15 +107,8 @@ exports[`PostListView should match snapshot 1`] = `
   min-width: 0;
   color: gray.1;
   font-size: 12px;
-<<<<<<< HEAD
-  font-weight: light;
-  font-family: open_sans;
-||||||| parent of 899e609... style: open sans
-  font-weight: normal;
-=======
   font-weight: normal;
   font-family: open_sans;
->>>>>>> 899e609... style: open sans
 }
 
 .emotion-18 {
@@ -106,10 +116,6 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 .emotion-20 {
-  margin-left: 8px;
-}
-
-.emotion-22 {
   grid-column: span 12;
   -webkit-order: 0;
   -ms-flex-order: 0;
@@ -118,13 +124,13 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     grid-column: span 4;
   }
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
@@ -132,17 +138,17 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     margin-bottom: 0;
   }
 }
 
-.emotion-24 {
+.emotion-22 {
   margin-top: 32px;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-24 {
+  .emotion-22 {
     margin-top: 16px;
   }
 }
@@ -159,6 +165,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -167,7 +174,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             What questions to ask your potential employer?
@@ -176,19 +183,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             Evaluation of company culture, tech expertise, established processes and product vision is critically important for your work happiness, turn an interview into a two-way conversation.
@@ -201,29 +199,23 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Mar 3, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              13 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -234,6 +226,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -242,7 +235,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             The Danger in Fake Positivity and Spiritual Bypassing
@@ -251,19 +244,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             Negative emotions and experiences allow us to grow
@@ -276,29 +260,23 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Apr 3, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              8 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -309,6 +287,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -317,7 +296,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             Thinking Fast and Slow book summary
@@ -326,19 +305,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             Amazing inside on how your mind operates: rational and irrational thinking, energy saving, self-control and decision making.
@@ -351,29 +321,23 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Apr 16, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              24 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -384,6 +348,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -392,7 +357,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             How This Popular Psychiatrist Uses Instagram to Fight Mental Health Stigma
@@ -401,19 +366,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             When a black person is getting treated for a mental illness, it’s usually in an emergency room setting.
@@ -426,29 +382,23 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Jan 1, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              18 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -459,6 +409,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -467,7 +418,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             Minimal artifacts repository in GO
@@ -476,19 +427,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             Writing undemanding to resources minimal artefacts repository for Jar files in Golang for use in my side Clojure projects.
@@ -501,29 +443,23 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Apr 18, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              16 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -534,6 +470,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -542,7 +479,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="2,2,3,3"
             font-weight="bold"
           >
             Developer Environment
@@ -551,19 +488,10 @@ exports[`PostListView should match snapshot 1`] = `
             class="emotion-10 emotion-11"
           />
           <span
-<<<<<<< HEAD
             class="emotion-12 emotion-13"
             font-family="open_sans"
-||||||| parent of 899e609... style: open sans
-            class="emotion-4 emotion-5"
-            font-family="robotoslab"
-=======
-            class="emotion-4 emotion-5"
-            color="gray.1"
-            font-family="open_sans"
->>>>>>> 899e609... style: open sans
-            font-size="1"
-            font-weight="light"
+            font-size="0,0,0,1"
+            font-weight="normal"
             letter-spacing="tracked"
           >
             Composing command-line tools into full-featured Developer Environment, using universal navigation shortcuts among all tools.
@@ -576,23 +504,17 @@ exports[`PostListView should match snapshot 1`] = `
             color="gray.1"
             font-family="open_sans"
             font-size="0"
-            font-weight="light"
+            font-weight="normal"
           >
             <span
               class="emotion-18 emotion-13"
             >
               Feb 2, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              12 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
