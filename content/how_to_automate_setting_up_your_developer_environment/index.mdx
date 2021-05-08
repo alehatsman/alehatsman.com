@@ -1,0 +1,56 @@
+---
+id: 'how_to_automate_setting_up_your_developer_environment'
+title: 'How to automate setting up your developer environment?'
+description: 'Learn how to save time and be able to develop on new laptop immidiatly by using simple techniques.'
+tags:
+  - dotfiles
+  - ansible
+  - bliki
+createdAt: '2021-05-08'
+featuredImage: './images/diagram.jpg'
+public: true
+---
+
+# How to automate setting up your developer environment?
+
+![Depencies diagram](./images/diagram.jpg)
+
+1. Use package managers to install programs
+2. Use config files to configure programs instead of UI
+3. Store configuration in GitHub
+4. Script installation and configuration
+
+Check this out for example: [env-automation][env-automation]
+
+## Avoid manual installation and use package managers
+
+Use package managers to install the software and script the installation.
+
+On mac use [`brew`](https://brew.sh/), on windows use [`choco`](https://chocolatey.org/).
+
+```
+brew cask install google-chrome spotify slack
+```
+
+## Prefer file-based configuration over UI based
+
+Customize programs by using config files and not by changing settings in UI. It will allow you to script configuration. A simple bash script will copy files where needed and you are done.
+
+```
+cp ./init.vim ~/.config/nvim/init.vim
+```
+
+## Store configuration in git (Github)
+
+Store all configuration in Github. It allows sharing configuration between machines and allows to go back in history if something is broken.
+
+## Use scripts or provisioning tools for automation
+
+Finally, write bash scripts or use Ansible like tools to automate the whole process. After this is done turning a new laptop into a fully usable machine will be a matter of one command.
+
+```
+brew install neovim
+cp ./init.vim ~/.config/nvim/init.vim
+```
+
+[env-automation]: https://github.com/atsman/env-automation

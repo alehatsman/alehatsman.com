@@ -6,8 +6,8 @@ import { PostList } from '@/components/PostList'
 import { Seo } from '@/components/Seo'
 import { Spacer } from '@/components/Spacer'
 import { ThemeWrapper } from '@/styles/ThemeWrapper'
-import { Footer } from '@/components/Footer'
-import { Link } from '@/components/Link'
+// import { Footer } from '@/components/Footer'
+// import { Link } from '@/components/Link'
 
 const HomePage: FC = () => {
   return (
@@ -19,12 +19,14 @@ const HomePage: FC = () => {
           <Spacer mt={[4]} />
           <PostList />
           <Spacer mt={[4]} />
+          {/*
           <Footer>
             <Link display="flex" href="https://futurumlab.io/">
               <Spacer ml={2} />
               Futurumlab.io
             </Link>
           </Footer>
+          */}
         </Box>
       </Box>
     </ThemeWrapper>

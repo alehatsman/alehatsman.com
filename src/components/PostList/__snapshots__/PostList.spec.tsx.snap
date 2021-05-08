@@ -22,6 +22,7 @@ exports[`PostListView should match snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: 100%;
 }
 
 .emotion-6 {
@@ -49,7 +50,7 @@ exports[`PostListView should match snapshot 1`] = `
   margin: 0;
   font-weight: bold;
   color: black;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -79,10 +80,6 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 .emotion-20 {
-  margin-left: 8px;
-}
-
-.emotion-22 {
   grid-column: span 12;
   -webkit-order: 0;
   -ms-flex-order: 0;
@@ -91,13 +88,13 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     grid-column: span 4;
   }
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
@@ -105,17 +102,17 @@ exports[`PostListView should match snapshot 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-20 {
     margin-bottom: 0;
   }
 }
 
-.emotion-24 {
+.emotion-22 {
   margin-top: 32px;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-24 {
+  .emotion-22 {
     margin-top: 16px;
   }
 }
@@ -132,6 +129,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -140,7 +138,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             What questions to ask your potential employer?
@@ -172,22 +170,16 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Mar 3, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              13 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -198,6 +190,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -206,7 +199,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             The Danger in Fake Positivity and Spiritual Bypassing
@@ -238,22 +231,16 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Apr 3, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              8 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -264,6 +251,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -272,7 +260,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             Thinking Fast and Slow book summary
@@ -304,22 +292,16 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Apr 16, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              24 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -330,6 +312,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -338,7 +321,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             How This Popular Psychiatrist Uses Instagram to Fight Mental Health Stigma
@@ -370,22 +353,16 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Jan 1, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              18 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -396,6 +373,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -404,7 +382,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             Minimal artifacts repository in GO
@@ -436,22 +414,16 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Apr 18, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              16 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>
     </a>
     <div
-      class="emotion-24 emotion-11"
+      class="emotion-22 emotion-11"
     />
     <a
       class="emotion-2 emotion-3"
@@ -462,6 +434,7 @@ exports[`PostListView should match snapshot 1`] = `
     >
       <div
         class="emotion-4 emotion-5"
+        width="100%"
       >
         <div
           class="emotion-6 emotion-7"
@@ -470,7 +443,7 @@ exports[`PostListView should match snapshot 1`] = `
           <h1
             class="emotion-8 emotion-9"
             color="black"
-            font-size="3"
+            font-size="4"
             font-weight="bold"
           >
             Developer Environment
@@ -502,16 +475,10 @@ exports[`PostListView should match snapshot 1`] = `
             >
               Feb 2, 2019
             </span>
-            |
-            <span
-              class="emotion-20 emotion-13"
-            >
-              12 min read
-            </span>
           </div>
         </div>
         <div
-          class="emotion-22 emotion-7"
+          class="emotion-20 emotion-7"
           order="0,1"
         />
       </div>

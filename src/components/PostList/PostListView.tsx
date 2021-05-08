@@ -20,9 +20,10 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
       flexDirection="column"
       gridTemplateColumns="repeat(12, 1fr)"
       gridGap={3}
+      width="100%"
     >
       <Column gridColumn={['span 12', 'span 8']} order={[1, 0]}>
-        <Heading color="black" fontSize={[3]} fontWeight="bold">
+        <Heading color="black" fontSize={[4]} fontWeight="bold">
           {post.title}
         </Heading>
         <Spacer mt={2} />
@@ -42,8 +43,7 @@ const PostItem: FC<{ post: Post }> = ({ post }) => (
           color="gray.1"
           fontFamily="open_sans"
         >
-          <Text mr={2}>{post.createdAt}</Text>|
-          <Text ml={2}>{post.timeToRead} min read</Text>
+          <Text mr={2}>{post.createdAt}</Text>
         </Box>
       </Column>
       <Column gridColumn={['span 12', 'span 4']} order={[0, 1]} mb={[2, 0]}>

@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/react'
 
 import { Box } from '@/components/Box'
 import { Spacer } from '@/components/Spacer'
-import { Footer } from '@/components/Footer'
+// import { Footer } from '@/components/Footer'
 import { Link } from '@/components/Link'
 import { Seo } from '@/components/Seo'
 import { ThemeWrapper } from '@/styles/ThemeWrapper'
@@ -18,8 +18,8 @@ const convertDataToPresenterProps = (data: any) => ({
   timeToRead: data.mdx.timeToRead
 })
 
-const formatGithubLink = (id: string) =>
-  `https://github.com/atsman/alehatsman.com/blob/master/content/${id}/index.mdx`
+// const formatGithubLink = (id: string) =>
+// `https://github.com/atsman/alehatsman.com/blob/master/content/${id}/index.mdx`
 
 const PostPage: FC<any> = ({ data }) => {
   const post = convertDataToPresenterProps(data)
@@ -45,6 +45,7 @@ const PostPage: FC<any> = ({ data }) => {
               {post.body}
             </MDXRenderer>
           </MDXProvider>
+          {/*
           <Footer>
             <Link href={formatGithubLink(post.id)}>
               Found error? Click here.
@@ -52,6 +53,7 @@ const PostPage: FC<any> = ({ data }) => {
             <Spacer ml={2} />
             <Link href="https://futurumlab.io/">Futurumlab.io</Link>
           </Footer>
+          */}
           <Disqus config={disqusConfig} />
         </Box>
       </Box>
