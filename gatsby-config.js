@@ -16,13 +16,6 @@ module.exports = {
       }
     },
     'gatsby-plugin-typescript',
-    // {
-    // resolve: "gatsby-source-sanity",
-    // options: {
-    // projectId: "rfnezq6e",
-    // dataset: "draft",
-    // },
-    // },
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     {

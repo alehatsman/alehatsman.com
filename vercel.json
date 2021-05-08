@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "alias": "alehatsman.com",
+  "headers": [
+    {
+      "source": "/static/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/posts/dotfiles_and_configuration_management_using_ansible.html",
+      "destination": "/posts/how_to_automate_setting_up_your_developer_environment.html",
+      "permanent": true
+    },
+    {
+      "source": "/posts/golang_type_declaration_abuse.html",
+      "destination": "/posts/when_to_use_type_aliases_and_type_definitions_in_go.html",
+      "permanent": true
+    }
+  ]
+}

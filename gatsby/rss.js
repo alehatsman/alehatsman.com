@@ -20,9 +20,7 @@ module.exports = {
       {
         serialize: ({ query: { site, allMdx } }) => {
           return allMdx.edges.map((edge) => {
-            const imageSrc = gpi.getSrc(edge.node.frontmatter.featuredImage)
-
-            return Object.assign({}, edge.node.frontmatter, {
+            const item = Object.assign({}, edge.node.frontmatter, {
               description: edge.node.frontmatter.description,
               date: edge.node.frontmatter.createdAt,
               url:
@@ -31,11 +29,16 @@ module.exports = {
               guid:
                 site.siteMetadata.siteUrl +
                 formatPostUrl(edge.node.frontmatter.id),
-              custom_elements: [{ 'content:encoded': edge.node.html }],
-              enclosure: imageSrc && {
-                url: site.siteMetadata.siteUrl + imageSrc
-              }
+              custom_elements: [{ 'content:encoded': edge.node.html }]
             })
+
+            const featuredImage = edge.node.frontmatter.featuredImage
+            if (featuredImage) {
+              const imageSrc = gpi.getSrc(edge.node.frontmatter.featuredImage)
+              item.enclosure = { url: site.siteMetadata.siteUrl + imageSrc }
+            }
+
+            return item
           })
         },
         query: `
